@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Courgette&family=Merriweather:wght@700&family=Patua+One&display=swap');
+
+:root {
+    --beige: #fff5d7;
+    --sand-tan: #c89666;
+    --olive: #A3BCB6;
+    --tanly: #DADED4;
+    --whitesmoke: whitesmoke;
+    --white: #ffff;
+    --green: #16A085;
+    --red: #ff3333;
+    --main: #e47b18;
+    --light-dark: #49494A;
+    --font1: 'Abel', sans-serif;
+    --font2: 'Merriweather', serif;
+    --font3: 'Patua One', cursive;
+    --normal-font-size: 1rem;
+    --header-font-size: 1.8rem;
+}
+
+/* navbar */
+.navbar {
+    background: transparent;
+    margin-top: -1rem;
+}
+
+.navbar .nav-item .nav-link.active {
+    color: var(--red);
+    font-family: var(--font1);
+}
+
+.navbar .nav-item .nav-link {
+    color: var(--main);
+    font-family: var(--font1);
+}
+
+.navbar .nav-item:hover .nav-link {
+    color: var(--green);
+}
+
+.d-flex button {
+    background: var(--main);
+    border: 2px solid var(--main);
+    font-family: var(--font1);
+    color: #000;
+}
+
+/* navbar */
+@media all and (min-width: 992px) {
+    .navbar .dropdown-menu-end {
+        right: 0;
+        left: auto;
+    }
+
+    .navbar .nav-item .dropdown-menu {
+        display: block;
+        opacity: 0;
+        visibility: hidden;
+        transition: .3s;
+        margin-top: 0;
+    }
+
+    .navbar .dropdown-menu.fade-down {
+        top: 80%;
+        transform: rotateX(-75deg);
+        transform-origin: 0% 0%;
+    }
+
+    .navbar .dropdown-menu.fade-up {
+        top: 180%;
+    }
+
+    .navbar .nav-item:hover .dropdown-menu {
+        transition: .3s;
+        opacity: 1;
+        visibility: visible;
+        top: 100%;
+        transform: rotateX(0deg);
+    }
+}
+
+/* hero */
+.hero {
+    background: url(../img/4.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh;
+    width: 100%;
+    margin-top: -8rem;
+}
