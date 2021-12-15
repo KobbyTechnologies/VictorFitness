@@ -195,7 +195,7 @@ body {
 /* Scroller styling */
 .scroller {
     height: 1.2em;
-    line-height: 1.2em;
+    line-height: 1.3em;
     position: relative;
     overflow: hidden;
     width: 10em;

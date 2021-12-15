@@ -1,0 +1,62 @@
+@media screen and (max-width: 375px) {
+    .br {
+        color: yellow;
+    }
+
+    .header h3 {
+        padding-top: 5rem;
+        margin-left: 0rem;
+        font-size: 2.0rem;
+        font-weight: bold;
+    }
+
+    .header p {
+        margin-top: 30px;
+        padding-left: 0rem;
+        color: white;
+    }
+
+    .header button {
+        margin-top: 1.5rem;
+        font-size: 1.2rem;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .br {
+        color: yellow;
+    }
+
+    .header h3 {
+        padding-top: 5rem;
+        margin-left: 0rem;
+        font-size: 2.2rem;
+        font-weight: bold;
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+    .br {
+        color: yellow;
+    }
+
+    .header h3 {
+        padding-top: 5rem;
+        margin-left: 0rem;
+        font-size: 2.5rem;
+        font-weight: bold;
+    }
+
+    .header p {
+        margin-top: 30px;
+        padding-left: 0rem;
+        color: white;
+    }
+
+    .header button {
+        margin-top: 1.5rem;
+        font-size: 1.2rem;
+        margin-left: -1.5em;
+    }
+}
