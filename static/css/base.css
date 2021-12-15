@@ -1,46 +1,96 @@
-@import url('https://fonts.googleapis.com/css2?family=Courgette&family=Merriweather:wght@700&family=Patua+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500&family=Luckiest+Guy&family=Nunito+Sans&display=swap');
 
 :root {
-    --beige: #fff5d7;
-    --sand-tan: #c89666;
-    --olive: #A3BCB6;
-    --tanly: #DADED4;
+    --blue1: #3c37f1;
+    --blue2: #1998ff;
     --whitesmoke: whitesmoke;
     --white: #ffff;
+    --white2: #dadcd7;
     --green: #16A085;
+    --green2: #00d663;
     --red: #ff3333;
+    --pink: #fa65b1;
     --main: #e47b18;
+    --main2: #f58f5b;
+    --purple: #302cc1;
+    --purple2: #726ae3;
     --light-dark: #49494A;
-    --font1: 'Abel', sans-serif;
-    --font2: 'Merriweather', serif;
-    --font3: 'Patua One', cursive;
+    --font1: 'Baloo Bhaijaan 2', cursive;
+    --font2: 'Nunito Sans', sans-serif;
+    --font3: 'Luckiest Guy', cursive;
     --normal-font-size: 1rem;
     --header-font-size: 1.8rem;
 }
 
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--white2);
+    scroll-behavior: smooth;
+}
+
 /* navbar */
 .navbar {
-    background: transparent;
+    background: var(--red);
     margin-top: -1rem;
 }
 
+/* navbar brand skew */
+.navbar-brand {
+    background-color: var(--white);
+    /* border-radius: 41% 58% 60% 52% / 35% 80% 16% 51%; */
+    transform: skew(20deg);
+    margin-bottom: -.5rem;
+}
+
 .navbar .nav-item .nav-link.active {
-    color: var(--red);
+    color: var(--blue1);
     font-family: var(--font1);
+
+}
+
+.navbar .nav-item .dropdown-menu {
+    background: var(--main2);
+    /* above bg to take navbar's color */
+    padding: 1rem;
+    padding-top: 1rem;
+}
+
+/* check on screen responsiveness */
+.navbar .nav-item .dropdown-menu .dropdown-item {
+    color: var(--white);
+    font-family: var(--font1);
+    font-size: .9rem;
+    line-height: 1.8rem;
+    margin-top: 1rem;
+    text-transform: capitalize;
+}
+
+.navbar .nav-item .dropdown-menu .dropdown-item:hover {
+    background: var(--blue1);
+}
+
+@media screen and (min-width: 768px) {
+    .navbar .nav-item .nav-link {
+        color: var(--white);
+        font-family: var(--font1);
+        margin-right: 1.7rem;
+    }
 }
 
 .navbar .nav-item .nav-link {
-    color: var(--main);
-    font-family: var(--font1);
+    color: var(--white);
 }
 
 .navbar .nav-item:hover .nav-link {
-    color: var(--green);
+    color: var(--blue1);
 }
 
 .d-flex button {
-    background: var(--main);
-    border: 2px solid var(--main);
+    background: var(--red);
+    border: 2px solid var(--red);
     font-family: var(--font1);
     color: #000;
 }
@@ -58,6 +108,7 @@
         visibility: hidden;
         transition: .3s;
         margin-top: 0;
+        border-radius: 10px 20px;
     }
 
     .navbar .dropdown-menu.fade-down {
@@ -81,12 +132,97 @@
 
 /* hero */
 .hero {
-    background: url(../img/4.jpg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    height: 100vh;
+    background-color: var(--red);
+    height: auto;
     width: 100%;
-    margin-top: -8rem;
+    border-radius: 10% 10% 50% 55% / 0% 0% 100% 100%;
+}
+
+.hero1 {
+    background-color: var(--red);
+    min-height: 70vh;
+    margin-right: -2rem;
+    border-radius: 10% 100% 0% 100% / 0% 0% 100% 100%;
+}
+
+.header {
+    margin-top: 7rem;
+
+}
+
+.header h3 {
+    padding-top: 7rem;
+    margin-left: 1rem;
+    color: var(--white);
+    font-family: var(--font3);
+    font-size: 5rem;
+    font-weight: bold;
+}
+
+.br {
+    color: var(--purple)
+}
+
+.header p {
+    font-family: var(--font2);
+    margin-top: 30px;
+    padding-left: 2rem;
+    color: white;
+}
+
+.header button {
+    background: var(--blue2);
+    color: white;
+    font-family: var(--font1);
+    border: 2px solid var(--blue2);
+    border-radius: 30px;
+    margin-top: 3rem;
+    font-size: 1.2rem;
+}
+
+.header button:hover {
+    background: var(--main);
+    color: white;
+    border: 2px solid var(--main);
+}
+
+.header img {
+    height: 700px;
+    width: auto;
+    float: right;
+}
+
+/* Scroller styling */
+.scroller {
+    height: 1.2em;
+    line-height: 1.2em;
+    position: relative;
+    overflow: hidden;
+    width: 10em;
+}
+
+.scroller>span {
+    position: absolute;
+    top: 0;
+    animation: slide 10s infinite;
+    font-weight: bold;
+
+}
+
+@keyframes slide {
+    0% {
+        top: 0;
+    }
+
+    25% {
+        top: -1.2em;
+    }
+
+    50% {
+        top: -2.4em;
+    }
+
+    75% {
+        top: -3.6em;
+    }
 }
