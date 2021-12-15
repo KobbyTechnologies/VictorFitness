@@ -2,54 +2,7 @@
 {% load bootstrap5 %}
 {% load static %}
 {% block content %}
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="navbar_top">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-            <img src="../../../static/img/Logo/3.png" width="100" height="auto" alt=""
-                class="d-inline-block align-text-top">
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="main_nav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link active" href="#"> Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="#"> About</a></li>
-                <li class="nav-item"><a class="nav-link" href="#"> All Programs</a></li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"> Advice </a>
-                    <ul class="dropdown-menu fade-up">
-                        <li><a class="dropdown-item" href="#"> ABS BURN WORKOUT</a></li>
-                        <li><a class="dropdown-item" href="#"> ABS BURN WORKOUT </a></li>
-                        <li><a class="dropdown-item" href="#"> ABS BURN WORKOUT </a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"> Courses</a>
-                    <ul class="dropdown-menu fade-up">
-                        <li><a class="dropdown-item" href="#"> ABS BURN WORKOUT</a></li>
-                        <li><a class="dropdown-item" href="#"> ABS BURN WORKOUT </a></li>
-                        <li><a class="dropdown-item" href="#"> ABS BURN WORKOUT </a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"> Guides</a>
-                    <ul class="dropdown-menu fade-up">
-                        <li><a class="dropdown-item" href="#"> ABS BURN WORKOUT</a></li>
-                        <li><a class="dropdown-item" href="#"> ABS BURN WORKOUT </a></li>
-                        <li><a class="dropdown-item" href="#"> ABS BURN WORKOUT </a></li>
-                    </ul>
-                </li>
-                <li class="nav-item"><a class="nav-link" href="#"> FAQs</a></li>
-                <li class="nav-item"><a class="nav-link" href="#"> Contact</a></li>
-                <form class="d-flex">
-                    <button class="btn btn-outline-success mx-4" type="submit">Login <i
-                            class="las la-sign-in-alt"></i></button>
-                </form>
-            </ul>
-        </div>
-    </div>
-</nav>
+{% include 'navbar.html'%}
 <section class="hero">
     <div class="container-fluid">
         <div class="row">

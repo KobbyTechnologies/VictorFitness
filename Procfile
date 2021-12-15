@@ -1,0 +1,1 @@
+web: gunicorn Victor.wsgi --log-file -
