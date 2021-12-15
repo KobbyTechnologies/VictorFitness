@@ -34,6 +34,12 @@
         font-weight: bold;
     }
 
+    .header button {
+        margin-top: 1.5rem;
+        font-size: 1.2rem;
+        margin-left: 1.5em;
+    }
+
 }
 
 @media screen and (max-width: 768px) {
@@ -57,6 +63,6 @@
     .header button {
         margin-top: 1.5rem;
         font-size: 1.2rem;
-        margin-left: -1.5em;
+        margin-left: 1.5em;
     }
 }
