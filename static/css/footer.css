@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500&family=Luckiest+Guy&family=Nunito+Sans&display=swap');
+
+:root {
+    --blue1: #3c37f1;
+    --blue2: #1998ff;
+    --whitesmoke: whitesmoke;
+    --white: #ffff;
+    --white2: #dadcd7;
+    --green: #16A085;
+    --green2: #00d663;
+    --red: #ff3333;
+    --pink: #fa65b1;
+    --main: #e47b18;
+    --main2: #f58f5b;
+    --purple: #302cc1;
+    --purple2: #726ae3;
+    --light-dark: #49494A;
+    --font1: 'Baloo Bhaijaan 2', cursive;
+    --font2: 'Nunito Sans', sans-serif;
+    --font3: 'Luckiest Guy', cursive;
+    --normal-font-size: 1rem;
+    --header-font-size: 1.8rem;
+}
+
+/* footer */
+.footer {
+    background-color: #e3d6ce;
+    z-index: 900;
+}
+
+.f-logo {
+    padding: 10px;
+    margin-top: 20px;
+    margin-left: 30px;
+}
+
+.f-logo h6 {
+    color: var(--main);
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 700;
+}
+
+.f-logo p {
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 15px;
+    color: #000000;
+    line-height: 24px;
+    margin-top: 10px;
+}
+
+.f-logo ul {
+    list-style: none;
+    padding-left: 2em;
+    text-indent: -2em;
+}
+
+.f-logo ul,
+li,
+a {
+    text-decoration: none;
+    color: #000000;
+    line-height: 24px;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 15px;
+}
+
+.f-logo ul,
+li,
+a:hover {
+    color: var(--red);
+}
+
+.f-logo button {
+    background-color: var(--main);
+    border: 1px solid var(--main);
+    color: white;
+    border-radius: 50%;
+    margin-top: 30px;
+}
+
+.f-logo button:hover {
+    background-color: transparent;
+    border: 1px solid #048c38;
+    border-radius: 50%;
+    margin-top: 30px;
+}
+
+#myBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    background-color: red;
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 4px;
+}
+
+#myBtn:hover {
+    background-color: var(--main);
+}

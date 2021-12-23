@@ -178,6 +178,7 @@ body {
     border-radius: 30px;
     margin-top: 3rem;
     font-size: 1.2rem;
+    margin-left: 3rem;
 }
 
 .header button:hover {
