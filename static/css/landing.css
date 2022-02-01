@@ -203,7 +203,7 @@
     color: var(--main);
     font-family: var(--font3);
     padding-top: 1rem;
-    font-size: 2.9rem
+    font-size: 1.5rem
 }
 
 .plan-card h5 {
@@ -226,7 +226,10 @@
     text-transform: uppercase;
     margin: 1rem;
     padding: 1rem;
-    border: 1px solid var(--light-dark)
+    position: fixed;
+    bottom: 0px;
+    width: 90%;
+    border: 1px solid var(--light-dark);
 }
 
 .join-card {
@@ -280,6 +283,12 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+}
+
+.plan-t p {
+    color: #fff;
+    font-size: 1rem;
+    font-family: var(--font2);
 }
 
 .workout {
