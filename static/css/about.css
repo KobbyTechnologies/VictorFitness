@@ -49,3 +49,21 @@
     color: var(--red);
     font-size: 1rem;
 }
+
+.about-image {
+    border-radius: 30% 70% 70% 30% / 64% 30% 70% 36%;
+}
+
+.about-text {
+    margin-top: 1rem;
+}
+
+.about-text p {
+    color: white;
+    font-size: 1rem;
+    font-family: var(--font2)
+}
+
+.brs {
+    color: var(--main);
+}
