@@ -21,4 +21,5 @@ def landing (request):
     #         myBMI= ("Invalid Entry")
     # ctx = {"BMI":myBMI}
     return render (request, 'main/landing.html')
-
+def about (request):
+    return render (request, 'main/about.html')
