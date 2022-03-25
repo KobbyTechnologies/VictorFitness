@@ -15,6 +15,7 @@ import os
 import django_heroku
 import dj_database_url
 from decouple import config,Csv
+import  cloudinary
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -50,7 +51,6 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -68,6 +68,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'landing',
     'bootstrap5',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -120,6 +121,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+cloudinary.config( 
+  cloud_name = "enock", 
+  api_key = "131559831386722", 
+  api_secret = "fDQuLwrK6ExBtidSqxme_ZzHaxY" 
+)
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/

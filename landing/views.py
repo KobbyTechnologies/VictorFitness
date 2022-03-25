@@ -1,7 +1,9 @@
 from django.shortcuts import redirect, render
+from . models import Program
 
 # Create your views here.
 def landing (request):
+    Program_Name = Program.objects.all()
     # if request.method == 'POST':
     #     weight = int(request.POST['weight'])
     #     height = int(request.POST['height'])
@@ -20,6 +22,7 @@ def landing (request):
     #     else:
     #         myBMI= ("Invalid Entry")
     # ctx = {"BMI":myBMI}
-    return render (request, 'main/landing.html')
+    ctx = {"ProgName":Program_Name}
+    return render (request, 'main/landing.html',ctx)
 def about (request):
     return render (request, 'main/about.html')

@@ -11,7 +11,7 @@
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link active" href="{% url 'landing' %}"> Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'about' %}"> About</a></li>
-                <li class="nav-item"><a class="nav-link" href="#"> Personal Training</a></li>
+                <li class="nav-item"><a class="nav-link" href="#"> Program Library</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"> Advice </a>
                     <ul class="dropdown-menu fade-up">
@@ -31,10 +31,9 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"> Guides</a>
                     <ul class="dropdown-menu fade-up">
-                        <li><a class="dropdown-item" href="#"> ABS BURN WORKOUT</a></li>
-                        <li><a class="dropdown-item" href="#"> ABS BURN WORKOUT </a></li>
-                        <li><a class="dropdown-item" href="#"> ABS BURN WORKOUT </a></li>
-                        <li><a class="dropdown-item" href="#"> Handpicked Programs </a></li>
+                        {% for res in ProgName %}
+                        <li><a class="dropdown-item" href="#"> {{res.Program_Type}}</a></li>
+                        {% endfor %}
                     </ul>
                 </li>
                 <li class="nav-item"><a class="nav-link" href="#"> FAQs</a></li>
