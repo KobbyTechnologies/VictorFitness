@@ -31,3 +31,23 @@ class Program_Detail(models.Model):
     
     def __str__(self):
         return str(self.title)
+    
+class Topic(models.Model):
+    video = CloudinaryField(blank=True)
+    video_title = models.CharField(max_length=1000,blank=True)
+    description = models.TextField()
+    program=models.ForeignKey(Program_Detail,on_delete=models.CASCADE,related_name="videos")
+    last_update = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return str(self.video_title)
+    
+class ProgramAttachments(models.Model):
+    file = models.FileField()
+    file_name = models.CharField(max_length=1000,blank=True)
+    program=models.ForeignKey(Program_Detail,on_delete=models.CASCADE,related_name="files")
+    last_update = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return str(self.file_name)
+    

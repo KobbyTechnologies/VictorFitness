@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% load static %}
+{% block content %}
+{% include 'navbar.html'%}
+<section class="details">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="header ">
+                    <div class="a-hero mx-auto text-center">
+                        <h3>
+                            <span>About {{pro.title}}</span>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="details-head">
+                    <h4>{{pro.title}}</h4>
+                </div>
+                <div class="detailsTop my-3">
+                    <p>Program Type: <span>{{pro.Program_Name}}</span></p>
+                    <p>Level: <span>{{pro.level}}</span></p>
+                    <p>Last Updated: <span>{{pro.last_update}}</span></p>
+                </div>
+                <div class="details-text">
+                    <p>
+                        {{pro.description}}
+                    </p>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="details-text">
+                    <h5>
+                        Topics for this course
+                    </h5>
+                    <div class="accordion my-4" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Meal Planning Basics
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <strong>This is the second item's accordion body.</strong> It is hidden by default,
+                                    until the collapse plugin adds the appropriate classes that we use to style each
+                                    element. These classes control the overall appearance, as well as the showing and
+                                    hiding via CSS transitions. You can modify any of this with custom CSS or overriding
+                                    our default variables. It's also worth noting that just about any HTML can go within
+                                    the <code id="trs">.accordion-body</code>, though the transition does limit
+                                    overflow.
+                                    <!-- <div class="ratio ratio-16x9 my-3">
+                                        <iframe id="video" src="https://www.youtube.com/embed/vlDzYIIOYmM" controls
+                                            title="YouTube video" allowfullscreen></iframe>
+                                    </div> -->
+                                    <video controls="true" id="video">
+                                        <source type="video/mp4" src="http://www.w3schools.com/html/mov_bbb.mp4">
+                                        </source>
+                                    </video>
+                                    <div id="status" class="incomplete">
+                                        <span>Play status: </span>
+                                        <span class="status complete">COMPLETE</span>
+                                        <span class="status incomplete">INCOMPLETE</span>
+                                        <br />
+                                    </div>
+                                    <div>
+                                        <span id="played">0</span> seconds out of
+                                        <span id="duration"></span> seconds. (only updates when the video pauses)
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <h5>Program Materials</h5>
+                <div class="row">
+                    <div class="col-md-12 my-1">
+                        <div class="card doc-card  p-2">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <i class="las la-file-upload" style="color: red;font-size:1.5rem"></i>
+                                </div>
+                                <div class="col-md-7">
+                                    <strong class="text-dark">Something.pdf</strong>
+                                </div>
+                                <div class="col-md-2">
+                                    <strong class="text-dark">view</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 my-1">
+                        <div class="card doc-card  p-2">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <i class="las la-file-upload" style="color: red;font-size:1.5rem"></i>
+                                </div>
+                                <div class="col-md-7">
+                                    <strong class="text-dark">Something.pdf</strong>
+                                </div>
+                                <div class="col-md-2">
+                                    <strong class="text-dark">view</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% include 'footer.html'%}
+{% endblock %}

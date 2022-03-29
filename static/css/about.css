@@ -24,7 +24,7 @@
 
 .about {
     margin-top: 5rem;
-    height: 70vh;
+    height: 50vh;
     background: url(../img/about/5.jpg);
     background-size: cover;
     background-position: center;
@@ -66,4 +66,24 @@
 
 .brs {
     color: var(--main);
+}
+.details{
+    background: var(--main2);
+}
+.details-head h4{
+    padding-top: 4rem;
+    font-size: 2rem;
+    font-weight: 800;
+    font-family: var(--font1);
+}
+.detailsTop p{
+    color: #555;
+    font-family: var(--font1);
+    display: inline-block;
+    padding-right: 1rem;
+}
+.detailsTop p span{
+    color: #222;
+    font-family: var(--font1);
+    font-weight: bold;
 }

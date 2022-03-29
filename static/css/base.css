@@ -227,3 +227,24 @@ body {
         top: -3.6em;
     }
 }
+
+#status span.status {
+    display: none;
+    font-weight: bold;
+  }
+  span.status.complete {
+    color: green;
+  }
+  span.status.incomplete {
+    color: red;
+  }
+  #status.complete span.status.complete {
+    display: inline;
+  }
+  #status.incomplete span.status.incomplete {
+    display: inline;
+  }
+  #video {
+      height: 400px;
+      width: 100%;
+  }

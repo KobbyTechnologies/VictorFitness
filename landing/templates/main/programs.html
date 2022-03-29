@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% load static %}
+{% block content %}
+{% include 'navbar.html'%}
+<section class="about">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="header ">
+                    <div class="a-hero mx-auto text-center">
+                        <h3>
+                            <span>ALL PROGRAMS</span>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="plan">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <select class="form-select form-select-lg my-3">
+                    <option selected>Filter programs ...</option>
+                    {% for res in tab %}
+                    <option value="1">{{res.Program_Type}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-header plan-head">
+                    <div class="row">
+                        {% for res in pro %}
+                        <div class="col-md-4 my-2">
+                            <div class="card p-3 mb-2">
+                                <div class="d-flex justify-content-between">
+                                    <div class="d-flex flex-row align-items-center">
+                                        <div class="icon"> <i class="las la-burn"></i> </div>
+                                        <div class="ms-2 c-details">
+                                            <h6 class="mb-0">Level</h6> <span>{{res.level}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="badge"> <span>{{res.status}}</span> </div>
+                                </div>
+                                <div class="mt-5">
+                                    <div class="proImage">
+                                        <img src="https://res.cloudinary.com/enock/{{res.image}}" class="img-fluid"
+                                            height="" alt="" srcset="">
+                                    </div>
+                                    <h5 class="heading my-2">{{res.title}}</h5>
+                                    <div class="mt-3">
+                                        <div class="">
+                                            <span class="text1">Last Updated <span class="text2">
+                                                    {{res.last_update}}</span>
+                                            </span>
+                                        </div>
+                                        <div class=" my-2 links" style="display: inline-block;">
+                                            <a href="{% url 'details' res.id %}" type="button"
+                                                class="btn btn-info">Enroll Now<i class="las la-angle-double-right"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% include 'footer.html'%}
+{% endblock %}
