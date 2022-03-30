@@ -2,9 +2,36 @@ from django.shortcuts import render,redirect
 from  django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 from validate_email import validate_email
+from django.contrib.sites.shortcuts import get_current_site
+from django.template.loader import render_to_string
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.utils.encoding import force_bytes, force_str, force_text, DjangoUnicodeDecodeError
+from .utils import generate_token
+from django.core.mail import EmailMessage
 from .models import MyUser
+from django.conf import settings
+import threading
 
 # Create your views here.
+
+def send_activation_email(user, request):
+    current_site = get_current_site(request)
+    email_subject = 'Activate your account'
+    email_body = render_to_string('activate.html', {
+        'user': user,
+        'domain': current_site,
+        'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+        'token': generate_token.make_token(user)
+    })
+
+    email = EmailMessage(subject=email_subject, body=email_body,
+                         from_email=settings.EMAIL_FROM_USER,
+                         to=[user.email]
+                         )
+
+    if not settings.TESTING:
+        EmailThread(email).start()
+        
 def register_request(request):
     context={}
     if request.method == "POST":
