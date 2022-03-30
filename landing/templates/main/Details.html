@@ -155,30 +155,19 @@
                         <div class="attachs rounded shadow-sm mx-auto text-center">
                             <span class="small text-uppercase text-muted">{{res.file_name}}</span>
                             <ul class="social mb-0 list-inline mt-3">
-                                <li class="list-inline-item"><a href="#" class="social-link"><i
-                                            class="fas fa-expand-alt"></i></a>
+                                <li class="list-inline-item">
+                                    <a href="{{res.filepath.url}}" target="blank" class="social-link"><i
+                                            class="fas fa-expand-alt"></i>
+                                    </a>
                                 </li>
-                                <li class="list-inline-item"><a href="#" class="social-link"><i
-                                            class="fas fa-file-download"></i></a>
+                                <li class="list-inline-item">
+                                    <a href="{{res.filepath.url}}" class="social-link" download="{{res.file_name}}">
+                                        <i class="fas fa-file-download"></i>
+                                    </a>
                                 </li>
                             </ul>
                         </div>
                     </div><!-- End -->
-                    <!-- <div class="col-md-12 my-1">
-                        <div class="card doc-card  p-2">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <i class="las la-file-upload" style="color: red;font-size:1.5rem"></i>
-                                </div>
-                                <div class="col-md-7">
-                                    <strong class="text-dark"></strong>
-                                </div>
-                                <div class="col-md-2">
-                                    <a href="{{res.filepath.url}}" target="blank">view</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
                     {% endfor %}
                 </div>
             </div>

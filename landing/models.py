@@ -45,7 +45,7 @@ class Topic(models.Model):
 class ProgramAttachments(models.Model):
     filepath= models.FileField(upload_to='files/', null=True, verbose_name="")
     file_name = models.CharField(max_length=1000,blank=True)
-    program=models.ForeignKey(Topic,on_delete=models.CASCADE,related_name="files")
+    program=models.ForeignKey(Program_Detail,on_delete=models.CASCADE,related_name="files")
     last_update = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
