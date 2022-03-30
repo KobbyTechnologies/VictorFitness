@@ -15,6 +15,15 @@ import threading
 
 # Create your views here.
 
+class EmailThread(threading.Thread):
+
+    def __init__(self, email):
+        self.email = email
+        threading.Thread.__init__(self)
+
+    def run(self):
+        self.email.send()
+
 def send_activation_email(user, request):
     current_site = get_current_site(request)
     email_subject = 'Activate your account'
@@ -30,8 +39,7 @@ def send_activation_email(user, request):
                          to=[user.email]
                          )
 
-    if not settings.TESTING:
-        EmailThread(email).start()
+    EmailThread(email).start()
         
 def register_request(request):
     if request.method == "POST":

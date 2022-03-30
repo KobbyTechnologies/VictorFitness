@@ -14,8 +14,6 @@
                     <div class="content">Log-in</div>
                 </h2>
 
-                {% include '_partials/messages.html'%}
-
                 <form class="ui large form" method="post" action={% url 'login' %}>
                     {% csrf_token %}
 
@@ -23,8 +21,7 @@
                         <div class="field">
                             <div class="ui left icon input">
                                 <i class="user icon"></i>
-                                <input type="text" required name="username" placeholder="Username"
-                                    value="{{ data.username }}" />
+                                <input type="text" required name="username" placeholder="Username" />
                             </div>
                         </div>
                         <div class="field">
@@ -44,5 +41,5 @@
         </div>
         <div class="four wide column"></div>
     </div>
-
-    {% endblock %}
+</div>
+{% endblock %}
