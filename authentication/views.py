@@ -6,7 +6,7 @@ from validate_email import validate_email
 from django.contrib.sites.shortcuts import get_current_site
 from django.template.loader import render_to_string
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
-from django.utils.encoding import force_bytes, force_str, force_text, DjangoUnicodeDecodeError
+from django.utils.encoding import force_bytes, force_str, DjangoUnicodeDecodeError
 from .utils import generate_token
 from django.core.mail import EmailMessage
 from .models import MyUser
@@ -19,7 +19,7 @@ class EmailThread(threading.Thread):
 
     def __init__(self, email):
         self.email = email
-        threading.Thread.__init__(self)
+        threading.Thread.__init__(self)                                                                     
 
     def run(self):
         self.email.send()
@@ -35,7 +35,7 @@ def send_activation_email(user, request):
     })
 
     email = EmailMessage(subject=email_subject, body=email_body,
-                         from_email=settings.EMAIL_FROM_USER,
+                         from_email=settings.EMAIL_HOST_USER,
                          to=[user.email]
                          )
 
@@ -72,7 +72,7 @@ def register_request(request):
                 password =password,
                 )
             send_activation_email(user, request)
-            messages.error(request,'We sent you an email to verify your account')
+            messages.success(request,'We sent you an email to verify your account')
             return redirect('login')
         except Exception as e:
             print (e)
@@ -97,7 +97,7 @@ def login_request(request):
             return redirect(reverse('landing'))
         except Exception as e:
             print(e)
-    return render(request, 'accounts/login.html', context)
+    return render(request, 'accounts/login.html')
 
 def logout_request(request):
     logout(request)
@@ -107,7 +107,7 @@ def logout_request(request):
 def activate_user(request, uidb64, token):
 
     try:
-        uid = force_text(urlsafe_base64_decode(uidb64))
+        uid = force_str(urlsafe_base64_decode(uidb64))
 
         user = MyUser.objects.get(pk=uid)
 

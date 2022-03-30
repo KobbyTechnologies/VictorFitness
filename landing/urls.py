@@ -6,7 +6,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('', views.landing, name="landing"),
+    path('landing', views.landing, name="landing"),
     path('about', views.about, name="about"),
     path('programs', views.programs, name="programs"),
     path("details/<int:pk>", views.programsDetails,name="details"),

@@ -4,53 +4,55 @@
 {% block content %}
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
-<div class="ui grid">
-    <div class="four wide column"></div>
-    <div class="eight wide column">
-        <div class="ui middle aligned center aligned grid">
-            <div class="column mt-5">
-                <h2 class="ui teal image header">
-                    <img src="#" class="image" />
-                    <div class="content">Registration</div>
-                </h2>
-                <form class="ui large form" method="post" action={% url 'register' %}>
-                    {% csrf_token %}
-                    <div class="ui stacked segment">
-                        <div class="field">
-                            <div class="ui left icon input">
-                                <i class="user icon"></i>
-                                <input type="text" name="username" placeholder="Username" />
-                            </div>
-                        </div>
-
-                        <div class="field">
-                            <div class="ui left icon input">
-                                <i class="user icon"></i>
-                                <input type="text" name="email" placeholder="E-mail address" />
-                            </div>
-                        </div>
-                        <div class="field">
-                            <div class="ui left icon input">
-                                <i class="lock icon"></i>
-                                <input type="password" name="password" placeholder="Password" />
-                            </div>
-                        </div>
-
-                        <div class="field">
-                            <div class="ui left icon input">
-                                <i class="lock icon"></i>
-                                <input type="password" name="password2" placeholder="Repeat Password" />
-                            </div>
-                        </div>
-                        <button class="ui fluid large teal submit button">Submit</button>
-                    </div>
-
-                </form>
-
-                <div class="ui message">Have an account? <a href={% url 'login'  %}>Login</a></div>
-                <div class="four wide column"></div>
+<div class="container">
+    <div class="row my-5">
+        <!--alert -->
+        {% if messages %}
+        {% for message in messages %}
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+        <div class="alert alert-success d-flex align-items-center alert-dismissible alert-success" role="alert">
+            <i class="las la-check-double" style="color: white;font-size: 2rem"></i>
+            <div class="a-icon mx-2">
+                {{message}}
             </div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+        <div class="alert alert-danger d-flex align-items-center alert-dismissible alert-warn" role="alert">
+            <i class="las la-exclamation-triangle" style="color: white;font-size: 2rem"></i>
+            <div class="a-icon mx-2">
+                {{message}}
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        <div class="col-md-12">
+            <form class="" method="post" action={% url 'register' %}>
+                {% csrf_token %}
+                <div class="mb-1">
+                    <label lass="form-label">Username</label>
+                    <input type="text" class="form-control" name="username">
+                </div>
+                <div class="mb-1">
+                    <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                    <input type="email" class="form-control" name="email">
+                </div>
+                <div class="mb-1">
+                    <label class="form-label">password</label>
+                    <input type="password" class="form-control" name="password">
+                </div>
+                <div class="mb-1">
+                    <label class="form-label">password</label>
+                    <input type="password" class="form-control" name="password2">
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+            <div class="ui message">Have an account? <a href={% url 'login'  %}>Login</a></div>
         </div>
     </div>
+</div>
 
-    {% endblock %}
+
+{% endblock %}

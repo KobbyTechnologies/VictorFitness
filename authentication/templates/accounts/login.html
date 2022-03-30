@@ -13,6 +13,28 @@
                     <img src="" class="image" />
                     <div class="content">Log-in</div>
                 </h2>
+                <!--alert -->
+                {% if messages %}
+                {% for message in messages %}
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                <div class="alert alert-success d-flex align-items-center alert-dismissible alert-success" role="alert">
+                    <i class="las la-check-double" style="color: white;font-size: 2rem"></i>
+                    <div class="a-icon mx-2">
+                        {{message}}
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                <div class="alert alert-danger d-flex align-items-center alert-dismissible alert-warn" role="alert">
+                    <i class="las la-exclamation-triangle" style="color: white;font-size: 2rem"></i>
+                    <div class="a-icon mx-2">
+                        {{message}}
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
 
                 <form class="ui large form" method="post" action={% url 'login' %}>
                     {% csrf_token %}
