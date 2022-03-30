@@ -43,3 +43,8 @@ def login_request(request):
         context['login_form']=form
     return render(request, 'accounts/login.html', context)
 
+def logout_request(request):
+    logout(request)
+    messages.info(request, "You have successfully logged out.") 
+    return redirect('login')
+
