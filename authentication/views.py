@@ -20,3 +20,26 @@ def register_request(request):
     else:
         context['register_form']=form
     return render(request,'accounts/register.html',context)
+
+def login_request(request):
+    context={}
+    if request.method == "POST":
+        form=request.POST.get('data')
+        if form.is_valid():
+            email = request.POST['email']
+            password = request.POST['password']
+            user = authenticate(request,email=email,password=password)
+            
+            if user is not None:
+                login(request, user)
+                messages.info(request, f"You are now logged in as {email}.")
+                return redirect('post')
+            else:
+                messages.error(request,"Invalid username or password.")
+        else:
+            context['login_form']=form
+            messages.error(request,"Invalid username or password.")
+    else:
+        context['login_form']=form
+    return render(request, 'accounts/login.html', context)
+
