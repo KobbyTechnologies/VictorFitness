@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, render
-from . models import Program, Program_Detail
+from . models import Program, Program_Detail,Topic,ProgramAttachments
 
 # Create your views here.
 def landing (request):
@@ -34,5 +34,8 @@ def programs (request):
     return render (request, 'main/programs.html', ctx)
 def programsDetails (request,pk):
     programs = Program_Detail.objects.get(id=pk) 
-    ctx = {"pro":programs}
+    topic = Topic.objects.filter(program=pk)
+    attach = ProgramAttachments.objects.filter(program=pk)
+
+    ctx = {"pro":programs,"topic":topic,"attach":attach}
     return render (request, 'main/Details.html', ctx)

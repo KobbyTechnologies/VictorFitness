@@ -151,10 +151,10 @@ body {
 }
 
 .header h3 {
-    padding-top: 7rem;
+    padding-top: 4rem;
     margin-left: 1rem;
     color: var(--white);
-    font-family: var(--font3);
+    font-family: var(--font2);
     font-size: 5rem;
     font-weight: bold;
 }
@@ -244,7 +244,12 @@ body {
   #status.incomplete span.status.incomplete {
     display: inline;
   }
-  #video {
+  .video {
       height: 400px;
       width: 100%;
+  }
+  .incomplete span {
+      font-weight: bolder;
+      font-family: var(--font1);
+      color: #000;
   }

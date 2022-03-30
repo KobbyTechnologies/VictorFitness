@@ -3,6 +3,7 @@
 {% load static %}
 {% block content %}
 {% include 'navbar.html'%}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
 <section class="details">
     <div class="container-fluid">
         <div class="row">
@@ -23,7 +24,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="details-head">
+                <div class="details-head ">
                     <h4>{{pro.title}}</h4>
                 </div>
                 <div class="detailsTop my-3">
@@ -39,91 +40,146 @@
 
             </div>
         </div>
-        <div class="row">
+        <div class="row py-4">
             <div class="col-md-8">
                 <div class="details-text">
                     <h5>
                         Topics for this course
                     </h5>
-                    <div class="accordion my-4" id="accordionExample">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingTwo">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    Meal Planning Basics
-                                </button>
-                            </h2>
-                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <strong>This is the second item's accordion body.</strong> It is hidden by default,
-                                    until the collapse plugin adds the appropriate classes that we use to style each
-                                    element. These classes control the overall appearance, as well as the showing and
-                                    hiding via CSS transitions. You can modify any of this with custom CSS or overriding
-                                    our default variables. It's also worth noting that just about any HTML can go within
-                                    the <code id="trs">.accordion-body</code>, though the transition does limit
-                                    overflow.
-                                    <!-- <div class="ratio ratio-16x9 my-3">
-                                        <iframe id="video" src="https://www.youtube.com/embed/vlDzYIIOYmM" controls
-                                            title="YouTube video" allowfullscreen></iframe>
-                                    </div> -->
-                                    <video controls="true" id="video">
-                                        <source type="video/mp4" src="http://www.w3schools.com/html/mov_bbb.mp4">
-                                        </source>
-                                    </video>
-                                    <div id="status" class="incomplete">
-                                        <span>Play status: </span>
-                                        <span class="status complete">COMPLETE</span>
-                                        <span class="status incomplete">INCOMPLETE</span>
-                                        <br />
-                                    </div>
-                                    <div>
-                                        <span id="played">0</span> seconds out of
-                                        <span id="duration"></span> seconds. (only updates when the video pauses)
-                                    </div>
+                    {% for res in topic %}
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="accordion my-2" id="accordionExample{{res.id}}">
+                                <div class="accordion-item panel">
+                                    <h2 class="accordion-header" id="headingTwo{{res.id}}">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseTwo{{res.id}}"
+                                            aria-expanded="false" aria-controls="collapseTwo{{res.id}}">
+                                            {{res.video_title}}
+                                        </button>
+                                    </h2>
+                                    <div id="collapseTwo{{res.id}}" class="accordion-collapse collapse"
+                                        aria-labelledby="headingTwo{{res.id}}"
+                                        data-bs-parent="#accordionExample{{res.id}}">
+                                        <div class="accordion-body panel-body">
+                                            {{res.description}}
+                                            <video controls="true" id="vida{{res.id}}" name="videos" class="my-3 video">
+                                                <source type="video/mp4" src="{{res.videofile.url}}">
+                                                </source>
+                                            </video>
+                                            <div class="incomplete">
+                                                <span>PROGRESS: <span class="status" id="status{{res.id}}"
+                                                        style="color:#e47b18"> INCOMPLETE<i class="las la-play"></i>
+                                                    </span>
+                                                </span>
+                                            </div>
+                                            <div>
+                                                <span id="played{{res.id}}">0</span> seconds out of
+                                                <span id="duration{{res.id}}"></span> seconds. (only updates when the
+                                                video
+                                                pauses)
+                                            </div>
+                                            <script>
+                                                var video = document.getElementById("vida{{res.id}}");
 
+                                                var timeStarted = -1;
+                                                var timePlayed = 0;
+                                                var duration = 0;
+                                                // If video metadata is laoded get duration
+                                                if (video.readyState > 0)
+                                                    getDuration.call(video);
+
+                                                //If metadata not loaded, use event to get it
+                                                else {
+                                                    video.addEventListener('loadedmetadata', getDuration);
+                                                }
+                                                // remember time user started the video
+                                                function videoStartedPlaying() {
+                                                    timeStarted = new Date().getTime() / 1000;
+                                                }
+
+                                                function videoStoppedPlaying(event) {
+                                                    // Start time less then zero means stop event was fired vidout start event
+                                                    if (timeStarted > 0) {
+                                                        var playedFor = new Date().getTime() / 1000 - timeStarted;
+                                                        timeStarted = -1;
+                                                        // add the new ammount of seconds played
+                                                        timePlayed += playedFor;
+                                                    }
+                                                    document.getElementById("played{{res.id}}").innerHTML = Math.round(
+                                                        timePlayed) + "";
+                                                    // Count as complete only if end of video was reached
+                                                    if (timePlayed >= duration && event.type == "ended") {
+                                                        document.getElementById("status{{res.id}}").innerHTML =
+                                                            "COMPLETE";
+                                                    } else if (timePlayed >= duration && event.type != "ended") {
+                                                        document.getElementById("status{{res.id}}").innerHTML =
+                                                            "INCOMPLETE";
+                                                    } else {
+                                                        document.getElementById("status{{res.id}}").innerHTML =
+                                                            "ON GOING";
+                                                    }
+
+                                                }
+
+                                                function getDuration() {
+                                                    duration = video.duration;
+                                                    document.getElementById("duration{{res.id}}").appendChild(new Text(
+                                                        Math.round(
+                                                            duration) + ""));
+                                                    console.log("Duration: ", duration);
+                                                }
+
+                                                video.addEventListener("play", videoStartedPlaying);
+                                                video.addEventListener("playing", videoStartedPlaying);
+
+                                                video.addEventListener("ended", videoStoppedPlaying);
+                                                video.addEventListener("pause", videoStoppedPlaying);
+                                            </script>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    {% endfor %}
+
                 </div>
             </div>
             <div class="col-md-4 mb-4">
                 <h5>Program Materials</h5>
                 <div class="row">
-                    <div class="col-md-12 my-1">
+                    {% for res in attach %}
+                    <!-- Team item -->
+                    <div class="col-md-6">
+                        <div class="attachs rounded shadow-sm mx-auto text-center">
+                            <span class="small text-uppercase text-muted">{{res.file_name}}</span>
+                            <ul class="social mb-0 list-inline mt-3">
+                                <li class="list-inline-item"><a href="#" class="social-link"><i
+                                            class="fas fa-expand-alt"></i></a>
+                                </li>
+                                <li class="list-inline-item"><a href="#" class="social-link"><i
+                                            class="fas fa-file-download"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div><!-- End -->
+                    <!-- <div class="col-md-12 my-1">
                         <div class="card doc-card  p-2">
                             <div class="row">
                                 <div class="col-md-3">
                                     <i class="las la-file-upload" style="color: red;font-size:1.5rem"></i>
                                 </div>
                                 <div class="col-md-7">
-                                    <strong class="text-dark">Something.pdf</strong>
+                                    <strong class="text-dark"></strong>
                                 </div>
                                 <div class="col-md-2">
-                                    <strong class="text-dark">view</strong>
+                                    <a href="{{res.filepath.url}}" target="blank">view</a>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 my-1">
-                        <div class="card doc-card  p-2">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <i class="las la-file-upload" style="color: red;font-size:1.5rem"></i>
-                                </div>
-                                <div class="col-md-7">
-                                    <strong class="text-dark">Something.pdf</strong>
-                                </div>
-                                <div class="col-md-2">
-                                    <strong class="text-dark">view</strong>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                    </div> -->
+                    {% endfor %}
                 </div>
             </div>
         </div>

@@ -33,7 +33,7 @@ class Program_Detail(models.Model):
         return str(self.title)
     
 class Topic(models.Model):
-    video = CloudinaryField(blank=True)
+    videofile= models.FileField(upload_to='videos/', null=True, verbose_name="")
     video_title = models.CharField(max_length=1000,blank=True)
     description = models.TextField()
     program=models.ForeignKey(Program_Detail,on_delete=models.CASCADE,related_name="videos")
@@ -43,9 +43,9 @@ class Topic(models.Model):
         return str(self.video_title)
     
 class ProgramAttachments(models.Model):
-    file = models.FileField()
+    filepath= models.FileField(upload_to='files/', null=True, verbose_name="")
     file_name = models.CharField(max_length=1000,blank=True)
-    program=models.ForeignKey(Program_Detail,on_delete=models.CASCADE,related_name="files")
+    program=models.ForeignKey(Topic,on_delete=models.CASCADE,related_name="files")
     last_update = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
