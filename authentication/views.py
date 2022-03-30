@@ -1,4 +1,5 @@
 from django.shortcuts import render,redirect
+from django.urls import reverse
 from  django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 from validate_email import validate_email
@@ -33,7 +34,6 @@ def send_activation_email(user, request):
         EmailThread(email).start()
         
 def register_request(request):
-    context={}
     if request.method == "POST":
         email = request.POST.get('email')
         username = request.POST.get('username')
@@ -70,28 +70,25 @@ def register_request(request):
             print (e)
             messages.error(request,e)
             return redirect('register')         
-    return render(request,'accounts/register.html',context)
+    return render(request,'accounts/register.html')
 
 def login_request(request):
-    context={}
     if request.method == "POST":
-        form=request.POST.get('data')
-        if form.is_valid():
-            email = request.POST['email']
-            password = request.POST['password']
-            user = authenticate(request,email=email,password=password)
-            
-            if user is not None:
-                login(request, user)
-                messages.info(request, f"You are now logged in as {email}.")
-                return redirect('post')
-            else:
-                messages.error(request,"Invalid username or password.")
-        else:
-            context['login_form']=form
-            messages.error(request,"Invalid username or password.")
-    else:
-        context['login_form']=form
+        context = {'data': request.POST}
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user and not user.is_email_verified:
+            messages.error(request,  'Email is not verified, please check your email inbox')
+            return redirect('login')
+        if not user:
+            messages.error(request, 'Invalid credentials, try again')
+            return redirect('login')
+        try:
+            login(request, user)
+            return redirect(reverse('landing'))
+        except Exception as e:
+            print(e)
     return render(request, 'accounts/login.html', context)
 
 def logout_request(request):
