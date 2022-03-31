@@ -3,7 +3,7 @@
 {% load static %}
 {% block content %}
 {% include 'navbar.html'%}
-<section class="about">
+<section class="details">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -18,25 +18,15 @@
         </div>
     </div>
 </section>
-<section class="plan">
+<section>
     <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <select class="form-select form-select-lg my-3">
-                    <option selected>Filter programs ...</option>
-                    {% for res in tab %}
-                    <option value="1">{{res.Program_Type}}</option>
-                    {% endfor %}
-                </select>
-            </div>
-        </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="section-header plan-head">
                     <div class="row">
                         {% for res in pro %}
                         <div class="col-md-4 my-2">
-                            <div class="card p-3 mb-2">
+                            <div class="card hover-div p-3 mb-2">
                                 <div class="d-flex justify-content-between">
                                     <div class="d-flex flex-row align-items-center">
                                         <div class="icon"> <i class="las la-burn"></i> </div>
@@ -53,14 +43,14 @@
                                     </div>
                                     <h5 class="heading my-2">{{res.title}}</h5>
                                     <div class="mt-3">
-                                        <div class="">
+                                        <div class="mytext" style="display: inline-block;">
                                             <span class="text1">Last Updated <span class="text2">
                                                     {{res.last_update}}</span>
                                             </span>
                                         </div>
                                         <div class=" my-2 links" style="display: inline-block;">
-                                            <a href="{% url 'details' res.id %}" type="button"
-                                                class="btn btn-info">Enroll Now<i class="las la-angle-double-right"></i>
+                                            <a href="{% url 'details' res.id %}" type="button" class="btn">Enroll Now<i
+                                                    class="las la-angle-double-right"></i>
                                             </a>
                                         </div>
                                     </div>
@@ -74,5 +64,15 @@
         </div>
     </div>
 </section>
+<script>
+    $(document).ready(function () {
+        $('.hover-div').hover(function () {
+            $('.hover-div').stop().fadeTo('fast', 0.3);
+            $(this).stop().fadeTo('fast', 1);
+        }, function () {
+            $('.hover-div').stop().fadeTo('fast', 1);
+        });
+    });
+</script>
 {% include 'footer.html'%}
 {% endblock %}

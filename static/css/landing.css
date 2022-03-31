@@ -418,7 +418,7 @@
 }
 
 .badge span {
-    background-color: whitesmoke;
+    background-color: rgb(218, 218, 218);
     width: 60px;
     height: 25px;
     padding-bottom: 3px;
@@ -447,8 +447,15 @@
     color: #a5aec0
 }
 .links a{
-    color: white;
-    width: 100%;
+    color:   #ff3333;
+    padding-left:0;
+    margin-left:0;
+}
+.mytext{
+    padding-right: .4rem;
+}
+.links a:hover{
+    color: var(--blue1);
 }
 .proImage img{
 width: 100%;
