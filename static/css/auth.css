@@ -125,3 +125,14 @@ textarea:focus {
     background: var(--main);
     color: #fff;
 }
+.alert-success{
+    background: linear-gradient(to right, #444a4a, #00d663) !important;
+    border:none;
+    color: #fff;
+}
+
+.alert-danger{
+    background: linear-gradient(to right, rgb(129, 129, 129), #ff3333) !important;
+    border:none;
+    color: #fff;
+}

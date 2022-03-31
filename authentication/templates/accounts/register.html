@@ -4,55 +4,93 @@
 {% block content %}
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
-<div class="container">
-    <div class="row my-5">
-        <!--alert -->
-        {% if messages %}
-        {% for message in messages %}
-        {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
-        <div class="alert alert-success d-flex align-items-center alert-dismissible alert-success" role="alert">
-            <i class="las la-check-double" style="color: white;font-size: 2rem"></i>
-            <div class="a-icon mx-2">
-                {{message}}
+
+<div class="container-fluid">
+    <div class="row d-flex">
+        <div class="col-md-6 card1">
+            <div class="pb-2">
+                <div class="row">
+                    <img src="../../../static/img/Logo/1.png" class="logos img-fluid">
+                </div>
+                <div class="row mt-4 ">
+                    <img src="../../../static/img/1.webp" class="Loginimage img-fluid">
+                </div>
             </div>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
-        {% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
-        <div class="alert alert-danger d-flex align-items-center alert-dismissible alert-warn" role="alert">
-            <i class="las la-exclamation-triangle" style="color: white;font-size: 2rem"></i>
-            <div class="a-icon mx-2">
-                {{message}}
+        <div class="col-md-6 card2">
+            <div class="px-4 cardRight">
+                <form method="post" action={% url 'register' %}>
+                    {% csrf_token %}
+                    <div class="row mb-4">
+                        <h4 class="mt-2">Sign Up</h4>
+                    </div>
+                    <div class="row px-3">
+                        <label class="mb-1">
+                            <h6 class="text-sm">Username</h6>
+                        </label>
+                        <input class="mb-4" type="text" name="username" placeholder="Enter username" required>
+                    </div>
+                    <div class="row px-3">
+                        <label class="mb-1">
+                            <h6 class="text-sm">Email Address</h6>
+                        </label>
+                        <input class="mb-4" type="email" name="email" placeholder="Enter a valid email address">
+                    </div>
+                    <div class="row px-3">
+                        <label class="mb-1">
+                            <h6 class="mb-0 text-sm">Password</h6>
+                        </label>
+                        <input type="password" name="password" placeholder="Enter password">
+                    </div>
+                    <div class="row px-3">
+                        <label class="mb-1">
+                            <h6 class="mb-0 text-sm">Password</h6>
+                        </label>
+                        <input type="password" name="password2" placeholder="Enter password">
+                    </div>
+                    <div class="row px-2 mb-4">
+                        <div class="row my-3 px-3">
+                            <button type="submit" class="btn btn-blue text-center">Create
+                                Account</button>
+                        </div>
+                        <div class="row mb-4 px-1">
+                            <small class="font-weight-bold">Have an account?
+                                <a href={% url 'login'  %} class="text-danger regis ">Login</a>
+                            </small>
+                        </div>
+                    </div>
+                </form>
+                <!--alert -->
+                {% if messages %}
+                {% for message in messages %}
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                <div class="alert alert-success d-flex align-items-center alert-dismissible" role="alert">
+                    <i class="las la-check-double" style="color: white;font-size: 2rem"></i>
+                    <div class="a-icon mx-2">
+                        {{message}}
+                    </div>
+                    <a type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></a>
+                </div>
+                {% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                <div class="alert alert-danger d-flex align-items-center alert-dismissible" role="alert">
+                    <i class="las la-exclamation-triangle" style="color: white;font-size: 2rem"></i>
+                    <div class="a-icon mx-2">
+                        {{message}}
+                    </div>
+                    <a type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></a>
+                </div>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
             </div>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
         </div>
-        {% endif %}
-        {% endfor %}
-        {% endif %}
-        <div class="col-md-12">
-            <form class="" method="post" action={% url 'register' %}>
-                {% csrf_token %}
-                <div class="mb-1">
-                    <label lass="form-label">Username</label>
-                    <input type="text" class="form-control" name="username">
-                </div>
-                <div class="mb-1">
-                    <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                    <input type="email" class="form-control" name="email">
-                </div>
-                <div class="mb-1">
-                    <label class="form-label">password</label>
-                    <input type="password" class="form-control" name="password">
-                </div>
-                <div class="mb-1">
-                    <label class="form-label">password</label>
-                    <input type="password" class="form-control" name="password2">
-                </div>
-                <button type="submit">Submit</button>
-            </form>
-            <div class="ui message">Have an account? <a href={% url 'login'  %}>Login</a></div>
+        <div class="logFoot py-4">
+            <div class="row px-3">
+                <small class="ml-4 ml-sm-5 mb-2">Copyright &copy; 2022. All rights
+                    reserved.</small>
+            </div>
         </div>
     </div>
 </div>
-
-
 {% endblock %}

@@ -66,11 +66,9 @@ def register_request(request):
             messages.error(request,'Email is taken, choose another one')
             return redirect('register')
         try:
-            user = MyUser.objects.create(
-                email =email,
-                username = username,
-                password =password,
-                )
+            user = MyUser.objects.create_user(username=username, email=email)
+            user.set_password(password)
+            user.save()
             send_activation_email(user, request)
             messages.success(request,'We sent you an email to verify your account')
             return redirect('login')
@@ -82,26 +80,30 @@ def register_request(request):
 
 def login_request(request):
     if request.method == "POST":
-        context = {'data': request.POST}
-        username = request.POST.get('username')
+        username = request.POST.get('email')
         password = request.POST.get('password')
-        user = authenticate(request, username=username, password=password)
+        user = authenticate(username=username, password=password)
+        
         if user and not user.is_email_verified:
-            messages.error(request,  'Email is not verified, please check your email inbox')
+            messages.error(request,'Email is not verified, please check your email inbox')
             return redirect('login')
         if not user:
             messages.error(request, 'Invalid credentials, try again')
             return redirect('login')
         try:
             login(request, user)
-            return redirect(reverse('landing'))
-        except Exception as e:
+            messages.error(request, f"You are now logged in as {username}.")
+            return redirect('landing')
+        except  Exception as e:
             print(e)
+            messages.error(request, e)
+           
+        
     return render(request, 'accounts/login.html')
 
 def logout_request(request):
     logout(request)
-    messages.info(request, "You have successfully logged out.") 
+    messages.success(request, "You have successfully logged out.") 
     return redirect('login')
 
 def activate_user(request, uidb64, token):

@@ -71,6 +71,7 @@ INSTALLED_APPS = [
     'cloudinary',
     'authentication',
 ]
+AUTH_USER_MODEL = "authentication.MyUser"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

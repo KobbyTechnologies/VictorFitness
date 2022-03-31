@@ -8,7 +8,7 @@
 <div class="container-fluid">
     <div class="row d-flex">
         <div class="col-md-6 card1">
-            <div class="pb-2">
+            <div class="py-2">
                 <div class="row">
                     <img src="../../../static/img/Logo/1.png" class="logos img-fluid">
                 </div>
@@ -30,15 +30,18 @@
                         </label>
                         <input class="mb-4" type="text" name="email" placeholder="Enter a valid email address">
                     </div>
-                    <div class="row px-3"> <label class="mb-1">
+                    <div class="row px-3">
+                        <label class="mb-1">
                             <h6 class="mb-0 text-sm">Password</h6>
-                        </label> <input type="password" name="password" placeholder="Enter password"> </div>
+                        </label>
+                        <input type="password" name="password" placeholder="Enter password">
+                    </div>
                     <div class="row px-3 mb-4">
                         <div class="custom-control custom-checkbox custom-control-inline my-3">
                             <a href="#" class="ml-auto mb-0 forgots">Forgot Password?</a>
                         </div>
-                        <div class="row mb-3 px-3"> <button type="submit"
-                                class="btn btn-blue text-center">Login</button>
+                        <div class="row mb-3 px-3">
+                            <button type="submit" class="btn btn-blue text-center">Login</button>
                         </div>
                         <div class="row mb-4 px-1">
                             <small class="font-weight-bold">Don't have an account?
@@ -47,25 +50,24 @@
                         </div>
                     </div>
                 </form>
-
                 <!--alert -->
                 {% if messages %}
                 {% for message in messages %}
                 {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
-                <div class="alert alert-success d-flex align-items-center alert-dismissible alert-success" role="alert">
+                <div class="alert alert-success d-flex align-items-center alert-dismissible" role="alert">
                     <i class="las la-check-double" style="color: white;font-size: 2rem"></i>
                     <div class="a-icon mx-2">
                         {{message}}
                     </div>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    <a type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></a>
                 </div>
                 {% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
-                <div class="alert alert-danger d-flex align-items-center alert-dismissible alert-warn" role="alert">
+                <div class="alert alert-danger d-flex align-items-center alert-dismissible" role="alert">
                     <i class="las la-exclamation-triangle" style="color: white;font-size: 2rem"></i>
                     <div class="a-icon mx-2">
                         {{message}}
                     </div>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    <a type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></a>
                 </div>
                 {% endif %}
                 {% endfor %}
