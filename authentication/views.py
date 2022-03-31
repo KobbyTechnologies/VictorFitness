@@ -104,7 +104,7 @@ def login_request(request):
 def logout_request(request):
     logout(request)
     messages.success(request, "You have successfully logged out.") 
-    return redirect('login')
+    return redirect('landing')
 
 def activate_user(request, uidb64, token):
 
