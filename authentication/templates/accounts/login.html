@@ -4,15 +4,50 @@
 {% block content %}
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
-<div class="ui grid">
-    <div class="four wide column"></div>
-    <div class="eight wide column">
-        <div class="ui middle aligned center aligned grid">
-            <div class="column mt-5">
-                <h2 class="ui teal image header">
-                    <img src="" class="image" />
-                    <div class="content">Log-in</div>
-                </h2>
+
+<div class="container-fluid">
+    <div class="row d-flex">
+        <div class="col-md-6 card1">
+            <div class="pb-2">
+                <div class="row">
+                    <img src="../../../static/img/Logo/1.png" class="logos img-fluid">
+                </div>
+                <div class="row mt-4 ">
+                    <img src="../../../static/img/1.webp" class="Loginimage img-fluid">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 card2">
+            <div class="px-4 cardRight">
+                <form method="post" action={% url 'login' %}>
+                    {% csrf_token %}
+                    <div class="row mb-4">
+                        <h4 class="mt-2">Sign In</h4>
+                    </div>
+                    <div class="row px-3">
+                        <label class="mb-1">
+                            <h6 class="text-sm">Email Address</h6>
+                        </label>
+                        <input class="mb-4" type="text" name="email" placeholder="Enter a valid email address">
+                    </div>
+                    <div class="row px-3"> <label class="mb-1">
+                            <h6 class="mb-0 text-sm">Password</h6>
+                        </label> <input type="password" name="password" placeholder="Enter password"> </div>
+                    <div class="row px-3 mb-4">
+                        <div class="custom-control custom-checkbox custom-control-inline my-3">
+                            <a href="#" class="ml-auto mb-0 forgots">Forgot Password?</a>
+                        </div>
+                        <div class="row mb-3 px-3"> <button type="submit"
+                                class="btn btn-blue text-center">Login</button>
+                        </div>
+                        <div class="row mb-4 px-1">
+                            <small class="font-weight-bold">Don't have an account?
+                                <a href={% url 'register'  %} class="text-danger regis ">Register</a>
+                            </small>
+                        </div>
+                    </div>
+                </form>
+
                 <!--alert -->
                 {% if messages %}
                 {% for message in messages %}
@@ -35,33 +70,15 @@
                 {% endif %}
                 {% endfor %}
                 {% endif %}
+            </div>
 
-                <form class="ui large form" method="post" action={% url 'login' %}>
-                    {% csrf_token %}
-
-                    <div class="ui stacked segment">
-                        <div class="field">
-                            <div class="ui left icon input">
-                                <i class="user icon"></i>
-                                <input type="text" required name="username" placeholder="Username" />
-                            </div>
-                        </div>
-                        <div class="field">
-                            <div class="ui left icon input">
-                                <i class="lock icon"></i>
-                                <input type="password" required name="password" placeholder="Password" />
-                            </div>
-                        </div>
-                        <button class="ui fluid large teal submit button">Login</button>
-                    </div>
-
-                </form>
-
-                <div class="ui message">Dont have an account? <a href={% url 'register'  %}>Signup</a></div>
-
+        </div>
+        <div class="logFoot py-4">
+            <div class="row px-3">
+                <small class="ml-4 ml-sm-5 mb-2">Copyright &copy; 2022. All rights
+                    reserved.</small>
             </div>
         </div>
-        <div class="four wide column"></div>
     </div>
 </div>
 {% endblock %}
