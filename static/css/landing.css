@@ -187,7 +187,7 @@
     color: #222;
 }
 
-.plan-card:hover.plan-card button {
+.plan-card:hover.plan-card a {
     background: var(--main);
     border: 1px solid var(--main);
 }
@@ -220,7 +220,7 @@
     padding-top: .4rem;
 }
 
-.plan-card button {
+.plan-card a {
     background: var(--light-dark);
     color: white;
     text-transform: uppercase;
@@ -446,10 +446,12 @@
 .text2 {
     color: #a5aec0
 }
+
 .links a{
     color:   #ff3333;
-    padding-left:0;
-    margin-left:0;
+    position: absolute;
+    right: 1px;
+
 }
 .mytext{
     padding-right: .4rem;

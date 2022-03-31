@@ -23,10 +23,10 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="section-header plan-head">
-                    <div class="row">
+                    <div class="row mb-5">
                         {% for res in pro %}
                         <div class="col-md-4 my-2">
-                            <div class="card hover-div p-3 mb-2">
+                            <div class="card hover-div p-3 mb-2 h-100">
                                 <div class="d-flex justify-content-between">
                                     <div class="d-flex flex-row align-items-center">
                                         <div class="icon"> <i class="las la-burn"></i> </div>
@@ -48,10 +48,25 @@
                                                     {{res.last_update}}</span>
                                             </span>
                                         </div>
-                                        <div class=" my-2 links" style="display: inline-block;">
+                                        <div class=" my-2 links">
+                                            {% if 'Free' in res.status%}
+                                            <span class="text1">Fee: <span class="text2">
+                                                    Free</span>
+                                            </span>
                                             <a href="{% url 'details' res.id %}" type="button" class="btn">Enroll Now<i
                                                     class="las la-angle-double-right"></i>
                                             </a>
+
+                                            {% else %}
+                                            <span class="text1">Fee: <span class=" text2">
+                                                    Kshs {{res.price}}</span>
+
+                                            </span>
+                                            <a href="{% url 'login' %}" type="button" class="btn">Enroll Now<i
+                                                    class="las la-angle-double-right"></i>
+                                            </a>
+                                            {% endif %}
+
                                         </div>
                                     </div>
                                 </div>

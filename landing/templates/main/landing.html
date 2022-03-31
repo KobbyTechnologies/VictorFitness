@@ -232,7 +232,7 @@
                     <p> - Weekly Check-ins</p>
                     <p> - Micronutrient Guidance</p>
                     <h3>Ksh 1000/month</h3>
-                    <button class="btn">Enroll Now</button>
+                    <a href="{% url 'login' %}" class="btn" type="button">Enroll Now</a>
                 </div>
             </div>
             <div class="col-md-4">
@@ -250,7 +250,7 @@
                     <p> - Twice Weekly Phone or Video Check-ins</p>
                     <p> - Nutritional Guidance and Advice For Meal Preparation</p>
                     <h3>Ksh 12,000/month</h3>
-                    <button class="btn">Enroll Now</button>
+                    <a href="{% url 'login' %}" class="btn" type="button">Enroll Now</a>
                 </div>
             </div>
             <div class="col-md-4">
@@ -273,7 +273,7 @@
                     <p> - Fully Supported Nutrition Guidance Including Regular Reviews</p>
                     <p> - FREE Micronutrient Guide E-Booklet Including Meal Examples</p>
                     <h3 style="margin-bottom: 5rem;">Ksh 15,000/month</h3>
-                    <button class="btn">Enroll Now</button>
+                    <a href="{% url 'login' %}" class="btn" type="button">Enroll Now</a>
                 </div>
             </div>
         </div>
@@ -421,49 +421,7 @@
     </div>
     </div>
 </section>
-<!-- Button trigger modal -->
 
-<!-- Modal -->
-<div class="modal fade" id="authentication" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-body" id="auths">
-                <div class="card shadow">
-                    <div class="card-body mx-auto">
-                        <h4 class="card-title my-3 text-center">User Login</h4>
-                        <form>
-                            <div class="row px-3">
-                                <label class="mb-1">
-                                    <h6 class="mb-0 text-sm">Email Address</h6>
-                                </label>
-                                <input class="mb-4" type="email" name="email" placeholder="Enter a valid email address">
-                            </div>
-                            <div class="row px-3">
-                                <label class="mb-1">
-                                    <h6 class="mb-0 text-sm">Password</h6>
-                                </label>
-                                <input type="password" name="password" placeholder="Enter password">
-                            </div>
-                            <div class="row px-3 mb-4">
-                                <div class="custom-control custom-checkbox custom-control-inline"> <a href="#"
-                                        class="ml-auto mb-0 text-sm">Forgot Password?</a>
-                                </div>
-                                <div class="row mb-3 px-3"> <button type="submit"
-                                        class="btn btn-blue text-center">Login</button> </div>
-                                <div class="row mb-4 px-3"> <small class="font-weight-bold">Don't have an account? <a
-                                            class="text-danger ">Register</a></small> </div>
-                        </form>
-                    </div>
-                </div>
-
-            </div>
-            <div class="modal-footer" style="border: none;background: transparent;">
-                <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 {% include 'footer.html'%}
 {% endblock %}
