@@ -93,7 +93,7 @@ def login_request(request):
         try:
             login(request, user)
             messages.error(request, f"You are now logged in as {username}.")
-            return redirect('landing')
+            return redirect('customer')
         except  Exception as e:
             print(e)
             messages.error(request, e)

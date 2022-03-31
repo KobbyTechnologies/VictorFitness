@@ -7,6 +7,19 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav">
             <span class="navbar-toggler-icon"></span>
         </button>
+        {% if request.user.is_authenticated %}
+        <div class="collapse navbar-collapse" id="main_nav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link active" href="{% url 'landing' %}"> Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'programs' %}"> Program Library</a></li>
+                <li class="nav-item"><a class="nav-link" href="#"> Contact</a></li>
+                <li class=""><a class="nav-link text-light" href="#"> Welcome, <span class="br"
+                            style="text-transform: capitalize;">{{request.user}} <i
+                                class="las la-user-circle"></i></span></a>
+                </li>
+            </ul>
+        </div>
+        {% else %}
         <div class="collapse navbar-collapse" id="main_nav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link active" href="{% url 'landing' %}"> Home</a></li>
@@ -44,5 +57,6 @@
                 </form>
             </ul>
         </div>
+        {% endif %}
     </div>
 </nav>

@@ -70,6 +70,7 @@ INSTALLED_APPS = [
     'bootstrap5',
     'cloudinary',
     'authentication',
+    'customer',
 ]
 AUTH_USER_MODEL = "authentication.MyUser"
 

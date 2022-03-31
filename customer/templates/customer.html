@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% load static %}
+{% block content %}
+{% include 'navbar.html'%}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+<section class="details">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="header ">
+                    <div class="a-hero mx-auto text-center">
+                        <h3>
+                            <span>Hi {{request.user}}</span>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+{% include 'footer.html'%}
+{% endblock %}
