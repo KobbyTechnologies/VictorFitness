@@ -37,6 +37,9 @@ class MyUser(AbstractBaseUser):
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
     is_email_verified = models.BooleanField(default=False)
+    
+    class  Meta: 
+        verbose_name_plural  =  "Add User"
    
     USERNAME_FIELD = 'email'
     

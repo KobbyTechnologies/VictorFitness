@@ -22,3 +22,6 @@ urlpatterns = [
     path('',include('authentication.urls')),
     path('',include('customer.urls')),
 ]
+admin.site.site_header  =  "Victor Fitness Admin" 
+admin.site.site_title  =  "Custom Shape n' Tone admin site"
+admin.site.index_title  =  "Custom Shape n' Tone Admin"

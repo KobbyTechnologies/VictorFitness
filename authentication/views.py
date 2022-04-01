@@ -92,7 +92,6 @@ def login_request(request):
             return redirect('login')
         try:
             login(request, user)
-            messages.error(request, f"You are now logged in as {username}.")
             return redirect('customer')
         except  Exception as e:
             print(e)
@@ -103,7 +102,6 @@ def login_request(request):
 
 def logout_request(request):
     logout(request)
-    messages.success(request, "You have successfully logged out.") 
     return redirect('landing')
 
 def activate_user(request, uidb64, token):
