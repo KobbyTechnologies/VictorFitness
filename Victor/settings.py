@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
-import django_heroku
+#import django_heroku
 import dj_database_url
 from decouple import config,Csv
 import  cloudinary
@@ -23,6 +23,7 @@ MODE=config("MODE", default="dev")
 SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
 # development
+
 if config('MODE')=="dev":
    DATABASES = {
        'default': {
@@ -45,6 +46,9 @@ else:
 
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
+
+#DATABASES = {'default': {'ENGINE': 'django.db.backends.sqlite3','NAME': 'victor',}}
+
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 

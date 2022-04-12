@@ -1,29 +1,38 @@
+from email import message
 from django.shortcuts import redirect, render
 from . models import Program, Program_Detail,Topic,ProgramAttachments
+from django.contrib import messages
 
 # Create your views here.
 def landing (request):
     Program_Name = Program.objects.all()
-    # if request.method == 'POST':
-    #     weight = int(request.POST['weight'])
-    #     height = int(request.POST['height'])
-    #     if height >0 and weight > 0:
-    #         res = height/3.281
-    #         BMI = weight/(res*res)
-    #         new_bmi= round(BMI,3)
-    #         if new_bmi < 18.5:
-    #             myBMI = (f"your BMI is: {new_bmi} and you're in the underweight range")
-    #         elif new_bmi >18.5 and new_bmi <=24.9:
-    #             myBMI = (f"your BMI is: {new_bmi} and you're in the healthy weight range")
-    #         elif new_bmi >=25 and new_bmi <=29.9:
-    #             myBMI=(f"your BMI is: {new_bmi} and you're in the overweight range")
-    #         else:
-    #             myBMI = (f"your BMI is: {new_bmi} and you're in the obese range")
-    #     else:
-    #         myBMI= ("Invalid Entry")
-    # ctx = {"BMI":myBMI}
-    ctx = {"ProgName":Program_Name}
+    status=""
+    if request.method == 'POST':
+        try:
+            height=float( request.POST.get('height'))
+            weight=float(request.POST.get('weight'))
+            print(height,weight)
+        except ValueError:
+            print('invalid input')
+            return redirect('landing')
+            
+        if (height>0) and (weight>0):
+            BMI = weight // (height ** 2)
+            if BMI< 18.5:
+                status = 'Underweight'
+            elif BMI <= 24.9:
+                status = 'Healthy'
+            elif BMI<= 29.9:
+                status = 'Overweight'
+            else:
+                status ='obese '
+        else:
+            status= 'height and weight cannot be negative'
+    print(status)
+    ctx = {"ProgName":Program_Name, "status":status}
     return render (request, 'main/landing.html',ctx)
+
+
 def about (request):
     return render (request, 'main/about.html')
 
@@ -39,3 +48,4 @@ def programsDetails (request,pk):
 
     ctx = {"pro":programs,"topic":topic,"attach":attach}
     return render (request, 'main/Details.html', ctx)
+
