@@ -26,7 +26,7 @@
                                         Get personalized training sessions to find out the best workout routine, and
                                         build the body you aspire to have.
                                     </p>
-                                    <button type="submit" class="btn" >Contact Us <i
+                                    <button type="submit" class="btn">Contact Us <i
                                             class="las la-arrow-right"></i></button>
                                 </div>
                             </div>
@@ -44,8 +44,8 @@
 </section>
 <section class="pb-3">
     <div class="container-fluid">
-        
-         
+
+
         <div class="row">
             <div class="col-md-5">
                 <div class="apps">
@@ -395,30 +395,26 @@
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form  method="POST" id="BMIform">
+                                <form method="POST" id="BMIform">
                                     {% csrf_token %}
-                                    <p id="output" style="color: aquamarine;">
-
-                                    </p>
                                     <div class="mb-3">
                                         <label class="form-label">Your Weight(kgs)</label>
                                         <input type="text" class="form-control" name="weight" id="weight" required>
                                         <div id="weight" class="form-text">Enter your weight in kgs</div>
                                     </div>
                                     <div class="mb-3">
-                                        <label  class="form-label">Your Height(ft)</label>
+                                        <label class="form-label">Your Height(ft)</label>
                                         <input type="text" class="form-control" name="height" id="height" required>
                                         <div id="height" class="form-text">Enter your height in fts</div>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Submit</button>
+                                    <p id="output" style="color: green;" class="my-4">
+
+                                    </p>
                                 </form>
                                 <p>
                                     {{status}}
                                 </p>
-                            </div>
-                            <div class="modal-footer">
-                                <p></p>
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             </div>
                         </div>
                     </div>
@@ -430,31 +426,46 @@
     </div>
 </section>
 <script>
-    $(document).on('submit','#BMIform', function(e){
+    $(document).on('submit', '#BMIform', function (e) {
         e.preventDefault();
-        let height=$("#height").val()
-        let weight=$("#weight").val()
+        let height = $("#height").val()
+        let weight = $("#weight").val()
 
-        if(height != "" && weight!= "" ){
+        if (height != "" && weight != "") {
             $.ajax({
-                type:"POST", 
-                url:"{% url 'landing' %}",
-                data:{
-                    height:height,
-                    weight:weight,
-                    csrfmiddlewaretoken:$("input[name=csrfmiddlewaretoken]").val(),
+                type: "POST",
+                url: "{% url 'landing' %}",
+                data: {
+                    height: parseFloat(height),
+                    weight: parseFloat(weight),
+                    csrfmiddlewaretoken: $("input[name=csrfmiddlewaretoken]").val(),
                 },
-                success:function(){
-                    $("p#output").append("sent")
+                success: function () {
                     $("#height").val("")
                     $("#weight").val("")
                 }
             })
-        }
-        else{
+        } else {
             alert("missing input")
         }
-    
+        if (isNaN(weight) && isNaN(height) == true) {
+            alert("not a number")
+        } else {
+            if (weight > 0 && height > 0) {
+                let BMI = (weight / ((height / 3.2808) ** 2)).toFixed(4)
+                if (BMI < 18.5) {
+                    $("p#output").append(`Underweight. Your BMI is ${BMI}`)
+                } else if (BMI <= 24.9) {
+                    $("p#output").append(`Healthy. Your BMI is ${BMI}`)
+                } else if (BMI <= 29.9) {
+                    $("p#output").append(`Overweight. Your BMI is ${BMI}`)
+                } else {
+                    $("p#output").append(`Obese. Your BMI is ${BMI}`)
+                }
+            } else {
+                $("p#output").append(`Height and weight cannot be negative. Your BMI is ${BMI}`)
+            }
+        }
     })
 </script>
 
