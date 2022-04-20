@@ -409,6 +409,8 @@
                                     </div>
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                     <p id="output" style="color: green;" class="my-4">
+                                    <p id="output2" style="color: #e47b18;" class="my-2">
+                                    
 
                                     </p>
                                 </form>
@@ -453,14 +455,24 @@
         } else {
             if (weight > 0 && height > 0) {
                 let BMI = (weight / ((height / 3.2808) ** 2)).toFixed(4)
+                let target1= (18.5*((height/3.2808)**2)).toFixed(2)
+                let target2= (24.9*((height / 3.2808) ** 2)).toFixed(2)
+
                 if (BMI < 18.5) {
-                    $("p#output").append(`Underweight. Your BMI is ${BMI}`)
+                    $("p#output").append(`Underweight. Your BMI is ${BMI}`)                    
+                    $("p#output2").append(`Your target weight is between: ${target1} and ${target2}`)
+
+                    
                 } else if (BMI <= 24.9) {
                     $("p#output").append(`Healthy. Your BMI is ${BMI}`)
                 } else if (BMI <= 29.9) {
                     $("p#output").append(`Overweight. Your BMI is ${BMI}`)
+                    $("p#output2").append(`Your target weight is between: ${target1} and ${target2}`)
+
                 } else {
                     $("p#output").append(`Obese. Your BMI is ${BMI}`)
+                    $("p#output2").append(`Your target weight is between: ${target1} and ${target2}`)
+
                 }
             } else {
                 $("p#output").append(`Height and weight cannot be negative. Your BMI is ${BMI}`)
