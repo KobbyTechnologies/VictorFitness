@@ -339,6 +339,7 @@
                 </div>
             </div>
         </div>
+
         <div class="row my-3">
             <div class="col-md-4">
                 <div class="card p-3 h-100 w-cards" style="background: #d4e2eb">
@@ -354,25 +355,82 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-md-4">
-                <div class="card p-3 h-100 w-cards" style="background: #FCF3CF ">
+                <div class="card p-3 h-100 w-cards" style="background: #dadcd7">
                     <div class="anim">
                         <img src="../../../static/img/icons/5.png" class="img-fluid" alt="" srcset="">
                         <h3>
-                            Kickboxing
+                            Know Your Waist to Hip Ratio
                         </h3>
                         <p>
                             Take your workout to new heights and learn about balance, strength and footwork with
                             kickboxing classes.
                         </p>
-                        <a href="#">Find Out More <i class="las la-arrow-right"></i></a>
+                        <a type="button" data-bs-toggle="modal" data-bs-target="#exampleModal2">Find Out More <i
+                            class="las la-arrow-right"></i></a>
                     </div>
                 </div>
-            </div>
+            
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel2">Calculate Your WHR</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form method="POST" id="WHRform">
+                                        {% csrf_token %}
+                                        <div class="mb-3">
+                                            <label class="form-label">Your waist circumfrence(cm)</label>
+                                            <input type="text" class="form-control" name="waist" id="waist" required>
+                                            <div id="waist" class="form-text">Enter Your Waist Circumfrence</div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Your Hip Circumfrence(cm)</label>
+                                            <input type="text" class="form-control" name="hip" id="hip" required>
+                                            <div id="hip" class="form-text">Enter Your HIp Circumfrence</div>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <select class="form-select" name="gender" id="gender" >
+                                                <option selected disabled value="">Select Gender</option>
+                                                <option value="1">Female</option>
+                                                <option value="2">Male</option>
+                                              </select>
+                                            
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                            <p id="output3" style="color: green;" class="my-4">
+                                            <p id="output4" style="color: #e47b18;" class="my-2">
+                                            
+
+                                            </p>
+                                    </form>
+                                        
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+        
+
+
+
+
+
+
+
             <div class="col-md-4">
                 <div class="card p-3 h-100 w-cards" style="background: #FCF3CF ">
                     <div class="anim">
-                        <img src="../../../static/img/icons/5.png" class="img-fluid" alt="" srcset="">
+                        <img src="../../../static/img/icons/2.png" class="img-fluid" alt="" srcset="">
                         <h3>
                             Know Your BMI
                         </h3>
@@ -380,8 +438,7 @@
                             Take your workout to new heights and learn about balance, strength and footwork with
                             kickboxing classes.
                         </p>
-                        <a type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Find Out More <i
-                                class="las la-arrow-right"></i></a>
+                        <a type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Find Out More <i class="las la-arrow-right"></i></a>
                     </div>
                 </div>
                 <!-- Modal -->
@@ -409,24 +466,21 @@
                                     </div>
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                     <p id="output" style="color: green;" class="my-4">
-                                    <p id="output2" style="color: #e47b18;" class="my-2">
-                                    
-
+                                    <p id="output2" style="color: #e47b18;" class="my-2">                      
                                     </p>
                                 </form>
-                                <p>
-                                    {{status}}
-                                </p>
+                                
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    </div>
-    </div>
+    
+    
+    
 </section>
+
 <script>
     $(document).on('submit', '#BMIform', function (e) {
         e.preventDefault();
@@ -476,6 +530,82 @@
                 }
             } else {
                 $("p#output").append(`Height and weight cannot be negative. Your BMI is ${BMI}`)
+            }
+        }
+    })
+
+
+    $(document).on('submit', '#WHRform', function (e) {
+        e.preventDefault();
+        let waist = $("#waist").val()
+        let hip = $("#hip").val()
+        let gender = $("#gender").val()
+        console.log(waist,hip,gender)
+
+        if (waist != "" && hip != "" && gender != "") {
+            $.ajax({
+                type: "POST",
+                url: "{% url 'landing' %}",
+                data: {
+                    waist: parseFloat(waist),
+                    hip: parseFloat(hip),
+                    gender:(gender),
+                    csrfmiddlewaretoken: $("input[name=csrfmiddlewaretoken]").val(),
+                },
+                success: function () {
+                    $("#waist").val("")
+                    $("#hip").val("")
+                    $("#gender").val("")
+
+                }
+            })
+        } else {
+            alert("missing input")
+        }
+        if (isNaN(waist) && isNaN(hip) == true) {
+            alert("not a number")
+        } else {
+            if (waist > 0 && hip > 0) {
+                let WHR = (waist/hip).toFixed(4)
+                
+                if(gender=="1"){
+
+                    if (WHR <= 0.81) {
+                        $("p#output3").append(`Low WHR. Your WHR is ${WHR}`)                    
+                        $("p#output4").append(`Your target WHR Should be less than ${0.85} `)
+
+                        
+                    } else if (WHR<= 0.85) {
+                        $("p#output3").append(`Moderate WHR. Your WHR is ${WHR}`)
+                    
+
+                    } else {
+                        $("p#output3").append(`High WHR Your WHR is ${WHR}`)
+                        $("p#output4").append(`Your target WHR should be less than : ${0.85} `)
+
+                    }
+                }else if (gender=="2"){
+                    if (WHR <= 0.96) {
+                        $("p#output3").append(`Low WHR. Your WHR is ${WHR}`)                    
+                        $("p#output4").append(`Your target WHR Should be less than ${1.0} `)
+
+                        
+                    } else if (WHR<= 1.0) {
+                        $("p#output3").append(`Moderate WHR. Your WHR is ${WHR}`)
+                    
+
+                    } else {
+                        $("p#output3").append(`High WHR Your WHR is ${WHR}`)
+                        $("p#output4").append(`Your target WHR should be less than : ${1.0} `)
+                    }
+
+                }else {
+                $("p#output3").append(`Entered wrong gender`)
+
+
+                }
+            } else {
+                $("p#output3").append(`Hip and waist cannot be negative.`)
             }
         }
     })

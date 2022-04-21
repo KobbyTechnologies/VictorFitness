@@ -129,11 +129,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-cloudinary.config( 
-  cloud_name = "enock", 
-  api_key = "131559831386722", 
-  api_secret = "fDQuLwrK6ExBtidSqxme_ZzHaxY" 
+cloudinary.config(   
+  cloud_name = "dzaf0ojhc", 
+  api_key = "987225516723774", 
+  api_secret = "RQAtgf-lmvNVCO0arxQqNXNA4Ps" 
 )
+
 DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
 EMAIL_BACKEND = config('EMAIL_BACKEND')
 EMAIL_USE_TLS = config('EMAIL_USE_TLS')
