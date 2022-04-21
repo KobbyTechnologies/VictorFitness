@@ -2,6 +2,7 @@ from datetime import datetime
 from tabnanny import verbose
 from django.db import models
 from cloudinary.models import CloudinaryField
+from authentication.models import MyUser
 
 #Name, Contacts, Gender, Weight, Height, Date of birth, Start date , Photos, Goals
 
@@ -13,7 +14,7 @@ class UserInfo(models.Model):
         ("Female", "Female"),
         ("Other", "Other"),
          ]
-    names=models.CharField(max_length=1000, verbose_name="Full Name", blank=True )
+    names=models.OneToOneField(MyUser,on_delete=models.CASCADE )
     contacts=models.CharField(max_length=30, verbose_name="Contact", blank=True)
     gender=models.CharField(choices=GENDER, max_length=30,blank=True, verbose_name="Gender")
     weight=models.CharField(max_length=30, verbose_name="Weight(kgs)", blank=True)
@@ -28,7 +29,7 @@ class UserInfo(models.Model):
 
 
     def __str__(self):
-        return self.names
+        return self.contacts
     
     
     
