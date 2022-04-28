@@ -40,17 +40,10 @@
     box-shadow: var(--main2);
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
-
-.user-profile{    
-    background-color: #111;
-    
-}
-
-.cont-test{
-    background: var(--green2);
-    
-}
-.widget-box{
-    background: linear-gradient(to right, rgb(129, 129, 129), #ff3333);
+.addPic button{
+    margin: 0rem 0rem 2rem 0rem;
+    color: white;
+    background: var(--purple);
+    border: 1px solid var(--purple);
 }
 

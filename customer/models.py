@@ -4,9 +4,6 @@ from django.db import models
 from cloudinary.models import CloudinaryField
 from authentication.models import MyUser
 
-#Name, Contacts, Gender, Weight, Height, Date of birth, Start date , Photos, Goals
-
-# Create your models here.
 
 class UserInfo(models.Model):
     GENDER=[
@@ -31,7 +28,13 @@ class UserInfo(models.Model):
     def __str__(self):
         return self.contacts
     
+class Gallery(models.Model):
+    pic=  CloudinaryField("image" ,blank=True) 
+    user = models.ForeignKey(MyUser,on_delete=models.CASCADE) 
+    date_added = models.DateTimeField(auto_now_add=True)
     
+    def __str__(self):
+        return self.user.username
     
 
     
