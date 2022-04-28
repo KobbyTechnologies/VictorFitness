@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% load static %}
+{% block content %}
+{% include 'navbar.html'%}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+<section class="details">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="header ">
+                    <div class="a-hero mx-auto text-center">
+                        <h3>
+                            <span>Welcome To Your Gallery</span>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <!-- Gallery -->
+<div class="row">
+    <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+      <img
+        src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(73).webp"
+        class="w-100 shadow-1-strong rounded mb-4"
+        alt="Boat on Calm Water"
+      />
+  
+      <img
+        src="https://mdbcdn.b-cdn.net/img/Photos/Vertical/mountain1.webp"
+        class="w-100 shadow-1-strong rounded mb-4"
+        alt="Wintry Mountain Landscape"
+      />
+    </div>
+  
+    <div class="col-lg-4 mb-4 mb-lg-0">
+      <img
+        src="https://mdbcdn.b-cdn.net/img/Photos/Vertical/mountain2.webp"
+        class="w-100 shadow-1-strong rounded mb-4"
+        alt="Mountains in the Clouds"
+      />
+  
+      <img
+        src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(73).webp"
+        class="w-100 shadow-1-strong rounded mb-4"
+        alt="Boat on Calm Water"
+      />
+    </div>
+  
+    <div class="col-lg-4 mb-4 mb-lg-0">
+      <img
+        src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(18).webp"
+        class="w-100 shadow-1-strong rounded mb-4"
+        alt="Waves at Sea"
+      />
+  
+      <img
+        src="https://mdbcdn.b-cdn.net/img/Photos/Vertical/mountain3.webp"
+        class="w-100 shadow-1-strong rounded mb-4"
+        alt="Yosemite National Park"
+      />
+    </div>
+  </div>
+  <!-- Gallery -->
+
+</section>
+<p>THIS IS THE GALLERY</p>
+
+{% include 'footer.html'%}
+{% endblock %}

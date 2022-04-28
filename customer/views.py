@@ -13,3 +13,7 @@ def CustomerProfile(request):
     info=UserInfo.objects.get(names=request.user) 
     ctx={"info": info}
     return render(request,"customerProfile.html" ,ctx)
+
+@login_required(login_url='login')
+def Gallery(request):
+    return render(request,"gallery.html")
