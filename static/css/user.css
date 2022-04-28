@@ -21,11 +21,12 @@
 }
 
 .usercol{
-    background:var(--whitesmoke);
+    background:black;
+    padding-top: -1rem;
     padding: 1rem;  
 }
 .form-label{
-    color: black;
+    color: white;
     line-height: 1;
 }
 .form-control,
@@ -38,8 +39,18 @@
     outline: var(--main2);
     box-shadow: var(--main2);
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-
 }
 
+.user-profile{    
+    background-color: #111;
+    
+}
 
+.cont-test{
+    background: var(--green2);
+    
+}
+.widget-box{
+    background: linear-gradient(to right, rgb(129, 129, 129), #ff3333);
+}
 
