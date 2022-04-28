@@ -5,69 +5,65 @@
 {% include 'navbar.html'%}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
 <section class="details">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="header ">
-                    <div class="a-hero mx-auto text-center">
-                        <h3>
-                            <span>Welcome To Your Gallery</span>
-                        </h3>
-                    </div>
-                </div>
-            </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="header ">
+          <div class="a-hero mx-auto text-center">
+            <h3>
+              <span>Welcome To Your Gallery</span>
+            </h3>
+          </div>
         </div>
-    </div>
-</section>
-<section>
-    <!-- Gallery -->
-<div class="row">
-    <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
-      <img
-        src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(73).webp"
-        class="w-100 shadow-1-strong rounded mb-4"
-        alt="Boat on Calm Water"
-      />
-  
-      <img
-        src="https://mdbcdn.b-cdn.net/img/Photos/Vertical/mountain1.webp"
-        class="w-100 shadow-1-strong rounded mb-4"
-        alt="Wintry Mountain Landscape"
-      />
-    </div>
-  
-    <div class="col-lg-4 mb-4 mb-lg-0">
-      <img
-        src="https://mdbcdn.b-cdn.net/img/Photos/Vertical/mountain2.webp"
-        class="w-100 shadow-1-strong rounded mb-4"
-        alt="Mountains in the Clouds"
-      />
-  
-      <img
-        src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(73).webp"
-        class="w-100 shadow-1-strong rounded mb-4"
-        alt="Boat on Calm Water"
-      />
-    </div>
-  
-    <div class="col-lg-4 mb-4 mb-lg-0">
-      <img
-        src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(18).webp"
-        class="w-100 shadow-1-strong rounded mb-4"
-        alt="Waves at Sea"
-      />
-  
-      <img
-        src="https://mdbcdn.b-cdn.net/img/Photos/Vertical/mountain3.webp"
-        class="w-100 shadow-1-strong rounded mb-4"
-        alt="Yosemite National Park"
-      />
+        <div class="addPic">
+          <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addPhotos"> <i
+              class="las la-plus"></i> Add Photos</button>
+        </div>
+      </div>
     </div>
   </div>
-  <!-- Gallery -->
-
 </section>
-<p>THIS IS THE GALLERY</p>
+<section class="my-4">
+  <!-- Gallery -->
+  <div class="row">
+    {% for res in album %}
+    <div class="col-md-4 mb-4">
+      <img src="https://res.cloudinary.com/enock/{{res.pic}}" class="w-100 shadow-1-strong rounded mb-4 img-fluid"
+        alt="" />
+    </div>
+    {% endfor %}
+  </div>
+  <!-- Gallery -->
+</section>
+<!-- Add Photo Modal -->
+<div class="modal fade" id="addPhotos" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="addPhotosLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addPhotosLabel">Upload Photos</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-12">
+            <form action="{% url 'gallery' %}" method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+              <label class="form-label">Upload 1 or Multiple Photos at Once</label>
+              <input class="form-control" type="file" multiple name="addPhoto">
+
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-success">Submit</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- End Modal -->
 
 {% include 'footer.html'%}
 {% endblock %}
