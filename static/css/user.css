@@ -46,4 +46,11 @@
     background: var(--purple);
     border: 1px solid var(--purple);
 }
-
+.hide {
+    display: none;
+  }
+  
+.myDIV:hover + .hide {
+    display: block;
+    color: red;
+  }
