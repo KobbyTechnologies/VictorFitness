@@ -1,0 +1,57 @@
+:root {
+    --blue1: #3c37f1;
+    --blue2: #1998ff;
+    --whitesmoke: whitesmoke;
+    --white: #ffff;
+    --white2: #dadcd7;
+    --green: #16A085;
+    --green2: #00d663;
+    --red: #ff3333;
+    --pink: #fa65b1;
+    --main: #e47b18;
+    --main2: #f58f5b;
+    --purple: #302cc1;
+    --purple2: #726ae3;
+    --light-dark: #49494A;
+    --font1: 'Baloo Bhaijaan 2', cursive;
+    --font2: 'Nunito Sans', sans-serif;
+    --font3: 'Luckiest Guy', cursive;
+    --normal-font-size: 1rem;
+    --header-font-size: 1.8rem;
+}
+
+.usercol{
+    background:var(--whitesmoke);
+    padding-top: -1rem;
+    padding: 1rem;  
+}
+.form-label{
+    color:black;
+    line-height: 1;
+}
+.form-control,
+.form-select,
+.form-control:focus,
+.form-select:focus{
+    border:1px solid var(--main2);
+    color: #111;
+    border-radius: 0;
+    outline: var(--main2);
+    box-shadow: var(--main2);
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.addPic button{
+    margin: 0rem 0rem 2rem 0rem;
+    color: white;
+    background: var(--purple);
+    border: 1px solid var(--purple);
+}
+
+.hide {
+    display: none;
+}
+  
+.myDIV:hover + .hide {
+    display: block;
+    color: red;
+}

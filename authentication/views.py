@@ -12,6 +12,19 @@ from django.core.mail import EmailMessage
 from .models import MyUser
 from django.conf import settings
 import threading
+from django.contrib.auth.signals import user_logged_in
+from django.contrib.auth.models import  update_last_login
+
+
+def update_first_login(sender,user,**kwargs):
+    if user.last_login is None:
+        kwargs['request'].session['first_login'] = True
+        update_last_login(sender,user,**kwargs)
+    else:
+        kwargs['request'].session['first_login'] = False
+user_logged_in.disconnect(update_last_login)
+user_logged_in.connect(update_first_login)
+
 
 # Create your views here.
 
@@ -92,12 +105,15 @@ def login_request(request):
             return redirect('login')
         try:
             login(request, user)
-            return redirect('customer')
+            if request.session.get('first_login'):
+                messages.success(request,'Fill in your Profile Details')
+                return redirect("customerProfile")
+            else:
+                print(request.session.get('first_login'))
+                return redirect('customer')
         except  Exception as e:
             print(e)
             messages.error(request, e)
-           
-        
     return render(request, 'accounts/login.html')
 
 def logout_request(request):

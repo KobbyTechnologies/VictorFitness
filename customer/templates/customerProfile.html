@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% load static %}
+{% block content %}
+{% include 'navbar.html'%}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+<section class="details">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="header ">
+          <div class="a-hero mx-auto text-center">
+            <h3>
+              <span>Hi {{request.user}} Fill in Your profile info</span>
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="card">
+        <div class="row my-4">
+          <div class="col-md-12 usercol">
+            <div class="userform">
+              <form>
+                <div class="row my-3">
+                  <div class="col-md-12">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" class="form-control" placeholder="{{info.names}}" readonly>
+                  </div>
+                </div>
+                <div class="row my-3">
+                  <div class="col-md-4">
+                    <label class="form-label">Contacts</label>
+                    <input type="text" class="form-control" placeholder="{{info.contacts}}" readonly>
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label">Gender</label>
+                    <input type="text" class="form-control" placeholder="{{info.gender}}" readonly>
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label">Weight</label>
+                    <input type="text" class="form-control" placeholder="{{info.weight}}" readonly>
+                  </div>
+                </div>
+                <div class="row my-3">
+                  <div class="col-md-4">
+                    <label class="form-label">Height</label>
+                    <input type="text" class="form-control" placeholder="{{info.height}}" readonly>
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label">Date of Birth</label>
+                    <input type="text" class="form-control" placeholder="{{info.date_of_birth}}" readonly>
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label">Start Date</label>
+                    <input type="text" class="form-control" placeholder="{{info.start_date}}" readonly>
+                  </div>
+                </div>
+                <div class="row my-3">
+                  <div class="col-md-12">
+                    <label class="form-label">Goals</label>
+                    <textarea class="form-control" placeholder="{{info.goals}}" readonly></textarea>
+
+                  </div>
+                </div>
+                <div class="row my-3">
+                  <div class="col-md-12">
+                    <a type="button" data-bs-toggle="modal" data-bs-target="#exampleModalUser">Update User Info <i
+                        class="las la-arrow-right"></i></a>
+                  </div>
+                </div>
+                <!--Modal-->
+                <div class="modal fade" id="exampleModalUser" tabindex="-1" aria-labelledby="exampleModalLabel"
+                  aria-hidden="true">
+                  <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabelUser">Update Your User Information</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <form method="POST" id="UserInfoForm">
+                          {% csrf_token %}
+                          <div class="mb-3">
+                            <label class="form-label">Full Name</label>
+                            <input type="text" class="form-control" name="names" id="names" required>
+                            <div id="names" class="form-text">Enter Your Full Name</div>
+                          </div>
+                          <div class="mb-3">
+                            <label class="form-label">Contacts</label>
+                            <input type="text" class="form-control" name="contacs" id="contacts" required>
+                            <div id="contacts" class="form-text">Enter Your Contacts</div>
+                          </div>
+
+                          <div class="mb-3">
+                            <select class="form-select" name="gender" id="gender">
+                              <option selected disabled value="">Select Gender</option>
+                              <option value="1">Female</option>
+                              <option value="2">Male</option>
+                            </select>
+                          </div>
+                          <div class="mb-3">
+                            <label class="form-label">Weight</label>
+                            <input type="text" class="form-control" name="weight" id="weight" required>
+                            <div id="weight" class="form-text">Enter Your Weight</div>
+                          </div>
+                          <div class="mb-3">
+                            <label class="form-label">Height</label>
+                            <input type="text" class="form-control" name="height" id="height" required>
+                            <div id="height" class="form-text">Enter Your Height </div>
+                          </div>
+                          <div class="mb-3">
+                            <label class="form-label">Date of Birth</label>
+                            <input type="text" class="form-control" name="date_of_birth" id="date_of_birth" required>
+                            <div id="date_of_birth" class="form-text">Enter Your Date of Birth </div>
+                          </div>
+                          <div class="mb-3">
+                            <label class="form-label">Goals</label>
+                            <input type="text" class="form-control" name="goals" id="goals" required>
+                            <div id="goals" class="form-text">Enter Your Goals </div>
+                          </div>
+                          <div class="mb-3">
+                            <label class="form-label">Upload Image</label>
+                            <input type="file" accept="image/*" class="form-control" name="photos" id="photos"
+                              required />
+                            <div id="photos" class="form-text">Select an Image</div>
+                          </div>
+                          <button type="submit" class="btn btn-primary">Submit</button>
+                          <p id="output3" style="color: green;" class="my-4">
+                            <p id="output4" style="color: #e47b18;" class="my-2">
+                            </p>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+</section>
+
+{% include 'footer.html'%}
+{% endblock %}

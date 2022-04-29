@@ -26,7 +26,7 @@
                                         Get personalized training sessions to find out the best workout routine, and
                                         build the body you aspire to have.
                                     </p>
-                                    <button type="submit" class="btn" >Contact Us <i
+                                    <button type="submit" class="btn">Contact Us <i
                                             class="las la-arrow-right"></i></button>
                                 </div>
                             </div>
@@ -44,8 +44,8 @@
 </section>
 <section class="pb-3">
     <div class="container-fluid">
-        
-         
+
+
         <div class="row">
             <div class="col-md-5">
                 <div class="apps">
@@ -287,92 +287,32 @@
             <div class="col-md-12">
                 <div class="section-header">
                     <h3 class="mx-auto mb-4 text-center">
-                        Popular Workouts
+                        Know Your Stats
                     </h3>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card p-3 h-100 w-cards" style="background: whitesmoke;">
-                    <div class="anim">
-                        <img src="../../../static/img/icons/1.png" class="img-fluid" alt="" srcset="">
-                        <h3>
-                            Yoga & Meditation
-                        </h3>
-                        <p>
-                            Stretch your body to the limits and learn to calm your mind with my yoga and
-                            meditation
-                            classes
-                        </p>
-                        <a href="#">Find Out More <i class="las la-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card p-3 h-100 w-cards" style="background: #dadcd7">
-                    <div class="anim">
-                        <img src="../../../static/img/icons/2.png" class="img-fluid" alt="" srcset="">
-                        <h3>
-                            Bodybuilding & Crossfit
-                        </h3>
-                        <p>
-                            Build your strength and muscle mass with advanced bodybuilding and crossfit classes.
-                        </p>
-                        <a href="#">Find Out More <i class="las la-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card p-3 h-100 w-cards" style="background: #E8F8F5">
-                    <div class="anim">
-                        <img src="../../../static/img/icons/3.png" class="img-fluid" alt="" srcset="">
-                        <h3>
-                            Zumba Fitness
-                        </h3>
-                        <p>
-                            Reenergize yourself with high paced zumba fitness dance workout classes. Incididunt ut
-                            labore et dolore.
-                        </p>
-                        <a href="#">Find Out More <i class="las la-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="row my-3">
-            <div class="col-md-4">
-                <div class="card p-3 h-100 w-cards" style="background: #d4e2eb">
-                    <div class="anim">
-                        <img src="../../../static/img/icons/4.png" class="img-fluid" alt="" srcset="">
-                        <h3>
-                            Cardio Training
-                        </h3>
-                        <p>
-                            Stay healthy and fit every day with regular cardio training sessions. Perfect for beginners.
-                        </p>
-                        <a href="#">Find Out More <i class="las la-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card p-3 h-100 w-cards" style="background: #FCF3CF ">
+            <div class="col-md-6">
+                <div class="card p-3 h-100 w-cards" style="background: #dadcd7">
                     <div class="anim">
                         <img src="../../../static/img/icons/5.png" class="img-fluid" alt="" srcset="">
                         <h3>
-                            Kickboxing
+                            Know Your Waist to Hip Ratio
                         </h3>
                         <p>
                             Take your workout to new heights and learn about balance, strength and footwork with
                             kickboxing classes.
                         </p>
-                        <a href="#">Find Out More <i class="las la-arrow-right"></i></a>
+                        <a type="button" data-bs-toggle="modal" data-bs-target="#exampleModal2">Find Out More <i
+                                class="las la-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="card p-3 h-100 w-cards" style="background: #FCF3CF ">
                     <div class="anim">
-                        <img src="../../../static/img/icons/5.png" class="img-fluid" alt="" srcset="">
+                        <img src="../../../static/img/icons/2.png" class="img-fluid" alt="" srcset="">
                         <h3>
                             Know Your BMI
                         </h3>
@@ -384,80 +324,216 @@
                                 class="las la-arrow-right"></i></a>
                     </div>
                 </div>
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Calculate Your BMI</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <form  method="POST" id="BMIform">
-                                    {% csrf_token %}
-                                    <p id="output" style="color: aquamarine;">
-
-                                    </p>
-                                    <div class="mb-3">
-                                        <label class="form-label">Your Weight(kgs)</label>
-                                        <input type="text" class="form-control" name="weight" id="weight" required>
-                                        <div id="weight" class="form-text">Enter your weight in kgs</div>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label  class="form-label">Your Height(ft)</label>
-                                        <input type="text" class="form-control" name="height" id="height" required>
-                                        <div id="height" class="form-text">Enter your height in fts</div>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                </form>
-                                <p>
-                                    {{status}}
-                                </p>
-                            </div>
-                            <div class="modal-footer">
-                                <p></p>
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
-    </div>
-    </div>
-    </div>
 </section>
-<script>
-    $(document).on('submit','#BMIform', function(e){
-        e.preventDefault();
-        let height=$("#height").val()
-        let weight=$("#weight").val()
 
-        if(height != "" && weight!= "" ){
+<script>
+    $(document).on('submit', '#BMIform', function (e) {
+        e.preventDefault();
+        let height = $("#height").val()
+        let weight = $("#weight").val()
+
+        if (height != "" && weight != "") {
             $.ajax({
-                type:"POST", 
-                url:"{% url 'landing' %}",
-                data:{
-                    height:height,
-                    weight:weight,
-                    csrfmiddlewaretoken:$("input[name=csrfmiddlewaretoken]").val(),
+                type: "POST",
+                url: "{% url 'landing' %}",
+                data: {
+                    height: parseFloat(height),
+                    weight: parseFloat(weight),
+                    csrfmiddlewaretoken: $("input[name=csrfmiddlewaretoken]").val(),
                 },
-                success:function(){
-                    $("p#output").append("sent")
+                success: function () {
                     $("#height").val("")
                     $("#weight").val("")
                 }
             })
-        }
-        else{
+        } else {
             alert("missing input")
         }
-    
+        if (isNaN(weight) && isNaN(height) == true) {
+            alert("not a number")
+        } else {
+            if (weight > 0 && height > 0) {
+                let BMI = (weight / ((height / 3.2808) ** 2)).toFixed(4)
+                let target1 = (18.5 * ((height / 3.2808) ** 2)).toFixed(2)
+                let target2 = (24.9 * ((height / 3.2808) ** 2)).toFixed(2)
+
+                if (BMI < 18.5) {
+                    $("p#output").append(`Underweight. Your BMI is ${BMI}`)
+                    $("p#output2").append(`Your target weight is between: ${target1} and ${target2}`)
+
+
+                } else if (BMI <= 24.9) {
+                    $("p#output").append(`Healthy. Your BMI is ${BMI}`)
+                } else if (BMI <= 29.9) {
+                    $("p#output").append(`Overweight. Your BMI is ${BMI}`)
+                    $("p#output2").append(`Your target weight is between: ${target1} and ${target2}`)
+
+                } else {
+                    $("p#output").append(`Obese. Your BMI is ${BMI}`)
+                    $("p#output2").append(`Your target weight is between: ${target1} and ${target2}`)
+
+                }
+            } else {
+                $("p#output").append(`Height and weight cannot be negative. Your BMI is ${BMI}`)
+            }
+        }
+    })
+
+
+    $(document).on('submit', '#WHRform', function (e) {
+        e.preventDefault();
+        let waist = $("#waist").val()
+        let hip = $("#hip").val()
+        let gender = $("#gender").val()
+        console.log(waist, hip, gender)
+
+        if (waist != "" && hip != "" && gender != "") {
+            $.ajax({
+                type: "POST",
+                url: "{% url 'landing' %}",
+                data: {
+                    waist: parseFloat(waist),
+                    hip: parseFloat(hip),
+                    gender: (gender),
+                    csrfmiddlewaretoken: $("input[name=csrfmiddlewaretoken]").val(),
+                },
+                success: function () {
+                    $("#waist").val("")
+                    $("#hip").val("")
+                    $("#gender").val("")
+
+                }
+            })
+        } else {
+            alert("missing input")
+        }
+        if (isNaN(waist) && isNaN(hip) == true) {
+            alert("not a number")
+        } else {
+            if (waist > 0 && hip > 0) {
+                let WHR = (waist / hip).toFixed(4)
+
+                if (gender == "1") {
+
+                    if (WHR <= 0.81) {
+                        $("p#output3").append(`Low WHR. Your WHR is ${WHR}`)
+                        $("p#output4").append(`Your target WHR Should be less than ${0.85} `)
+
+
+                    } else if (WHR <= 0.85) {
+                        $("p#output3").append(`Moderate WHR. Your WHR is ${WHR}`)
+
+
+                    } else {
+                        $("p#output3").append(`High WHR Your WHR is ${WHR}`)
+                        $("p#output4").append(`Your target WHR should be less than : ${0.85} `)
+
+                    }
+                } else if (gender == "2") {
+                    if (WHR <= 0.96) {
+                        $("p#output3").append(`Low WHR. Your WHR is ${WHR}`)
+                        $("p#output4").append(`Your target WHR Should be less than ${1.0} `)
+
+
+                    } else if (WHR <= 1.0) {
+                        $("p#output3").append(`Moderate WHR. Your WHR is ${WHR}`)
+
+
+                    } else {
+                        $("p#output3").append(`High WHR Your WHR is ${WHR}`)
+                        $("p#output4").append(`Your target WHR should be less than : ${1.0} `)
+                    }
+
+                } else {
+                    $("p#output3").append(`Entered wrong gender`)
+
+
+                }
+            } else {
+                $("p#output3").append(`Hip and waist cannot be negative.`)
+            }
+        }
     })
 </script>
 
+<!-- Modal For WHR-->
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel2">Calculate Your WHR</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" id="WHRform">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label class="form-label">Your waist circumfrence(cm)</label>
+                        <input type="text" class="form-control" name="waist" id="waist" required>
+                        <div id="waist" class="form-text">Enter Your Waist Circumfrence</div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Your Hip Circumfrence(cm)</label>
+                        <input type="text" class="form-control" name="hip" id="hip" required>
+                        <div id="hip" class="form-text">Enter Your HIp Circumfrence</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <select class="form-select" name="gender" id="gender">
+                            <option selected disabled value="">Select Gender</option>
+                            <option value="1">Female</option>
+                            <option value="2">Male</option>
+                        </select>
+
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <p id="output3" style="color: green;" class="my-4">
+                        <p id="output4" style="color: #e47b18;" class="my-2">
+
+
+                        </p>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal End -->
+<!-- Modal for BMI -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Calculate Your BMI</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" id="BMIform">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label class="form-label">Your Weight(kgs)</label>
+                        <input type="text" class="form-control" name="weight" id="weight" required>
+                        <div id="weight" class="form-text">Enter your weight in kgs</div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Your Height(ft)</label>
+                        <input type="text" class="form-control" name="height" id="height" required>
+                        <div id="height" class="form-text">Enter your height in fts</div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <p id="output" style="color: green;" class="my-4">
+                        <p id="output2" style="color: #e47b18;" class="my-2">
+                        </p>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Modal -->
 
 {% include 'footer.html'%}
 {% endblock %}

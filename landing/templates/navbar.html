@@ -14,10 +14,10 @@
 
         <div class="collapse navbar-collapse" id="main_nav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link active" href="{% url 'landing' %}"> Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'gallery' %}"> My Gallery</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'programs' %}"> Program Library</a></li>
                 <li class="nav-item"><a class="nav-link" href="#"> Contact</a></li>
-
+                <li class="nav-item"><a class="nav-link" href="{% url 'customerProfile' %}"> Profile</a></li>
                 <form class="d-flex">
                     <a href="{% url 'logout' %}" class="btn btn-danger mx-4" type="button">Logout <i
                             class="las la-sign-in-alt"></i></a>

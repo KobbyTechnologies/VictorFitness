@@ -6,30 +6,8 @@ from django.contrib import messages
 # Create your views here.
 def landing (request):
     Program_Name = Program.objects.all()
-    status=""
-    if request.method == 'POST':
-        try:
-            height=float( request.POST.get('height'))
-            weight=float(request.POST.get('weight'))
-            print(height,weight)
-        except ValueError:
-            print('invalid input')
-            return redirect('landing')
-            
-        if (height>0) and (weight>0):
-            BMI = weight // (height ** 2)
-            if BMI< 18.5:
-                status = 'Underweight'
-            elif BMI <= 24.9:
-                status = 'Healthy'
-            elif BMI<= 29.9:
-                status = 'Overweight'
-            else:
-                status ='obese '
-        else:
-            status= 'height and weight cannot be negative'
-    print(status)
-    ctx = {"ProgName":Program_Name, "status":status}
+
+    ctx = {"ProgName":Program_Name}
     return render (request, 'main/landing.html',ctx)
 
 
