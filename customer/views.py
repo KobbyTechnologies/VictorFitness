@@ -5,15 +5,16 @@ from django.contrib.auth.decorators import login_required
 from .models import UserInfo, Gallery
 
 # Create your views here.
+
 @login_required(login_url='login')
 def Customer(request):
     return render(request,"customer.html")
 
 @login_required(login_url='login')
 def CustomerProfile(request):
-
-    # ctx={"info": info}
-    return render(request,"customerProfile.html")
+    info= UserInfo.objects.get(names=request.user)
+    ctx={"info": info}
+    return render(request,"customerProfile.html",ctx)
 
 @login_required(login_url='login')
 def Gallery_Request(request):
@@ -32,3 +33,5 @@ def Gallery_Request(request):
     album = Gallery.objects.filter(user=request.user) 
     ctx = {"album":album}
     return render(request,"gallery.html",ctx)
+
+

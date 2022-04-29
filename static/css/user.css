@@ -21,12 +21,12 @@
 }
 
 .usercol{
-    background:black;
+    background:var(--whitesmoke);
     padding-top: -1rem;
     padding: 1rem;  
 }
 .form-label{
-    color: white;
+    color:black;
     line-height: 1;
 }
 .form-control,
@@ -46,11 +46,12 @@
     background: var(--purple);
     border: 1px solid var(--purple);
 }
+
 .hide {
     display: none;
-  }
+}
   
 .myDIV:hover + .hide {
     display: block;
     color: red;
-  }
+}
