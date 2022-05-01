@@ -10,12 +10,23 @@ from django.template.loader import get_template
 from django.template import Context
 from io import BytesIO
 from xhtml2pdf import pisa
+from landing.models import Program_Detail,Program
 
 
 # Create your views here.
 @login_required(login_url='login')
 def Customer(request):
     return render(request,"customer.html")
+
+@login_required(login_url='login')
+def CustomerLibrary(request):
+    programs=''
+    try:
+        programs = Program_Detail.objects.filter(price="Paid") 
+    except:
+        pass
+    ctx = {"pro":programs}
+    return render(request,"library.html",ctx)
 
 @login_required(login_url='login')
 def CustomerProfile(request):

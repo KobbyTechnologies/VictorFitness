@@ -12,6 +12,7 @@ urlpatterns = [
     path('workout',views.workout,name='workout'),
     path('report',views.my_view,name='report'),
     path('goals',views.WorkoutGoals,name='goals'),
+    path('customerLibrary',views.CustomerLibrary,name='customerLibrary'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
