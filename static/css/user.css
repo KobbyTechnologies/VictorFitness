@@ -22,10 +22,11 @@
 
 .usercol{
     background:var(--whitesmoke);
+    padding-top: -1rem;
     padding: 1rem;  
 }
 .form-label{
-    color: black;
+    color:black;
     line-height: 1;
 }
 .form-control,
@@ -38,7 +39,6 @@
     outline: var(--main2);
     box-shadow: var(--main2);
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-
 }
 .addPic button{
     margin: 0rem 0rem 2rem 0rem;
@@ -84,4 +84,12 @@
 }
 .button-41:hover {
   background: #00bd68;
+}
+.hide {
+    display: none;
+}
+  
+.myDIV:hover + .hide {
+    display: block;
+    color: red;
 }

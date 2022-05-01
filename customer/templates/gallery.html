@@ -22,14 +22,22 @@
       </div>
     </div>
   </div>
+  </div>
 </section>
-
 <section class="my-4">
+  <div class="myDIV">Hover over me.</div>
+  <div class="hide">I am shown when someone hovers over the div above.</div>
   <!-- Gallery -->
   <div class="row">
     {% for res in album %}
-    <div class="col-md-4">
-      <img src="https://res.cloudinary.com/enock/{{res.pic}}" class="w-100 shadow-1-strong rounded  img-fluid" alt="" />
+    <div class="col-md-4 mb-4 card hover-div p-3 mb-2 h-100">
+      <img src="https://res.cloudinary.com/dzaf0ojhc/{{res.pic}}"
+        class=" myDIV w-100 shadow-1-strong rounded mb-4 img-fluid" alt="" />
+      <div class="mytext hide"">
+          <span class=" text1">Uploaded <span class="text2">
+          {{res.date_added}}</span>
+        </span>
+      </div>
     </div>
     {% endfor %}
   </div>
@@ -64,6 +72,8 @@
   </div>
 </div>
 <!-- End Modal -->
+
+
 
 {% include 'footer.html'%}
 {% endblock %}

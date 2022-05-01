@@ -14,6 +14,7 @@ from landing.models import Program_Detail,Program
 
 
 # Create your views here.
+
 @login_required(login_url='login')
 def Customer(request):
     return render(request,"customer.html")
