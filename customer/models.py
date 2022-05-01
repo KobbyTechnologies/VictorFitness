@@ -11,19 +11,16 @@ class UserInfo(models.Model):
         ("Female", "Female"),
         ("Other", "Other"),
          ]
-    names=models.OneToOneField(MyUser,on_delete=models.CASCADE )
+    names=models.ForeignKey(MyUser,on_delete=models.CASCADE,null=True)
     contacts=models.CharField(max_length=30, verbose_name="Contact", blank=True)
     gender=models.CharField(choices=GENDER, max_length=30,blank=True, verbose_name="Gender")
-    weight=models.CharField(max_length=30, verbose_name="Weight(kgs)", blank=True)
-    height=models.CharField(max_length=30,verbose_name="Height(ft)", blank=True)
     date_of_birth=models.DateField(verbose_name="Date of Birth", blank=True)
-    photos=CloudinaryField("image" ,blank=True)
-    goals=models.TextField(verbose_name="Goals", blank=True)
     start_date=models.DateTimeField(auto_now_add=True)
+    profilePic = models.ImageField(upload_to='images/',blank=True)
 
     class Meta:
         verbose_name_plural="User Profile"
-
+        constraints = [models.UniqueConstraint(fields=["names"], name="unique_case")]
 
     def __str__(self):
         return self.contacts
@@ -36,7 +33,21 @@ class Gallery(models.Model):
     def __str__(self):
         return self.user.username
     
-
+class Workout(models.Model):
+    weight = models.IntegerField(blank=True)
+    height = models.IntegerField(blank=True)
+    user = models.ForeignKey(MyUser,on_delete=models.CASCADE)
+    date_added = models.DateTimeField(auto_now_add=True)
+    status = models.CharField(blank=True,max_length=100)
+    bmi = models.IntegerField(blank=True,default=0.0)
+    recommendations = models.TextField(blank=True)
+    waist = models.IntegerField(blank=True,default=0.0)
+    hip = models.IntegerField(blank=True,default=0.0)
+    whr = models.IntegerField(blank=True,default=0.0)
+    whrStatus = models.CharField(blank=True,max_length=100)
     
-
+class Goals(models.Model):
+    goals = models.TextField(blank=True)
+    date_added = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(MyUser,on_delete=models.CASCADE)
 

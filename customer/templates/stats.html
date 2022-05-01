@@ -1,0 +1,214 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Untitled Document</title>
+</head>
+
+<body>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td colspan="2"><img src="../../static/img/Logo/2.png" width="150" /></td>
+        </tr>
+        <tr>
+            <td colspan="2">&nbsp;</td>
+        </tr>
+        <tr>
+            <td width="49%">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td>
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td
+                                        style="font-family:Verdana, Geneva, sans-serif; font-weight:600; font-size:15px;">
+                                        Workout Report</td>
+                                </tr>
+                                <tr>
+                                    <td
+                                        style="font-family:Verdana, Geneva, sans-serif; font-weight:300; font-size:13px;">
+                                        Report Number: 0000001</td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td
+                                        style="font-family:Verdana, Geneva, sans-serif; font-weight:600; font-size:15px;">
+                                        Victor Fitness </td>
+                                </tr>
+                                <tr>
+                                    <td
+                                        style="font-family:Verdana, Geneva, sans-serif; font-weight:400; font-size:14px;">
+                                        070000000 </td>
+                                </tr>
+
+                                <td style="font-family:Verdana, Geneva, sans-serif; font-weight:300; font-size:13px;">
+                                    The Mirage , 5th Floor - Suite 4 Westlands, P.O Box 5824 - 00200 Nairobi Kenya</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    </td>
+    <td width="51%" valign="top">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td align="right"><img src="logo.png" alt="" width="150" /></td>
+            </tr>
+            <tr>
+                <td style="font-family:Verdana, Geneva, sans-serif; font-weight:300; font-size:13px;" align="right">
+                </td>
+            </tr>
+            <tr>
+                <td style="font-family:Verdana, Geneva, sans-serif; font-weight:300; font-size:13px;" align="right">
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <td style="font-family:Verdana, Geneva, sans-serif; font-weight:600; font-size:15px;" align="right">
+                    Customer Name</td>
+            </tr>
+            <tr>
+                <td style="font-family:Verdana, Geneva, sans-serif; font-weight:300; font-size:13px;" align="right">
+                    {{name}}</td>
+            </tr>
+        </table>
+    </td>
+    </tr>
+    <tr>
+        <td colspan="2">&nbsp;</td>
+    </tr>
+    <tr>
+        <td style="font-family:Verdana, Geneva, sans-serif;padding-bottom: 3px; font-weight:600; font-size:13px;"
+            colspan="2">BMI Report:
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td style="font-family:Verdana, Geneva, sans-serif; font-weight:600; font-size:13px;padding-top: 5px; border-top:1px solid #333; border-bottom:1px solid #333; border-left:1px solid #333; border-right:1px solid #333;"
+                        width="34%" height="32" align="center">Weight (Kgs)</td>
+                    <td style="font-family:Verdana, Geneva, sans-serif; font-weight:600; font-size:13px;padding-top: 5px; border-top:1px solid #333; border-bottom:1px solid #333; border-right:1px solid #333;"
+                        width="30%" align="center"> Height (cm) </td>
+                    <td style="font-family:Verdana, Geneva, sans-serif; font-weight:600; font-size:13px;padding-top: 5px; border-top:1px solid #333; border-bottom:1px solid #333; border-right:1px solid #333;"
+                        width="30%" align="center"> BMI</td>
+                    <td style="font-family:Verdana, Geneva, sans-serif; font-weight:600; font-size:13px;padding-top: 5px; border-top:1px solid #333; border-bottom:1px solid #333; border-right:1px solid #333;"
+                        width="30%" align="center"> Status</td>
+                    <td style="font-family:Verdana, Geneva, sans-serif; font-weight:600; font-size:13px;padding-top: 5px; border-top:1px solid #333; border-bottom:1px solid #333; border-right:1px solid #333;"
+                        width="30%" align="center"> Recommendations</td>
+                    <td style="font-family:Verdana, Geneva, sans-serif; font-weight:600; font-size:13px;padding-top: 5px; border-top:1px solid #333; border-bottom:1px solid #333; border-right:1px solid #333;"
+                        width="30%" align="center"> As on (Date)</td>
+                </tr>
+                {% for res in data %}
+                <tr>
+                    <td style="font-family:Verdana, Geneva, sans-serif; font-weight:300;padding-top: 3px; font-size:13px; border-bottom:1px solid #333; border-left:1px solid #333; border-right:1px solid #333;"
+                        height="32" align="center"> {{res.weight}}</td>
+                    <td style="font-family:Verdana, Geneva, sans-serif; font-weight:300;padding-top: 3px; font-size:13px; border-bottom:1px solid #333; border-right:1px solid #333;"
+                        align="center">{{res.height}}</td>
+                    <td style="font-family:Verdana, Geneva, sans-serif; font-weight:300;padding-top: 3px; font-size:13px; border-bottom:1px solid #333; border-right:1px solid #333;"
+                        align="center">{{res.bmi}}</td>
+                    <td style="font-family:Verdana, Geneva, sans-serif; font-weight:300;padding-top: 3px; font-size:13px; border-bottom:1px solid #333; border-right:1px solid #333;"
+                        align="center">{{res.status}}</td>
+                    <td style="font-family:Verdana, Geneva, sans-serif; font-weight:300;padding-top: 3px; font-size:13px; border-bottom:1px solid #333; border-right:1px solid #333;"
+                        align="center">{{res.recommendations}}</td>
+                    <td style="font-family:Verdana, Geneva, sans-serif; font-weight:300;padding-top: 3px; font-size:13px; border-bottom:1px solid #333; border-right:1px solid #333;"
+                        align="center">{{res.date_added}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">&nbsp;</td>
+    </tr>
+    <tr>
+        <td colspan="2">&nbsp;</td>
+    </tr>
+    <tr>
+        <td style="font-family:Verdana, Geneva, sans-serif;padding-bottom: 3px; font-weight:600; font-size:13px;"
+            colspan="2">Waist Hip Ratio Report:
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td style="font-family:Verdana, Geneva, sans-serif; font-weight:600; font-size:13px;padding-top: 5px; border-top:1px solid #333; border-bottom:1px solid #333; border-left:1px solid #333; border-right:1px solid #333;"
+                        width="34%" height="32" align="center">Waist (cm)</td>
+                    <td style="font-family:Verdana, Geneva, sans-serif; font-weight:600; font-size:13px;padding-top: 5px; border-top:1px solid #333; border-bottom:1px solid #333; border-right:1px solid #333;"
+                        width="30%" align="center"> Hip (cm) </td>
+                    <td style="font-family:Verdana, Geneva, sans-serif; font-weight:600; font-size:13px;padding-top: 5px; border-top:1px solid #333; border-bottom:1px solid #333; border-right:1px solid #333;"
+                        width="30%" align="center"> WHR</td>
+                    <td style="font-family:Verdana, Geneva, sans-serif; font-weight:600; font-size:13px;padding-top: 5px; border-top:1px solid #333; border-bottom:1px solid #333; border-right:1px solid #333;"
+                        width="30%" align="center"> Status</td>
+                    <td style="font-family:Verdana, Geneva, sans-serif; font-weight:600; font-size:13px;padding-top: 5px; border-top:1px solid #333; border-bottom:1px solid #333; border-right:1px solid #333;"
+                        width="30%" align="center"> As on (Date)</td>
+                </tr>
+                {% for res in data %}
+                <tr>
+                    <td style="font-family:Verdana, Geneva, sans-serif; font-weight:300;padding-top: 3px; font-size:13px; border-bottom:1px solid #333; border-left:1px solid #333; border-right:1px solid #333;"
+                        height="32" align="center"> {{res.waist}}</td>
+                    <td style="font-family:Verdana, Geneva, sans-serif; font-weight:300;padding-top: 3px; font-size:13px; border-bottom:1px solid #333; border-right:1px solid #333;"
+                        align="center">{{res.hip}}</td>
+                    <td style="font-family:Verdana, Geneva, sans-serif; font-weight:300;padding-top: 3px; font-size:13px; border-bottom:1px solid #333; border-right:1px solid #333;"
+                        align="center">{{res.whr}}</td>
+                    <td style="font-family:Verdana, Geneva, sans-serif; font-weight:300;padding-top: 3px; font-size:13px; border-bottom:1px solid #333; border-right:1px solid #333;"
+                        align="center">{{res.whrStatus}}</td>
+                    <td style="font-family:Verdana, Geneva, sans-serif; font-weight:300;padding-top: 3px; font-size:13px; border-bottom:1px solid #333; border-right:1px solid #333;"
+                        align="center">{{res.date_added}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">&nbsp;</td>
+    </tr>
+    <tr>
+        <td colspan="2">&nbsp;</td>
+    </tr>
+    <tr>
+        <td style="font-family:Verdana, Geneva, sans-serif; font-weight:600; font-size:13px;" colspan="2">Workout Goals:
+        </td>
+    </tr>
+    {% for goals in goals %}
+    <tr>
+        <td style="font-family:Verdana, Geneva, sans-serif; font-weight:300; font-size:13px;" colspan="2">
+            {{goals.goals}}</td>
+    </tr>
+    {% endfor %}
+    <tr>
+        <td colspan="2">&nbsp;</td>
+    </tr>
+    <tr>
+        <td style="font-family:Verdana, Geneva, sans-serif; font-weight:600; font-size:13px;" colspan="2">Thank you for
+            using our service</td>
+    </tr>
+    <td colspan="2">&nbsp;</td>
+    </tr>
+    <tr>
+        <td colspan="2">&nbsp;</td>
+    </tr>
+    <tr>
+        <td style="font-family:Verdana, Geneva, sans-serif; font-weight:300; font-size:13px;" colspan="2"
+            align="center"> </td>
+    </tr>
+    <tr>
+        <td colspan="2">&nbsp;</td>
+    </tr>
+    <tr>
+        <td colspan="2">&nbsp;</td>
+    </tr>
+    <tr>
+        <td colspan="2">&nbsp;</td>
+    </tr>
+    </table>
+</body>
+
+</html>

@@ -5,143 +5,189 @@
 {% include 'navbar.html'%}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
 <section class="details">
-  <div class="container-fluid">
+  <div class="container-fluid" style="padding: 6rem 2rem 3rem 2rem;">
     <div class="row">
-      <div class="col-md-12">
-        <div class="header ">
-          <div class="a-hero mx-auto text-center">
-            <h3>
-              <span>Hi {{request.user}} Fill in Your profile info</span>
-            </h3>
+      <div class="col-md-3 border-right" style="background: linear-gradient(to right, #444a4a, #ff3333) !important;;">
+        <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+          <img class="rounded-circle mt-5" width="150px" src="{{info.profilePic.url}}">
+          <span class="font-weight-bold text-light my-2">{{info.names}}</span>
+          <span class="text-light"><span class="text-dark my-2">Gender:</span>
+            {{info.gender}}</span>
+          <span class="text-light"><span class="text-dark my-2">Contacts:</span> {{info.contacts}}</span>
+          <span class="text-light"><span class="text-dark my-2">Date Of Birth: </span> {{info.date_of_birth}}</span>
+          <span>
+          </span>
+
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <button type="button" class="btn d-flex btn-warning w-100 d-block text-success font-medium">
+              BMI <span class="badge ms-auto bg-success">{{bmi}}</span>
+            </button>
+          </div>
+          <div class="col-md-6">
+            <button type="button" class="btn d-flex btn-warning  w-100 d-block text-success font-medium">
+              WHR <span class="badge ms-auto bg-success">{{bmi}}</span>
+            </button>
+          </div>
+        </div>
+        <div class="row my-3">
+          <div class="col-md-6">
+            <button type="button" class="btn d-flex btn-warning w-100 d-block text-success font-medium">
+              Calories <span class="badge ms-auto bg-success">{{bmi}}</span>
+            </button>
+          </div>
+          <div class="col-md-6">
+            <button type="button" class="btn d-flex btn-warning   w-100 d-block text-success font-medium">
+              Body Fat <span class="badge ms-auto bg-success">{{bmi}}</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5 border-right bg-light">
+        <div class="p-3 py-5">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="text-right">Profile Settings</h4>
+          </div>
+          <form action="{% url 'customerProfile' %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row mt-2">
+              <div class="col-md-6">
+                <label class="form-label">Gender</label>
+                <select class="form-select" name="gender">
+                  <option selected disabled value="">Select Gender</option>
+                  <option value="0">Male</option>
+                  <option value="1">Female</option>
+                  <option value="2">Other</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Contacts</label>
+                <input type="text" class="form-control" name="contact">
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-md-12">
+                <label class="form-label">Date of Birth</label>
+                <input type="date" name="date_of_birth" class="form-control">
+                <div id=" date_of_birth" class="form-text">Enter Your Date of Birth </div>
+              </div>
+              <div class="col-md-12 mt-3">
+                <label class="form-label">Upload Profile Image</label>
+                <input type="file" class="form-control" name="profilePic" />
+                <div id="photos" class="form-text">Select Your Profile Image</div>
+              </div>
+            </div>
+            <div class="mt-2">
+              <button class="btn btn-primary button-41" type="submit"> Update User Info</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-md-4" style="background: whitesmoke;">
+        <div class="p-3 py-5">
+          <div class="d-flex justify-content-between align-items-center">
+            <span>Workout Settings</span>
+            <form action="{% url 'report' %}" method="post">
+              {% csrf_token %}
+              <button type="submit" class="btn button-41 repo"><i class="fa fa-plus"></i>
+                &nbsp; Generate Report</button>
+            </form>
+          </div><br>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="accordion my-2" id="workoutdata">
+                <div class="accordion-item panel">
+                  <h2 class="accordion-header" id="workoutheader">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                      Add Workout Info
+                    </button>
+                  </h2>
+                  <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="workoutheader"
+                    data-bs-parent="#workoutdata">
+                    <div class="accordion-body panel-body">
+                      <form action="{% url 'workout' %}" method="post">
+                        {% csrf_token %}
+                        <div class="row">
+                          <div class="col-md-12">
+                            <label class="labels">Weight (KGS)</label>
+                            <input type="text" class="form-control" placeholder="Enter your weight in Kgs"
+                              name="weight">
+                          </div>
+                          <div class="col-md-12">
+                            <label class="labels">Height(cm)</label>
+                            <input type="text" class="form-control" placeholder="Enter Height in CM" name="height">
+                          </div>
+                          <div class="col-md-12">
+                            <label class="labels">Waist Circumference (cm)</label>
+                            <input type="text" class="form-control" placeholder="Enter Waist Circumference in CM"
+                              name="waist">
+                          </div>
+                          <div class="col-md-12">
+                            <label class="labels">Hip Circumference(cm)</label>
+                            <input type="text" class="form-control" placeholder="Enter Hip Circumference in CM"
+                              name="hip">
+                          </div>
+                        </div>
+                        <button class="btn btn-success mt-3  button-41" type="submit">Submit</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion my-2" id="workoutGoals">
+                <div class="accordion-item panel">
+                  <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                      Add Workout Goals
+                    </button>
+                  </h2>
+                  <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                    data-bs-parent="#workoutGoals">
+                    <div class="accordion-body panel-body">
+                      <form action="{% url 'goals' %}" method="post">
+                        {% csrf_token %}
+                        <div class="row">
+                          <div class="col-md-12">
+                            <label class="labels"> Workout Goal</label>
+                            <textarea class="form-control" name="goals" rows="5"></textarea>
+                          </div>
+                        </div>
+                        <button class="btn btn-success mt-3  button-41" type="submit">Submit</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="toast show w-100 mt-5">
+                <div class="toast-header">
+                  <strong class="me-auto">Disclaimer!!</strong>
+                  <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+                </div>
+                <div class="toast-body">
+                  <p>Update your workout info regularly for the system to create a more personalized report about your
+                    workout progress.</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-<section>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="card">
-        <div class="row my-4">
-          <div class="col-md-12 usercol">
-            <div class="userform">
-              <form>
-                <div class="row my-3">
-                  <div class="col-md-12">
-                    <label class="form-label">Full Name</label>
-                    <input type="text" class="form-control" placeholder="{{info.names}}" readonly>
-                  </div>
-                </div>
-                <div class="row my-3">
-                  <div class="col-md-4">
-                    <label class="form-label">Contacts</label>
-                    <input type="text" class="form-control" placeholder="{{info.contacts}}" readonly>
-                  </div>
-                  <div class="col-md-4">
-                    <label class="form-label">Gender</label>
-                    <input type="text" class="form-control" placeholder="{{info.gender}}" readonly>
-                  </div>
-                  <div class="col-md-4">
-                    <label class="form-label">Weight</label>
-                    <input type="text" class="form-control" placeholder="{{info.weight}}" readonly>
-                  </div>
-                </div>
-                <div class="row my-3">
-                  <div class="col-md-4">
-                    <label class="form-label">Height</label>
-                    <input type="text" class="form-control" placeholder="{{info.height}}" readonly>
-                  </div>
-                  <div class="col-md-4">
-                    <label class="form-label">Date of Birth</label>
-                    <input type="text" class="form-control" placeholder="{{info.date_of_birth}}" readonly>
-                  </div>
-                  <div class="col-md-4">
-                    <label class="form-label">Start Date</label>
-                    <input type="text" class="form-control" placeholder="{{info.start_date}}" readonly>
-                  </div>
-                </div>
-                <div class="row my-3">
-                  <div class="col-md-12">
-                    <label class="form-label">Goals</label>
-                    <textarea class="form-control" placeholder="{{info.goals}}" readonly></textarea>
+<section class="details my-5" style="background:red">
 
-                  </div>
-                </div>
-                <div class="row my-3">
-                  <div class="col-md-12">
-                    <a type="button" data-bs-toggle="modal" data-bs-target="#exampleModalUser">Update User Info <i
-                        class="las la-arrow-right"></i></a>
-                  </div>
-                </div>
-                <!--Modal-->
-                <div class="modal fade" id="exampleModalUser" tabindex="-1" aria-labelledby="exampleModalLabel"
-                  aria-hidden="true">
-                  <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabelUser">Update Your User Information</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body">
-                        <form method="POST" id="UserInfoForm">
-                          {% csrf_token %}
-                          <div class="mb-3">
-                            <label class="form-label">Full Name</label>
-                            <input type="text" class="form-control" name="names" id="names" required>
-                            <div id="names" class="form-text">Enter Your Full Name</div>
-                          </div>
-                          <div class="mb-3">
-                            <label class="form-label">Contacts</label>
-                            <input type="text" class="form-control" name="contacs" id="contacts" required>
-                            <div id="contacts" class="form-text">Enter Your Contacts</div>
-                          </div>
-
-                          <div class="mb-3">
-                            <select class="form-select" name="gender" id="gender">
-                              <option selected disabled value="">Select Gender</option>
-                              <option value="1">Female</option>
-                              <option value="2">Male</option>
-                            </select>
-                          </div>
-                          <div class="mb-3">
-                            <label class="form-label">Weight</label>
-                            <input type="text" class="form-control" name="weight" id="weight" required>
-                            <div id="weight" class="form-text">Enter Your Weight</div>
-                          </div>
-                          <div class="mb-3">
-                            <label class="form-label">Height</label>
-                            <input type="text" class="form-control" name="height" id="height" required>
-                            <div id="height" class="form-text">Enter Your Height </div>
-                          </div>
-                          <div class="mb-3">
-                            <label class="form-label">Date of Birth</label>
-                            <input type="text" class="form-control" name="date_of_birth" id="date_of_birth" required>
-                            <div id="date_of_birth" class="form-text">Enter Your Date of Birth </div>
-                          </div>
-                          <div class="mb-3">
-                            <label class="form-label">Goals</label>
-                            <input type="text" class="form-control" name="goals" id="goals" required>
-                            <div id="goals" class="form-text">Enter Your Goals </div>
-                          </div>
-                          <div class="mb-3">
-                            <label class="form-label">Upload Image</label>
-                            <input type="file" accept="image/*" class="form-control" name="photos" id="photos"
-                              required />
-                            <div id="photos" class="form-text">Select an Image</div>
-                          </div>
-                          <button type="submit" class="btn btn-primary">Submit</button>
-                          <p id="output3" style="color: green;" class="my-4">
-                            <p id="output4" style="color: #e47b18;" class="my-2">
-                            </p>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            </div>
-          </div>
+  </div>
+  </div>
 </section>
+
 
 {% include 'footer.html'%}
 {% endblock %}
