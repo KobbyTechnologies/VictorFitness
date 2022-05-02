@@ -12,11 +12,11 @@ class UserInfo(models.Model):
         ("Other", "Other"),
          ]
     names=models.ForeignKey(MyUser,on_delete=models.CASCADE,null=True)
-    contacts=models.CharField(max_length=30, verbose_name="Contact", blank=True)
-    gender=models.CharField(choices=GENDER, max_length=30,blank=True, verbose_name="Gender")
-    date_of_birth=models.DateField(verbose_name="Date of Birth", blank=True)
+    contacts=models.CharField(max_length=30, verbose_name="Contact", blank=True,null=True)
+    gender=models.CharField(choices=GENDER, max_length=30,blank=True, verbose_name="Gender",null=True)
+    date_of_birth=models.DateField(verbose_name="Date of Birth", blank=True,null=True)
     start_date=models.DateTimeField(auto_now_add=True)
-    profilePic = models.ImageField(upload_to='img/')
+    profilePic = models.ImageField(upload_to='img/',default='1.png')
 
     class Meta:
         verbose_name_plural="User Profile"
@@ -50,4 +50,5 @@ class Goals(models.Model):
     goals = models.TextField(blank=True)
     date_added = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(MyUser,on_delete=models.CASCADE)
+    
 

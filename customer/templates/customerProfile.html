@@ -45,11 +45,33 @@
         </div>
       </div>
       <div class="col-md-5 border-right bg-light">
+        <!--alert -->
+        {% if messages %}
+        {% for message in messages %}
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+        <div class="alert alert-success d-flex align-items-center alert-dismissible my-3" role="alert">
+          <i class="las la-check-double" style="color: white;font-size: 2rem"></i>
+          <div class="a-icon mx-2">
+            {{message}}
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+        <div class="alert alert-danger d-flex align-items-center alert-dismissible alert-warn" role="alert">
+          <i class="las la-exclamation-triangle" style="color: white;font-size: 2rem"></i>
+          <div class="a-icon mx-2">
+            {{message}}
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
         <div class="p-3 py-5">
           <div class="d-flex justify-content-between align-items-center mb-3">
             <h4 class="text-right">Profile Settings</h4>
           </div>
-          <form action="{% url 'customerProfile' %}" method="POST" enctype="multipart/form-data">
+          <form action="{% url 'userinfo' %}" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="row mt-2">
               <div class="col-md-6">

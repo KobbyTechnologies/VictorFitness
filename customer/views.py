@@ -1,6 +1,7 @@
 from email.policy import default
 from genericpath import exists
 from logging import exception
+import os
 from re import U
 from django.shortcuts import redirect, render,HttpResponse
 from django.contrib.auth.decorators import login_required
@@ -12,6 +13,7 @@ from io import BytesIO
 from xhtml2pdf import pisa
 from landing.models import Program_Detail,Program
 from dateutil.relativedelta import relativedelta
+from django.contrib import messages
 
 # Create your views here.
 
@@ -29,6 +31,7 @@ def CustomerLibrary(request):
     ctx = {"pro":programs}
     return render(request,"library.html",ctx)
 
+
 @login_required(login_url='login')
 def CustomerProfile(request):
     exits =''
@@ -36,6 +39,9 @@ def CustomerProfile(request):
     genders = ''
     dateOfBirth =''
     profilePic = ''
+    WHR=''
+    BFP = ''
+    difference_in_years= ''
     try:
         exits = UserInfo.objects.get(names=request.user)
         today =date.today()
@@ -44,40 +50,7 @@ def CustomerProfile(request):
         difference_in_years = int(time_difference.years)
     except:
         pass
-    if request.method == 'POST':
-        try:
-            sex = request.POST.get('gender')
-            contact = request.POST.get('contact')
-            dateOfBirth= datetime.strptime(request.POST.get('date_of_birth'), '%Y-%m-%d').date()
-            profilePic = request.FILES.get('profilePic')
-        except:
-            pass
-        if sex == '0':
-            genders = 'Male'
-        if sex == '1':
-            genders = 'Female'
-        if sex== '2':
-            genders = 'Other'
-        
-        if exits:
-            created = UserInfo.objects.update(
-                contacts = contact,
-                gender=genders,
-                date_of_birth  = dateOfBirth,
-                profilePic = profilePic,
-            )
-            print("successfully updated")
-            return redirect('customerProfile')
-        if not exits:
-            created = UserInfo.objects.create(
-                names = request.user,
-                contacts = contact,
-                gender=genders,
-                date_of_birth  = dateOfBirth,
-                profilePic = profilePic,
-            )
-            print("successfully Created")
-            return redirect('customerProfile')
+    
     try:
         obj= Workout.objects.filter(user=request.user).latest('date_added')
         BMI = round (obj.weight/((obj.height/100)**2),2)
@@ -93,6 +66,47 @@ def CustomerProfile(request):
     ctx={"info": exits,"bmi":BMI,"whr":WHR,
          "age":difference_in_years,"BFP":BFP}
     return render(request,"customerProfile.html",ctx)
+
+def userInfo(request):
+    exits = ''
+    try:
+        exits = UserInfo.objects.get(names=request.user)
+    except:
+        pass
+    if request.method == 'POST':
+        try:
+            sex = request.POST.get('gender')
+            contact = request.POST.get('contact')
+            dateOfBirth= datetime.strptime(request.POST.get('date_of_birth'), '%Y-%m-%d').date()
+            profilePic = request.FILES['profilePic']
+        except:
+            pass
+        if sex == '0':
+            genders = 'Male'
+        if sex == '1':
+            genders = 'Female'
+        if sex== '2':
+            genders = 'Other'
+        if exits:
+            exits.contacts =contact
+            exits.gender =genders
+            exits.date_of_birth =dateOfBirth
+            exits.profilePic =profilePic
+            exits.save()
+            messages.success(request, "successfully updated")
+            return redirect('customerProfile')
+        if not exits:
+            user_obj = UserInfo.objects.create(
+                names = request.user,
+                contacts = contact,
+                gender=genders,
+                date_of_birth  = dateOfBirth,
+                profilePic = profilePic,
+            )
+            messages.success(request, "successfully Created")
+            return redirect('customerProfile')
+    return redirect ('customerProfile')
+    
 
 @login_required(login_url='login')
 def Gallery_Request(request):

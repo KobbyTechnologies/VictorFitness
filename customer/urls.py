@@ -13,6 +13,7 @@ urlpatterns = [
     path('report',views.my_view,name='report'),
     path('goals',views.WorkoutGoals,name='goals'),
     path('customerLibrary',views.CustomerLibrary,name='customerLibrary'),
+    path('userinfo',views.userInfo,name='userinfo'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
