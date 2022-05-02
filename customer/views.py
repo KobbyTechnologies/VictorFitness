@@ -58,7 +58,7 @@ def CustomerProfile(request):
         if exits.gender == 'Male' or exits.gender == 'Other':
             BFP = round(1.20 * obj.bmi + 0.23 * difference_in_years-16.2,2)
         elif exits.gender == 'Female':
-            BFP = round(1.20 * obj.bmi + 0.23 * difference_in_years-16.2,2)
+            BFP = round(1.20 * obj.bmi + 0.23 * difference_in_years-5.4,2)
         else:
             BFP = 0
     except:
@@ -168,7 +168,6 @@ def workout(request):
             else:
                 whrTarget = 'Hip and waist cannot be negative.'
             # WHR END
-            print(whrStatus)
             # BMI START
             if BMI > 29.9:
                 status = 'Obese'
@@ -219,20 +218,20 @@ def my_view(request):
         obj= Workout.objects.filter(user=request.user)
         obj2= Goals.objects.filter(user=request.user)
         obj3 = UserInfo.objects.get(names=request.user)
+        objs= Workout.objects.filter(user=request.user).latest('date_added')
         today =date.today()
         dob = obj3.date_of_birth
         time_difference = relativedelta(today, dob)
         difference_in_years = int(time_difference.years)
+        
         if obj3.gender == 'Male' or obj3.gender == 'Other':
-            BFP = round(120 * obj.bmi + 0.23 * difference_in_years-16.2,2)
+            BFP = 1.20 * objs.bmi + 0.23 * difference_in_years-16.2
         if obj3.gender == 'Female':
-            BFP = round(120 * obj.bmi + 0.23 * difference_in_years-16.2,2)
-        #Retrieve data or whatever you need
+            BFP = 1.20 * objs.bmi + 0.23 * difference_in_years-5.4
         if request.method == "POST":
             return render_to_pdf(
                 'stats.html',
                 {
-                    'pagesize':'A4',
                     'data': obj,
                     'name':request.user,
                     'goals':obj2,
