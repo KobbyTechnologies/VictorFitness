@@ -11,7 +11,7 @@ from django.template import Context
 from io import BytesIO
 from xhtml2pdf import pisa
 from landing.models import Program_Detail,Program
-
+from dateutil.relativedelta import relativedelta
 
 # Create your views here.
 
@@ -33,8 +33,15 @@ def CustomerLibrary(request):
 def CustomerProfile(request):
     exits =''
     BMI = ''
+    genders = ''
+    dateOfBirth =''
+    profilePic = ''
     try:
         exits = UserInfo.objects.get(names=request.user)
+        today =date.today()
+        dob = exits.date_of_birth
+        time_difference = relativedelta(today, dob)
+        difference_in_years = int(time_difference.years)
     except:
         pass
     if request.method == 'POST':
@@ -73,10 +80,18 @@ def CustomerProfile(request):
             return redirect('customerProfile')
     try:
         obj= Workout.objects.filter(user=request.user).latest('date_added')
-        BMI = (round (obj.weight/((obj.height/100)**2),2)) 
+        BMI = round (obj.weight/((obj.height/100)**2),2)
+        WHR = round((obj.waist/obj.hip),2)
+        if exits.gender == 'Male' or exits.gender == 'Other':
+            BFP = round(1.20 * obj.bmi + 0.23 * difference_in_years-16.2,2)
+        elif exits.gender == 'Female':
+            BFP = round(1.20 * obj.bmi + 0.23 * difference_in_years-16.2,2)
+        else:
+            BFP = 0
     except:
         pass  
-    ctx={"info": exits,"bmi":BMI}
+    ctx={"info": exits,"bmi":BMI,"whr":WHR,
+         "age":difference_in_years,"BFP":BFP}
     return render(request,"customerProfile.html",ctx)
 
 @login_required(login_url='login')
@@ -189,6 +204,15 @@ def my_view(request):
     try:
         obj= Workout.objects.filter(user=request.user)
         obj2= Goals.objects.filter(user=request.user)
+        obj3 = UserInfo.objects.get(names=request.user)
+        today =date.today()
+        dob = obj3.date_of_birth
+        time_difference = relativedelta(today, dob)
+        difference_in_years = int(time_difference.years)
+        if obj3.gender == 'Male' or obj3.gender == 'Other':
+            BFP = round(120 * obj.bmi + 0.23 * difference_in_years-16.2,2)
+        if obj3.gender == 'Female':
+            BFP = round(120 * obj.bmi + 0.23 * difference_in_years-16.2,2)
         #Retrieve data or whatever you need
         if request.method == "POST":
             return render_to_pdf(
@@ -198,6 +222,8 @@ def my_view(request):
                     'data': obj,
                     'name':request.user,
                     'goals':obj2,
+                    'Age':difference_in_years,
+                    'BFP':BFP,
                 }
             )
     except:

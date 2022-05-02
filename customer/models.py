@@ -16,7 +16,7 @@ class UserInfo(models.Model):
     gender=models.CharField(choices=GENDER, max_length=30,blank=True, verbose_name="Gender")
     date_of_birth=models.DateField(verbose_name="Date of Birth", blank=True)
     start_date=models.DateTimeField(auto_now_add=True)
-    profilePic = models.ImageField(upload_to='images/',blank=True)
+    profilePic = models.ImageField(upload_to='img/')
 
     class Meta:
         verbose_name_plural="User Profile"

@@ -17,8 +17,7 @@ import dj_database_url
 from decouple import config,Csv
 import  cloudinary
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 MODE=config("MODE", default="dev")
 SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
@@ -47,11 +46,8 @@ else:
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
-#DATABASES = {'default': {'ENGINE': 'django.db.backends.sqlite3','NAME': 'victor',}}
-
-
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
-
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
@@ -130,11 +126,10 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 cloudinary.config( 
-  cloud_name = "dzaf0ojhc", 
-  api_key = "987225516723774", 
-  api_secret = "RQAtgf-lmvNVCO0arxQqNXNA4Ps" 
-) 
-
+  cloud_name = "enock", 
+  api_key = "131559831386722", 
+  api_secret = "fDQuLwrK6ExBtidSqxme_ZzHaxY" 
+)
 
 DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
 EMAIL_BACKEND = config('EMAIL_BACKEND')
