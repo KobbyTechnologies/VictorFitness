@@ -17,8 +17,8 @@
           <span class="text-light"><span class="text-dark my-2">Contacts:</span> {{info.contacts}}</span>
           <span>
           </span>
-
         </div>
+
         <div class="row">
           <div class="col-md-6">
             <button type="button" class="btn d-flex btn-warning w-100 d-block text-success font-medium">
@@ -45,28 +45,6 @@
         </div>
       </div>
       <div class="col-md-5 border-right bg-light">
-        <!--alert -->
-        {% if messages %}
-        {% for message in messages %}
-        {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
-        <div class="alert alert-success d-flex align-items-center alert-dismissible my-3" role="alert">
-          <i class="las la-check-double" style="color: white;font-size: 2rem"></i>
-          <div class="a-icon mx-2">
-            {{message}}
-          </div>
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        {% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
-        <div class="alert alert-danger d-flex align-items-center alert-dismissible alert-warn" role="alert">
-          <i class="las la-exclamation-triangle" style="color: white;font-size: 2rem"></i>
-          <div class="a-icon mx-2">
-            {{message}}
-          </div>
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        {% endif %}
-        {% endfor %}
-        {% endif %}
         <div class="p-3 py-5">
           <div class="d-flex justify-content-between align-items-center mb-3">
             <h4 class="text-right">Profile Settings</h4>
@@ -107,102 +85,137 @@
         </div>
       </div>
       <div class="col-md-4" style="background: whitesmoke;">
-        <div class="p-3 py-5">
-          <div class="d-flex justify-content-between align-items-center">
-            <span>Workout Settings</span>
-            <form action="{% url 'report' %}" method="post">
-              {% csrf_token %}
-              <button type="submit" class="btn button-41 repo"><i class="fa fa-plus"></i>
-                &nbsp; Generate Report</button>
-            </form>
-          </div><br>
-          <div class="row">
-            <div class="col-md-12">
-              <div class="accordion my-2" id="workoutdata">
-                <div class="accordion-item panel">
-                  <h2 class="accordion-header" id="workoutheader">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                      data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                      Add Workout Info
-                    </button>
-                  </h2>
-                  <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="workoutheader"
-                    data-bs-parent="#workoutdata">
-                    <div class="accordion-body panel-body">
-                      <form action="{% url 'workout' %}" method="post">
-                        {% csrf_token %}
-                        <div class="row">
-                          <div class="col-md-12">
-                            <label class="labels">Weight (KGS)</label>
-                            <input type="text" class="form-control" placeholder="Enter your weight in Kgs"
-                              name="weight">
+        <div class="row">
+          <div class="col-md-12">
+            {% if messages %}
+            {% for message in messages %}
+            {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+            <div style="z-index: 11; margin-top:1rem">
+              <div class="toast show w-100 bg-success text-white border-0 align-items-center mt-2" aria-live="assertive"
+                aria-atomic="true" role="alert" data-bs-delay="1000">
+                <div class="toast-header">
+                  <strong class="me-auto">Success</strong>
+                  <button type="button" class="btn-close btn-close-dark me-2 m-auto" data-bs-dismiss="toast"></button>
+                </div>
+                <div class="toast-body">
+                  <p>{{message}}</p>
+                </div>
+              </div>
+            </div>
+            {% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+            <div style="z-index: 11; margin-top:1rem">
+              <div class="toast show w-100 bg-danger text-white border-0 align-items-center mt-2" aria-live="assertive"
+                aria-atomic="true" role="alert" data-bs-delay="1000">
+                <div class="toast-header">
+                  <strong class="me-auto">Ooopps!</strong>
+                  <button type="button" class="btn-close btn-close-dark me-2 m-auto" data-bs-dismiss="toast"></button>
+                </div>
+                <div class="toast-body">
+                  <p>{{message}}</p>
+                </div>
+              </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+          </div>
+          <div class="p-3 py-3">
+            <div class="d-flex justify-content-between align-items-center">
+              <span>Workout Settings</span>
+              <form action="{% url 'report' %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn button-41 repo"><i class="fa fa-plus"></i>
+                  &nbsp; Generate Report</button>
+              </form>
+            </div><br>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="accordion my-2" id="workoutdata">
+                  <div class="accordion-item panel">
+                    <h2 class="accordion-header" id="workoutheader">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        Add Workout Info
+                      </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="workoutheader"
+                      data-bs-parent="#workoutdata">
+                      <div class="accordion-body panel-body">
+                        <form action="{% url 'workout' %}" method="post">
+                          {% csrf_token %}
+                          <div class="row">
+                            <div class="col-md-12">
+                              <label class="labels">Weight (KGS)</label>
+                              <input type="text" class="form-control" placeholder="Enter your weight in Kgs"
+                                name="weight">
+                            </div>
+                            <div class="col-md-12">
+                              <label class="labels">Height(cm)</label>
+                              <input type="text" class="form-control" placeholder="Enter Height in CM" name="height">
+                            </div>
+                            <div class="col-md-12">
+                              <label class="labels">Waist Circumference (cm)</label>
+                              <input type="text" class="form-control" placeholder="Enter Waist Circumference in CM"
+                                name="waist">
+                            </div>
+                            <div class="col-md-12">
+                              <label class="labels">Hip Circumference(cm)</label>
+                              <input type="text" class="form-control" placeholder="Enter Hip Circumference in CM"
+                                name="hip">
+                            </div>
                           </div>
-                          <div class="col-md-12">
-                            <label class="labels">Height(cm)</label>
-                            <input type="text" class="form-control" placeholder="Enter Height in CM" name="height">
-                          </div>
-                          <div class="col-md-12">
-                            <label class="labels">Waist Circumference (cm)</label>
-                            <input type="text" class="form-control" placeholder="Enter Waist Circumference in CM"
-                              name="waist">
-                          </div>
-                          <div class="col-md-12">
-                            <label class="labels">Hip Circumference(cm)</label>
-                            <input type="text" class="form-control" placeholder="Enter Hip Circumference in CM"
-                              name="hip">
-                          </div>
-                        </div>
-                        <button class="btn btn-success mt-3  button-41" type="submit">Submit</button>
-                      </form>
+                          <button class="btn btn-success mt-3  button-41" type="submit">Submit</button>
+                        </form>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="accordion my-2" id="workoutGoals">
-                <div class="accordion-item panel">
-                  <h2 class="accordion-header" id="headingTwo">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                      data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                      Add Workout Goals
-                    </button>
-                  </h2>
-                  <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                    data-bs-parent="#workoutGoals">
-                    <div class="accordion-body panel-body">
-                      <form action="{% url 'goals' %}" method="post">
-                        {% csrf_token %}
-                        <div class="row">
-                          <div class="col-md-12">
-                            <label class="labels"> Workout Goal</label>
-                            <textarea class="form-control" name="goals" rows="5"></textarea>
+                <div class="accordion my-2" id="workoutGoals">
+                  <div class="accordion-item panel">
+                    <h2 class="accordion-header" id="headingTwo">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Add Workout Goals
+                      </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                      data-bs-parent="#workoutGoals">
+                      <div class="accordion-body panel-body">
+                        <form action="{% url 'goals' %}" method="post">
+                          {% csrf_token %}
+                          <div class="row">
+                            <div class="col-md-12">
+                              <label class="labels"> Workout Goal</label>
+                              <textarea class="form-control" name="goals" rows="5"></textarea>
+                            </div>
                           </div>
-                        </div>
-                        <button class="btn btn-success mt-3  button-41" type="submit">Submit</button>
-                      </form>
+                          <button class="btn btn-success mt-3  button-41" type="submit">Submit</button>
+                        </form>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-              <div class="toast show w-100 mt-5">
-                <div class="toast-header">
-                  <strong class="me-auto">Disclaimer!!</strong>
-                  <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="toast show w-100 mt-5">
+                  <div class="toast-header">
+                    <strong class="me-auto">Disclaimer!!</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+                  </div>
+                  <div class="toast-body">
+                    <p>Update your workout info regularly for the system to create a more personalized report about your
+                      workout progress.</p>
+                  </div>
                 </div>
-                <div class="toast-body">
-                  <p>Update your workout info regularly for the system to create a more personalized report about your
-                    workout progress.</p>
-                </div>
+
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 </section>
 <section class="details my-5" style="background:red">
 

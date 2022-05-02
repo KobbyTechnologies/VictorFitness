@@ -93,7 +93,7 @@ def userInfo(request):
             exits.date_of_birth =dateOfBirth
             exits.profilePic =profilePic
             exits.save()
-            messages.success(request, "successfully updated")
+            messages.success(request, "successfully Updated")
             return redirect('customerProfile')
         if not exits:
             user_obj = UserInfo.objects.create(
@@ -103,7 +103,7 @@ def userInfo(request):
                 date_of_birth  = dateOfBirth,
                 profilePic = profilePic,
             )
-            messages.success(request, "successfully Created")
+            messages.success(request, "successfully Added")
             return redirect('customerProfile')
     return redirect ('customerProfile')
     
@@ -199,7 +199,7 @@ def workout(request):
             whr=WHR,
             whrStatus =whrStatus,
         )
-        print("Created successfully")
+        messages.success(request, "successfully Added")
         return redirect ('customerProfile')
     return redirect ('customerProfile')
 
@@ -251,6 +251,6 @@ def WorkoutGoals(request):
             goals=goals,
             user=request.user
         )
-        print('Added successfully')
+        messages.success(request, "successfully Added")
         return redirect ('customerProfile')
     return redirect ('customerProfile')
