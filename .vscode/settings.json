@@ -3,6 +3,7 @@
         "dateutil",
         "mylist",
         "userinfo",
+        "whrs",
         "workoutdata"
     ]
 }

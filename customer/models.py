@@ -39,11 +39,11 @@ class Workout(models.Model):
     user = models.ForeignKey(MyUser,on_delete=models.CASCADE)
     date_added = models.DateTimeField(auto_now_add=True)
     status = models.CharField(blank=True,max_length=100)
-    bmi = models.IntegerField(blank=True,default=0.0)
+    bmi = models.FloatField(blank=True,default=0.0)
     recommendations = models.TextField(blank=True)
     waist = models.IntegerField(blank=True,default=0.0)
     hip = models.IntegerField(blank=True,default=0.0)
-    whr = models.IntegerField(blank=True,default=0.0)
+    whr = models.FloatField(blank=True,default=0.0)
     whrStatus = models.CharField(blank=True,max_length=100)
     
 class Goals(models.Model):

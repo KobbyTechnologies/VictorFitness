@@ -126,6 +126,7 @@ def Gallery_Request(request):
     ctx = {"album":album}
     return render(request,"gallery.html",ctx)
 def workout(request):
+    target = ''
     try:
         sex= UserInfo.objects.get(names=request.user)
         gender = sex.gender
@@ -150,19 +151,25 @@ def workout(request):
                 if gender  == 'Male' or gender == 'Other':
                     if WHR > 1:
                         whrStatus = 'High'
+                        whrs = WHR
                     elif WHR >= 0.96 and WHR >=1.0:
                         whrStatus = 'Moderate' 
+                        whrs = WHR
                     elif WHR <= 0.96:
                         whrStatus = 'Low'
+                        whrs = WHR
                     else:
                         whrStatus = 'Invalid Entries'
                 if gender  == 'Female':
                     if WHR > 0.85:
                         whrStatus = 'High'
+                        whrs = WHR
                     elif WHR >= 0.81 and WHR >=0.85:
                         whrStatus = 'Moderate' 
+                        whrs = WHR
                     elif WHR <= 0.81:
                         whrStatus = 'Low'
+                        whrs = WHR
                     else:
                         whrStatus = 'Invalid Entries'
             else:
@@ -196,7 +203,7 @@ def workout(request):
             recommendations = target,
             waist =waist,
             hip = hip,
-            whr=WHR,
+            whr = whrs,
             whrStatus =whrStatus,
         )
         messages.success(request, "successfully Added")
