@@ -4,87 +4,151 @@
 {% block content %}
 {% include 'navbar.html'%}
 
-<style>
-  table{
-    font-size: 1.3em;
-    font-weight: 700;
-    text-transform: uppercase;
-    
-  }
-  
-    thead{
-      background-color: black;
-      color: white;
-    }
-  
-  tbody{
-    background-color: white;
-  }
 
-  tbody td,
-  tbody th{
-    padding-block: 20px !important;
-  }
-
-  tbody tr{
-    margin-bottom: 1em;
-  }
-</style>
 <section class="details">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="header ">
-                    <div class="a-hero mx-auto text-center">
-                        <h3>
-                            <span>Workout Title</span>
-                        </h3>
-                    </div>
-                </div>
-            </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="header ">
+          <div class="a-hero mx-auto text-center">
+            <h3>
+              <span>Workout Title</span>
+            </h3>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </section>
 
 <section>
-    <div class="container">
-        <div class="row my-5">
-          <h1 class="mb-2">Upper body</h1>
-          <h3>Day 1</h3>
-            <table class="table">
-                <thead class="thead-dark">
-                  <tr>
-                    <th scope="col"></th>
-                    <th scope="col">Exericise</th>
-                    <th scope="col">Equipments</th>
-                    <th scope="col">Sets</th>
-                    <th scope="col">Rest</th>
-                    <th scope="col"></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Lorem ipsum dolor sit amet consectetur adipisicing.</td>
-                    <td>Dumbel</td>
-                    <td>8</td>
-                    <td>90 seconds</td>
-                    <td><strong> &#9432; </strong></td>
-                  </tr>
-
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Lorem ipsum dolor sit amet consectetur adipisicing.</td>
-                    <td>Dumbel</td>
-                    <td>8</td>
-                    <td>90 seconds</td>
-                    <td><strong> &#9432; </strong></td>
-                  </tr>
-                </tbody>
-              </table>
-        </div>
+  <div class="container workout-info my-5">
+    <div class="workout-info__title mb-5">
+      <h3>What you will do in this workout</h3>
     </div>
+    <div class="workout-info__body">
+      <div class="row">
+        <div class="col-2">
+          <div class="day">
+            <p class="day-top">Day</p>
+            <p class="day-bottom">1</p>
+          </div>
+        </div>
+        <div class="col-8">
+          <div class="exercise-detail">
+
+            <h3>exercise name</h3>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem nisi accusantium quo voluptates velit
+              veritatis fugiat? Omnis ea dolorum et deleniti libero? Nobis sapiente eveniet reiciendis inventore
+              asperiores officiis accusantium qui, a corrupti, quia dicta. Aperiam blanditiis molestiae repellendus.
+              Quis?
+            </p>
+            <div class="row">
+              <div class="col-6">
+                <p>Equipment: <span>Yoga Mat</span></p>
+              </div>
+              <div class="col-6">
+                <p>Duration: <span>10Min</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-2">
+          <div class="play">
+            <!-- <span id="mymodal"><i class="las la-play-circle"></i></span> -->
+            <button class="open-button"><i class="las la-play-circle"></i></button>
+            
+          </div>
+        </div>
+      </div>
+
+
+      <dialog  id="modal">
+        <div class="modal-content">
+          <caption>Rock the Boat</caption>
+          <div class="modal-content__media">
+            <img src="{% static 'img/workout/rock-the-boat.gif' %}" alt="">
+          </div>
+          
+          <button class="close-button"><i class="las la-times"></i></button>
+        
+        </div>
+      </dialog>
+    </div>
+
+
+    <div class="workout-info__body">
+      <div class="row">
+        <div class="col-2">
+          <div class="day">
+            <p class="day-top">Day</p>
+            <p class="day-bottom">2</p>
+          </div>
+        </div>
+        <div class="col-8">
+          <div class="exercise-detail">
+
+            <h3>exercise name</h3>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem nisi accusantium quo voluptates velit
+              veritatis fugiat? Omnis ea dolorum et deleniti libero? Nobis sapiente eveniet reiciendis inventore
+              asperiores officiis accusantium qui, a corrupti, quia dicta. Aperiam blanditiis molestiae repellendus.
+              Quis?
+            </p>
+            <div class="row">
+              <div class="col-6">
+                <p>Equipment: <span>Yoga Mat</span></p>
+              </div>
+              <div class="col-6">
+                <p>Duration: <span>10Min</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-2">
+          <div class="play">
+            <!-- <span id="mymodal"><i class="las la-play-circle"></i></span> -->
+            <button class="open-button"><i class="las la-play-circle"></i></button>
+            
+          </div>
+        </div>
+      </div>
+
+      
+      <dialog  id="modal">
+        <div class="modal-content">
+          <caption>Rock the Boat</caption>
+          <div class="modal-content__media">
+            <img src="{% static 'img/workout/exc-2.gif' %}" alt="">
+          </div>
+          
+          <button class="close-button"><i class="las la-times"></i></button>
+        
+        </div>
+      </dialog>
+    </div>
+
+    <div class="workout-info__review">
+
+    </div>
+
+  </div>
 </section>
 
+
+
+
 {% include 'footer.html'%}
+<script>
+  const modal = document.querySelector('#modal');
+  const openModal = document.querySelector('.open-button');
+  const closeModal = document.querySelector('.close-button');
+
+  openModal.addEventListener('click', () => {
+    modal.showModal();
+  })
+
+  closeModal.addEventListener('click', () => {
+    modal.close();
+  })
+</script>
 {% endblock %}

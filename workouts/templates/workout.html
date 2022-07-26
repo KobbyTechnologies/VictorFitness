@@ -3,16 +3,6 @@
 {% load static %}
 {% block content %}
 {% include 'navbar.html'%}
-<style>
-    .workout-container{
-
-    }
-    .workout-container img{
-        width: 100%;
-        border: 1px solid red;
-        border-radius: 4px;
-    }
-</style>
 <section class="details">
     <div class="container-fluid">
         <div class="row">
@@ -31,35 +21,186 @@
 {% include 'workout-routines.html' %}
 <section>
     <div class="container">
-        <div class="row my-5">
-            <div class="col-md-3 col-sm-6 mb-3 workout-container">
+        <div class="row my-5 gap-3">
+            <div class="col-md-2 col-sm-6 mb-3 workout-container">
                 <img src="{% static 'img/workout/workout-1.jpg'%}" alt="">
-                <h2>workout 1</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At, necessitatibus.</p>
-                <a href="#" type="button" class="btn">Enroll Now<i class="las la-angle-double-right"></i>
-                </a>
+                <div class="container-body">
+                    <h2>workout 1</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At, necessitatibus.</p>
+                    <div class="row">
+                        <div class="col-6">
+                            <p>
+                                Type: <span>Balance</span>
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            <p>
+                                Intensity: <span>Low</span>
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            Fee: <span>KES 1000</span>
+                        </div>
+                        <div class="col-6">
+                            <a href="{% url 'workout-detail' %}" type="button">Enroll Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-3 col-sm-6 mb-3 workout-container">
+            <div class="col-md-2 col-sm-6 mb-3 workout-container">
                 <img src="{% static 'img/workout/workout-1.jpg'%}" alt="">
-                <h2>workout 2</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At, necessitatibus.</p>
-                <a href="#" type="button" class="btn">Enroll Now<i class="las la-angle-double-right"></i>
-                </a>
+                <div class="container-body">
+                    <h2>workout 2</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At, necessitatibus.</p>
+                    <div class="row">
+                        <div class="col-6">
+                            <p>
+                                Type: <span>Balance</span>
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            <p>
+                                Intensity: <span>Low</span>
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            Fee: <span>KES 1000</span>
+                        </div>
+                        <div class="col-6">
+                            <a href="{% url 'workout-detail' %}" type="button">Enroll Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-3 col-sm-6  mb-3 workout-container">
+            <div class="col-md-2 col-sm-6  mb-3 workout-container">
                 <img src="{% static 'img/workout/workout-1.jpg'%}" alt="">
-                <h2>workout 3</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At, necessitatibus.</p>
-                <a href="#" type="button" class="btn">Enroll Now<i class="las la-angle-double-right"></i>
-                </a>
+                <div class="container-body">
+                    <h2>workout 3</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At, necessitatibus.</p>
+                    <div class="row">
+                        <div class="col-6">
+                            <p>
+                                Type: <span>Balance</span>
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            <p>
+                                Intensity: <span>Low</span>
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            Fee: <span>KES 1000</span>
+                        </div>
+                        <div class="col-6">
+                            <a href="{% url 'workout-detail' %}" type="button">Enroll Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-3 col-sm-6 mb-3 workout-container">
+            <div class="col-md-2 col-sm-6 mb-3 workout-container">
                 <img src="{% static 'img/workout/workout-1.jpg'%}" alt="">
-                <h2>workout 4</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At, necessitatibus.</p>
-                <a href="#" type="button" class="btn">Enroll Now<i class="las la-angle-double-right"></i>
-                </a>
-
+                <div class="container-body">
+                    <h2>workout 4</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At, necessitatibus.</p>
+                    <div class="row">
+                        <div class="col-6">
+                            <p>
+                                Fee: <span>KES 1000</span>
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            <a href="{% url 'workout-detail' %}" type="button">Enroll Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-6 mb-3 workout-container">
+                <img src="{% static 'img/workout/workout-1.jpg'%}" alt="">
+                <div class="container-body">
+                    <h2>workout 4</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At, necessitatibus.</p>
+                    <div class="row">
+                        <div class="col-6">
+                            <p>
+                                Type: <span>Balance</span>
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            <p>
+                                Intensity: <span>Low</span>
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            <p>
+                                Fee: <span>KES 1000</span>
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            <a href="{% url 'workout-detail' %}" type="button">Enroll Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-6 mb-3 workout-container">
+                <img src="{% static 'img/workout/workout-1.jpg'%}" alt="">
+                <div class="container-body">
+                    <h2>workout 4</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At, necessitatibus.</p>
+                    <div class="row">
+                        <div class="col-6">
+                            <p>
+                                Type: <span>Balance</span>
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            <p>
+                                Intensity: <span>Low</span>
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            <p>
+                                Fee: <span>KES 1000</span>
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            <a href="{% url 'workout-detail' %}" type="button">Enroll Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-6 mb-3 workout-container">
+                <img src="{% static 'img/workout/workout-1.jpg'%}" alt="">
+                <div class="container-body">
+                    <h2>workout 4</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At, necessitatibus.</p>
+                    <div class="row">
+                        <div class="col-6">
+                            <p>
+                                Type: <span>Balance</span>
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            <p>
+                                Intensity: <span>Low</span>
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            <p>
+                                Fee: <span>KES 1000</span>
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            <a href="{% url 'workout-detail' %}" type="button">Enroll Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

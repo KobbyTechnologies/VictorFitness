@@ -1,7 +1,6 @@
 from email.policy import default
 from genericpath import exists
 from logging import exception
-import os
 from re import U
 from django.shortcuts import redirect, render, HttpResponse
 from django.contrib.auth.decorators import login_required

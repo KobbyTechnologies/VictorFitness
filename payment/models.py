@@ -1,10 +1,5 @@
 from django.db import models
-from datetime import datetime
-from django.utils import timezone
-import pytz
-
 from django.conf import settings
-
 from landing.models import Program_Detail
 
 # Create your models here.

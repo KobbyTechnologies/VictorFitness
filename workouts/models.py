@@ -1,9 +1,6 @@
-from tkinter import CASCADE
-from unicodedata import name
 from django.db import models
 from cloudinary.models import CloudinaryField
 # Create your models here.
-
 
 
 class Equipment(models.Model):
@@ -11,39 +8,40 @@ class Equipment(models.Model):
     image = CloudinaryField('image', blank=True)
 
     def __str__(self):
-        return super(self.name)
+        return self.name
 
-class Exercise_Type(models.Model):
+
+class ExerciseType(models.Model):
     INTENSITY_CHOICES = (
         ("Low", "Low"),
         ("Moderate", "Moderate"),
         ("Vigorous", "Vigorous"),
     )
-    
     name = models.CharField(max_length=255)
-    description = models.TextField()
     intensity = models.CharField(
-        choices=INTENSITY_CHOICES,max_length=200 , default='Moderate')
-    video_title = models.CharField(max_length=1000, blank=True)
-    videofile = models.FileField(
-        upload_to='videos/', null=True, verbose_name="")
-
+        choices=INTENSITY_CHOICES, max_length=200, default='Moderate')
 
     def __str__(self):
         return str(self.name)
 
 
-
 class Exercise(models.Model):
     name = models.CharField(max_length=200)
-    exercise = models.ForeignKey(Exercise_Type, on_delete=models.CASCADE)
-    equipment = models.ForeignKey(Equipment, on_delete=models.CASCADE, related_name='Equipments')
+    description = models.TextField()
+    exercise_type = models.ForeignKey(ExerciseType, on_delete=models.PROTECT)
+    equipment = models.ForeignKey(
+        Equipment, on_delete=models.PROTECT, related_name='Equipments')
+    video_title = models.CharField(max_length=1000, blank=True)
+    videofile = models.FileField(
+        upload_to='videos/', null=True, verbose_name="")
+    duration = models.IntegerField(default=10, help_text="Duration in Minutes")
     last_update = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return str(self.name)
 
-class Workout_Type(models.Model):
+
+class WorkoutType(models.Model):
     name = models.CharField(max_length=200)
     image = CloudinaryField('image', blank=True)
 
@@ -51,10 +49,10 @@ class Workout_Type(models.Model):
         return str(self.name)
 
 
-class Workout(models.Model):
+class ProgramWorkout(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField()
-    exercises = models.ManyToManyField(Exercise)
+    workout_type = models.ForeignKey(WorkoutType, on_delete=models.PROTECT)
     image = CloudinaryField('image', blank=True)
     price = models.IntegerField(blank=True, null=True)
     last_update = models.DateTimeField(auto_now_add=True)
@@ -62,8 +60,9 @@ class Workout(models.Model):
     def __str__(self):
         return str(self.name)
 
-class Workout_Junction(models.Model):
-    workout = models.ForeignKey(Workout, on_delete=models.CASCADE, related_name='workouts')
-    exercise = models.ForeignKey(Exercise, on_delete=models.CASCADE, related_name='exercises')
 
-
+class WorkoutJunction(models.Model):
+    workout = models.ForeignKey(
+        ProgramWorkout, on_delete=models.PROTECT, related_name='workouts')
+    exercise = models.ForeignKey(
+        Exercise, on_delete=models.PROTECT, related_name='exercises')
