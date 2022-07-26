@@ -71,6 +71,8 @@ INSTALLED_APPS = [
     'cloudinary',
     'authentication',
     'customer',
+    'payment',
+    'workouts',
 ]
 AUTH_USER_MODEL = "authentication.MyUser"
 

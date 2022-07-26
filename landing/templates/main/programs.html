@@ -58,13 +58,19 @@
                                             </a>
 
                                             {% else %}
-                                            <span class="text1">Fee: <span class=" text2">
-                                                    Kshs {{res.price}}</span>
+                                                <span class="text1">Fee: <span class=" text2">
+                                                        Kshs {{res.price}}</span>
 
-                                            </span>
-                                            <a href="{% url 'login' %}" type="button" class="btn">Enroll Now<i
-                                                    class="las la-angle-double-right"></i>
-                                            </a>
+                                                </span>
+                                                {% if request.user.is_authenticated %}
+                                                <a href="{% url 'payment' %}" type="button" class="btn">Enroll Now<i
+                                                        class="las la-angle-double-right"></i>
+                                                </a>
+                                                {% else %}
+                                                <a href="{% url 'login' %}" type="button" class="btn">Enroll Now<i
+                                                        class="las la-angle-double-right"></i>
+                                                </a>
+                                                {% endif %}
                                             {% endif %}
 
                                         </div>

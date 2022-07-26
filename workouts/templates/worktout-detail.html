@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% load static %}
+{% block content %}
+{% include 'navbar.html'%}
+
+<style>
+  table{
+    font-size: 1.3em;
+    font-weight: 700;
+    text-transform: uppercase;
+    
+  }
+  
+    thead{
+      background-color: black;
+      color: white;
+    }
+  
+  tbody{
+    background-color: white;
+  }
+
+  tbody td,
+  tbody th{
+    padding-block: 20px !important;
+  }
+
+  tbody tr{
+    margin-bottom: 1em;
+  }
+</style>
+<section class="details">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="header ">
+                    <div class="a-hero mx-auto text-center">
+                        <h3>
+                            <span>Workout Title</span>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="row my-5">
+          <h1 class="mb-2">Upper body</h1>
+          <h3>Day 1</h3>
+            <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Exericise</th>
+                    <th scope="col">Equipments</th>
+                    <th scope="col">Sets</th>
+                    <th scope="col">Rest</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Lorem ipsum dolor sit amet consectetur adipisicing.</td>
+                    <td>Dumbel</td>
+                    <td>8</td>
+                    <td>90 seconds</td>
+                    <td><strong> &#9432; </strong></td>
+                  </tr>
+
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Lorem ipsum dolor sit amet consectetur adipisicing.</td>
+                    <td>Dumbel</td>
+                    <td>8</td>
+                    <td>90 seconds</td>
+                    <td><strong> &#9432; </strong></td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</section>
+
+{% include 'footer.html'%}
+{% endblock %}

@@ -1,0 +1,83 @@
+{% load static %}
+<style>
+    .routines a{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .routines img {
+        width: 5em;
+        aspect-ratio: 1;
+        border-radius: 100%;
+    }
+    .routines caption{
+        text-decoration: underline;
+    }
+
+</style>
+
+<div class="container">
+    <h3 class="my-3">
+        Workout Routines
+    </h3>
+    <div class="row my-4">
+        <div class="routines col-md-1 ">
+            <a href="">
+                <img src="{% static 'img/workout/abs.jpg'%}" alt="">
+                <caption>ABS</caption>
+            </a>
+
+        </div>
+
+        <div class="routines col-md-1 ">
+            <a href="">
+                <img src="{% static 'img/workout/abs.jpg'%}" alt="">
+                <caption>Chest</caption>
+            </a>
+
+        </div>
+
+        <div class="routines col-md-1 ">
+            <a href="">
+                <img src="{% static 'img/workout/abs.jpg'%}" alt="">
+                <caption>Arms</caption>
+            </a>
+
+        </div>
+
+        <div class="routines col-md-1 ">
+            <a href="">
+                <img src="{% static 'img/workout/abs.jpg'%}" alt="">
+                <caption>Legs</caption>
+            </a>
+
+        </div>
+
+        <div class="routines col-md-1 ">
+            <a href="">
+                <img src="{% static 'img/workout/abs.jpg'%}" alt="">
+                <caption>Shoulders</caption>
+            </a>
+
+        </div>
+
+        <div class="routines col-md-1 ">
+            <a href="">
+                <img src="{% static 'img/workout/abs.jpg'%}" alt="">
+                <caption>Back</caption>
+            </a>
+
+        </div>
+
+        <div class="routines col-md-1 ">
+            <a href="">
+                <img src="{% static 'img/workout/abs.jpg'%}" alt="">
+                <caption>Full body</caption>
+            </a>
+
+        </div>
+    </div>
+</div>

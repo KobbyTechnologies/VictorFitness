@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% load static %}
+{% block content %}
+{% include 'navbar.html'%}
+<style>
+    .workout-container{
+
+    }
+    .workout-container img{
+        width: 100%;
+        border: 1px solid red;
+        border-radius: 4px;
+    }
+</style>
+<section class="details">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="header ">
+                    <div class="a-hero mx-auto text-center">
+                        <h3>
+                            <span>Workouts</span>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% include 'workout-routines.html' %}
+<section>
+    <div class="container">
+        <div class="row my-5">
+            <div class="col-md-3 col-sm-6 mb-3 workout-container">
+                <img src="{% static 'img/workout/workout-1.jpg'%}" alt="">
+                <h2>workout 1</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At, necessitatibus.</p>
+                <a href="#" type="button" class="btn">Enroll Now<i class="las la-angle-double-right"></i>
+                </a>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-3 workout-container">
+                <img src="{% static 'img/workout/workout-1.jpg'%}" alt="">
+                <h2>workout 2</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At, necessitatibus.</p>
+                <a href="#" type="button" class="btn">Enroll Now<i class="las la-angle-double-right"></i>
+                </a>
+            </div>
+            <div class="col-md-3 col-sm-6  mb-3 workout-container">
+                <img src="{% static 'img/workout/workout-1.jpg'%}" alt="">
+                <h2>workout 3</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At, necessitatibus.</p>
+                <a href="#" type="button" class="btn">Enroll Now<i class="las la-angle-double-right"></i>
+                </a>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-3 workout-container">
+                <img src="{% static 'img/workout/workout-1.jpg'%}" alt="">
+                <h2>workout 4</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At, necessitatibus.</p>
+                <a href="#" type="button" class="btn">Enroll Now<i class="las la-angle-double-right"></i>
+                </a>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+{% include 'footer.html'%}
+{% endblock %}
