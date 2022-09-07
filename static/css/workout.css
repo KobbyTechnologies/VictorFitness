@@ -50,10 +50,6 @@
     line-height: 24px;
 }
 
-.workout-container p {
-    text-align: justify;
-}
-
 .workout-container span {
     font-weight: 700;
 }
@@ -134,34 +130,33 @@
 
 /* Modal Body */
 .workout-info__body #modal {
-    background-color:unset;
+    background-color: unset;
     border: none;
-    width: 80vw;
-    aspect-ratio: 16/9;
 }
 
 .workout-info__body #modal::backdrop {
-    background-color: #ffffffe8;
+    background-color: #000000e8;
 }
 
-.workout-info__body #modal .close-button{
-    background-color:unset;
+.workout-info__body #modal .close-button {
+    background-color: unset;
     border: unset;
     position: absolute;
     top: 0;
-    right:0;
+    right: 0;
     font-size: 2em;
 }
 
-.workout-info__body #modal .close-button:hover{
+.workout-info__body #modal .close-button:hover {
     color: var(--red);
 }
 
-.workout-info__body .modal-content{
+.workout-info__body .modal-content {
     padding: 1em;
     height: 100%;
 }
-.workout-info__body .modal-content .modal-content__media{
+
+.workout-info__body .modal-content .modal-content__media {
     height: 100%;
     display: flex;
     justify-content: center;
@@ -170,7 +165,7 @@
 
 
 
-.workout-info .modal-content caption{
+.workout-info .modal-content caption {
     margin-block: .5em;
 }
 
@@ -186,4 +181,24 @@
 
 .workout-info__body .exercise-detail h3::first-letter {
     text-transform: uppercase;
+}
+
+
+
+
+.routines a{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.routines img {
+    width: 5em;
+    aspect-ratio: 1;
+    border-radius: 100%;
+}
+.routines caption{
+    text-decoration: underline;
 }

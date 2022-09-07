@@ -23,6 +23,7 @@ urlpatterns = [
     path('',include('customer.urls')),
     path('', include('payment.urls')),
     path('', include('workouts.urls')),
+    path('', include('post.urls')),
 ]
 admin.site.site_header  =  "Victor Fitness Admin" 
 admin.site.site_title  =  "Custom Shape n' Tone admin site"

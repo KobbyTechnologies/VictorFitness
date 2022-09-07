@@ -73,6 +73,7 @@ INSTALLED_APPS = [
     'customer',
     'payment',
     'workouts',
+    'post',
 ]
 AUTH_USER_MODEL = "authentication.MyUser"
 

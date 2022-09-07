@@ -19,9 +19,9 @@
         <form method="get">
           <div class="products">
             <div class="item">
-              <h2 class="item-name">{{res.title}}</h2>
+              <h2 class="item-name">{{workout.name}}</h2>
             </div>
-            <div class="total">Total Payable<span class="price">KES {{res.price}}</span></div>
+            <div class="total">Total Payable<span class="price">KES {{workout.price}}</span></div>
           </div>
           <div class="card-details">
             <h3 class="title">Lipa na Mpesa Details</h3>
@@ -35,7 +35,8 @@
                 <input id="cvc" type="text" class="form-control" placeholder="Mpesa Code" aria-label="Card Holder" aria-describedby="basic-addon1">
               </div>
               <div class="form-group col-sm-12">
-                <button type="button" class="btn btn-primary btn-block">Proceed</button>
+                <a href="{% url 'workout-detail' %}" class="btn btn-primary btn-block">proceed</a>
+                <!-- <button type="button" class="btn btn-primary btn-block">Proceed</button> -->
               </div>
             </div>
           </div>
