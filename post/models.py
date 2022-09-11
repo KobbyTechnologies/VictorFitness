@@ -14,7 +14,8 @@ STATUS = [
 
 
 class Post(models.Model):
-    headline = models.CharField(max_length=200)
+    headline = models.CharField(max_length=200, unique=True)
+    slug = models.SlugField(max_length=255, unique=True)
     content = models.TextField()
     image = CloudinaryField ('image')
     date_created = models.DateTimeField(auto_now_add=True)
