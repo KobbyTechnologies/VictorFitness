@@ -13,32 +13,10 @@
 .workout-detail__info p::first-letter {
   text-transform: capitalize;
 }
-.workout-detail__card .card-body {
-  padding: 0;
+.workout-detail .exercise__title {
+  text-transform: uppercase;
+  color: gray;
 }
-.workout-detail__card .card-body .row > *:first-child {
-  padding: 0 !important;
-}
-.workout-detail__card .card-body img {
+.workout-detail .exercise video {
   width: 100%;
-  object-fit: cover;
-}
-.workout-detail__card .card-body ul {
-  display: flex;
-  gap: 10px;
-  list-style: none;
-  padding-left: 0;
-  position: absolute;
-  bottom: 0;
-}
-.workout-detail__card .card-body ul li {
-  padding-inline: 10px;
-  border-right: 1px solid black;
-  color: inherit;
-}
-.workout-detail__card .card-body ul li:first-child {
-  padding-inline-start: 0;
-}
-.workout-detail__card .card-body ul li:last-child {
-  border-right: none;
 }

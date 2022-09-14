@@ -13,6 +13,17 @@
   background-clip: border-box;
   transition: 0.25s ease-in-out;
 }
+.course_card:hover {
+  transform: scale(1.025);
+  border-radius: 0.375rem;
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.25);
+  background-color: #fff;
+}
+.course_card:hover .course_card_img img {
+  border-top-left-radius: 0.375rem;
+  border-top-right-radius: 0.375rem;
+}
+
 .course_card_img {
   max-height: 100%;
   max-width: 100%;
@@ -26,6 +37,7 @@
 .course_card_img img:hover {
   transform: translateY(-3%);
 }
+
 .course_card_content {
   padding: 10px;
 }
@@ -37,6 +49,7 @@
   font-family: nunito sans;
   text-align: justify;
 }
+
 .course_card_footer {
   padding: 10px 0px;
   margin: 16px;
@@ -52,14 +65,4 @@
 }
 .course_card_footer a:hover {
   font-weight: 900;
-}
-.course_card:hover {
-  transform: scale(1.025);
-  border-radius: 0.375rem;
-  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.25);
-  background-color: #fff;
-}
-.course_card:hover .course_card_img img {
-  border-top-left-radius: 0.375rem;
-  border-top-right-radius: 0.375rem;
 }

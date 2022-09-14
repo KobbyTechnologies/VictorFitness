@@ -28,30 +28,17 @@
   </div>
   <div class="row">
     {% for exercise in exercises %}
-    <div class="workout-detail__card col-md-6 col-sm-12">
-      <div class="card rounded">
-        <div class="card-body">
-          <div class="row">
+    <div class="exercise row">
+      <h5 class="exercise__title">{{exercise.name}}</h5>
 
-            <div class="col-md-3 col-sm-6 col-xs-6">
-              <img src="{{exercise.image.url}}" alt="">
-            </div>
-            <div class="col-md-9 col-sm-6 col-xs-6 p-2">
-
-              <h5 class="card-title">{{exercise.name}}</h5>
-              <p class="card-text">{{exercise.description}}</p>
-
-              <ul class="data-lessons">
-                <li><i class="las la-clock"></i> Duration: {{exercise.duration}}</li>
-                <li><a class="fancybox-media" href="" rel="media-gallery"><i class="las la-film"></i> Play video</a>
-                </li>
-                <li><a href="#"><i class="las la-cloud-download-alt"></i> Donwload prospect</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
+      <div class="col-7">
+        <video src="{{exercise.videofile.url }}" controls></video>
       </div>
-
+      <div class="col-5">
+        <h5>Steps:</h5>
+        <p class="card-text">{{exercise.description}}</p>
+        <p><i class="las la-clock"></i> Duration: {{exercise.duration}} Mins</p>
+      </div>
     </div>
     {% endfor %}
   </div>
