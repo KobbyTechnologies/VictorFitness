@@ -1,204 +1,44 @@
-:root {
-    --blue1: #3c37f1;
-    --blue2: #1998ff;
-    --whitesmoke: whitesmoke;
-    --white: #ffff;
-    --white2: #dadcd7;
-    --green: #16A085;
-    --green2: #00d663;
-    --red: #ff3333;
-    --pink: #fa65b1;
-    --main: #e47b18;
-    --main2: #f58f5b;
-    --purple: #302cc1;
-    --purple2: #726ae3;
-    --light-dark: #49494A;
-    --font1: 'Baloo Bhaijaan 2', cursive;
-    --font2: 'Nunito Sans', sans-serif;
-    --font3: 'Luckiest Guy', cursive;
-    --normal-font-size: 1rem;
-    --header-font-size: 1.8rem;
+.workout-detail {
+  padding: 1em;
+  width: 100%;
 }
-
-.workout-container {
-    background-color: white;
-    border-radius: 4px;
-    font-size: small;
-    justify-content: center;
-    box-shadow: 5px 5px 15px var(--light-dark);
+.workout-detail__info {
+  padding: 1em;
+  max-width: 80vw;
 }
-
-.workout-container:hover {
-    scale: 1.02;
-    transition: scale 400ms;
+.workout-detail__info h3 {
+  font-weight: 700;
+  font-size: 20px;
 }
-
-.row>.workout-container {
-    padding-left: unset;
-    padding-right: unset;
+.workout-detail__info p::first-letter {
+  text-transform: capitalize;
 }
-
-.workout-container h2 {
-    text-transform: uppercase;
-    font-size: 1.5em;
-    color: var(--red);
+.workout-detail__card .card-body {
+  padding: 0;
 }
-
-.workout-container a,
-.workout-container p {
-    font-size: small;
-    line-height: 24px;
+.workout-detail__card .card-body .row > *:first-child {
+  padding: 0 !important;
 }
-
-.workout-container span {
-    font-weight: 700;
+.workout-detail__card .card-body img {
+  width: 100%;
+  object-fit: cover;
 }
-
-.workout-container img {
-    width: 100%;
-    border-radius: 4px;
+.workout-detail__card .card-body ul {
+  display: flex;
+  gap: 10px;
+  list-style: none;
+  padding-left: 0;
+  position: absolute;
+  bottom: 0;
 }
-
-.container-body {
-    padding: 1em;
+.workout-detail__card .card-body ul li {
+  padding-inline: 10px;
+  border-right: 1px solid black;
+  color: inherit;
 }
-
-.container-body a {
-    background-color: var(--red);
-    color: var(--white);
-    padding: 4px 6px;
-    border-radius: 4px;
-    font-weight: 600;
+.workout-detail__card .card-body ul li:first-child {
+  padding-inline-start: 0;
 }
-
-.container-body a:hover {
-    background-color: unset;
-    color: var(--red);
-    border: 1px solid var(--red);
-
-}
-
-.workout-info__body {
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 2em;
-}
-
-.workout-info__body .day,
-.workout-info__body .play {
-    text-align: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.workout-info__body .day {
-    flex-direction: column;
-}
-
-.workout-info__body .day .day-top {
-    font-size: 1.3em;
-    text-transform: uppercase;
-    line-height: 1;
-
-}
-
-.workout-info__body .day .day-bottom {
-    font-size: 4em;
-    line-height: 1;
-}
-
-.workout-info__body .play i {
-    font-size: 3em;
-}
-
-.workout-info__body .play button {
-    background-color: unset;
-    border: unset;
-}
-
-.workout-info__body .play button:hover {
-    color: var(--red);
-    scale: 1.02;
-    transition: scale 400ms;
-    text-shadow: 3px 3px 10px var(--light-dark);
-}
-
-/* Modal Body */
-.workout-info__body #modal {
-    background-color: unset;
-    border: none;
-}
-
-.workout-info__body #modal::backdrop {
-    background-color: #000000e8;
-}
-
-.workout-info__body #modal .close-button {
-    background-color: unset;
-    border: unset;
-    position: absolute;
-    top: 0;
-    right: 0;
-    font-size: 2em;
-}
-
-.workout-info__body #modal .close-button:hover {
-    color: var(--red);
-}
-
-.workout-info__body .modal-content {
-    padding: 1em;
-    height: 100%;
-}
-
-.workout-info__body .modal-content .modal-content__media {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-
-
-.workout-info .modal-content caption {
-    margin-block: .5em;
-}
-
-/* End modal */
-
-.workout-info__body .exercise-detail {
-    border-bottom: 1px solid var(--light-dark);
-}
-
-.workout-info__body .exercise-detail h3 {
-    font-size: 1.8em;
-}
-
-.workout-info__body .exercise-detail h3::first-letter {
-    text-transform: uppercase;
-}
-
-
-
-
-.routines a{
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-}
-
-.routines img {
-    width: 5em;
-    aspect-ratio: 1;
-    border-radius: 100%;
-}
-.routines caption{
-    text-decoration: underline;
+.workout-detail__card .card-body ul li:last-child {
+  border-right: none;
 }

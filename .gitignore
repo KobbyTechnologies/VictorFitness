@@ -3,3 +3,4 @@ virtual/
 Pipfile
 Pipfile.lock
 media/
+*.scss

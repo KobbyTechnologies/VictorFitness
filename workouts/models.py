@@ -28,7 +28,8 @@ class Equipment(models.Model):
 
 
 class ProgramWorkout(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=200, unique=True)
+    slug = models.SlugField(max_length=255, unique=True)
     description = models.TextField()
     level = models.CharField(choices=WORKOUT_LEVEL, max_length=200,default='Beginner')
     image = CloudinaryField('image', blank=True)

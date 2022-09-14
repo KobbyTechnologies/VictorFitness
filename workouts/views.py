@@ -11,14 +11,20 @@ class WorkoutListView(ListView):
     template_name = 'workout.html'
     context_object_name = 'workout_list'
     queryset = ProgramWorkout.objects.order_by('-last_update').all()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
     # paginate_by = 10
 
 
-def workout_view(request):
-    workout = ProgramWorkout.objects.all()
-    context = {'workout': workout}
-    return render(request, 'workout.html', context)
+class WorkoutDetailView(DetailView):
+    template_name = 'worktout-detail.html'
+    model = ProgramWorkout
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        programworkout_pk = self.kwargs.get('pk', None)
+        context['exercises'] = Exercise.objects.filter(workout=programworkout_pk).all()
+        return context
 
-def workout_detail_view(request):
-    return render(request, 'worktout-detail.html')

@@ -63,12 +63,13 @@
         <li class="page-item">
             <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">last</a>
         </li>
-
         {% else %}
         <li class="page-item">
             <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}" aria-disabled="true">Last</a>
         </li>
         {% endif %}
+        {% endif %}
+
     </ul>
 </nav>
 
