@@ -1,8 +1,9 @@
-{% extends 'base.html' %}
+{% extends 'base_alt.html' %}
 {% load bootstrap5 %}
 {% load static %}
+{% block title %}About -{% endblock title %}
 {% block content %}
-{% include 'navbar.html'%}
+{% include 'navbar_alt.html'%}
 <section class="about">
     <div class="container-fluid">
         <div class="row">
@@ -12,7 +13,7 @@
                         <h3>
                             <span>ABOUT US</span>
                         </h3>
-                        <nav class="bread" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                        <nav class="bread d-flex" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                             <ol class="breadcrumb mx-auto text-center">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Library</li>
@@ -98,13 +99,13 @@
             <div class="col-sm-12">
                 <div id="myCarousel" class="carousel slide" data-ride="carousel">
                     <!-- Carousel indicators -->
-                    <ol class="carousel-indicators">
+                    <!-- <ol class="carousel-indicators">
                         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                         <li data-target="#myCarousel" data-slide-to="1"></li>
                         <li data-target="#myCarousel" data-slide-to="2"></li>
-                    </ol>
+                    </ol> -->
                     <!-- Wrapper for carousel items -->
-                    <div class="carousel-inner">
+                    <!-- <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="row">
                                 <div class="col-sm-6">
@@ -219,13 +220,204 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
     </div>
-    </div>
+    
+</section>
+<section class="my-5">
+    <div class="container">
+        <section id="testim" class="testim">
+            <div class="testim-cover">
+                <div class="wrap">
+    
+                    <span id="right-arrow" class="arrow right fa fa-chevron-right"></span>
+                    <span id="left-arrow" class="arrow left fa fa-chevron-left "></span>
+                    <ul id="testim-dots" class="dots">
+                        <li class="dot active"></li>
+                        
+                        <li class="dot"></li>
+                        
+                        <li class="dot"></li>
+                        
+                        <li class="dot"></li>
+                        
+                        <li class="dot"></li>
+                    </ul>
+                    <div id="testim-content" class="cont">
+    
+                        <div class="active">
+                            <div class="img"><img
+                                    src="https://in.bmscdn.com/iedb/artist/images/website/poster/large/kartik-aaryan-1045198-08-12-2017-06-34-11.jpg"
+                                    alt=""></div>
+                            <h2>Lorem P. Ipsum</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                                ullamco.</p>
+                        </div>
+    
+                        <div>
+                            <div class="img"><img
+                                    src="https://timesofindia.indiatimes.com/thumb/msid-75752690,width-800,height-600,resizemode-4/75752690.jpg"
+                                    alt=""></div>
+                            <h2>Mr. Lorem Ipsum</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                                ullamco.</p>
+                        </div>
+    
+                        <div>
+                            <div class="img"><img
+                                    src="https://p16.muscdn.com/img/musically-maliva-obj/1627333501517830~c5_720x720.jpeg"
+                                    alt=""></div>
+                            <h2>Lorem Ipsum</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                                ullamco.</p>
+                        </div>
+    
+                        <div>
+                            <div class="img"><img
+                                    src="https://p16-sg-default.akamaized.net/aweme/1080x1080/tiktok-obj/1666413671597057.jpeg"
+                                    alt=""></div>
+                            <h2>Lorem De Ipsum</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                                ullamco.</p>
+                        </div>
+    
+                        <div>
+                            <div class="img"><img
+                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSKLJe1Lrz2N3ufVSwQokSJ79jGBbIptXuVnsdxMmNUlE14ohwp&usqp=CAU"
+                                    alt=""></div>
+                            <h2>Ms. Lorem R. Ipsum</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                                ullamco.</p>
+                        </div>
+    
+                    </div>
+    
+                </div>
+            </div>
+        </section>
     </div>
 </section>
+<script src="https://use.fontawesome.com/1744f3f671.js"></script>
+
+
 {% include 'footer.html'%}
+<script>
+    // vars
+    'use strict'
+    var testim = document.getElementById("testim"),
+        testimDots = Array.prototype.slice.call(document.getElementById("testim-dots").children),
+        testimContent = Array.prototype.slice.call(document.getElementById("testim-content").children),
+        testimLeftArrow = document.getElementById("left-arrow"),
+        testimRightArrow = document.getElementById("right-arrow"),
+        testimSpeed = 4500,
+        currentSlide = 0,
+        currentActive = 0,
+        testimTimer,
+        touchStartPos,
+        touchEndPos,
+        touchPosDiff,
+        ignoreTouch = 30;
+    ;
+
+    window.onload = function () {
+
+        // Testim Script
+        function playSlide(slide) {
+            for (var k = 0; k < testimDots.length; k++) {
+                testimContent[k].classList.remove("active");
+                testimContent[k].classList.remove("inactive");
+                testimDots[k].classList.remove("active");
+            }
+
+            if (slide < 0) {
+                slide = currentSlide = testimContent.length - 1;
+            }
+
+            if (slide > testimContent.length - 1) {
+                slide = currentSlide = 0;
+            }
+
+            if (currentActive != currentSlide) {
+                testimContent[currentActive].classList.add("inactive");
+            }
+            testimContent[slide].classList.add("active");
+            testimDots[slide].classList.add("active");
+
+            currentActive = currentSlide;
+
+            clearTimeout(testimTimer);
+            testimTimer = setTimeout(function () {
+                playSlide(currentSlide += 1);
+            }, testimSpeed)
+        }
+
+        testimLeftArrow.addEventListener("click", function () {
+            playSlide(currentSlide -= 1);
+        })
+
+        testimRightArrow.addEventListener("click", function () {
+            playSlide(currentSlide += 1);
+        })
+
+        for (var l = 0; l < testimDots.length; l++) {
+            testimDots[l].addEventListener("click", function () {
+                playSlide(currentSlide = testimDots.indexOf(this));
+            })
+        }
+
+        playSlide(currentSlide);
+
+        // keyboard shortcuts
+        document.addEventListener("keyup", function (e) {
+            switch (e.keyCode) {
+                case 37:
+                    testimLeftArrow.click();
+                    break;
+
+                case 39:
+                    testimRightArrow.click();
+                    break;
+
+                case 39:
+                    testimRightArrow.click();
+                    break;
+
+                default:
+                    break;
+            }
+        })
+
+        testim.addEventListener("touchstart", function (e) {
+            touchStartPos = e.changedTouches[0].clientX;
+        })
+
+        testim.addEventListener("touchend", function (e) {
+            touchEndPos = e.changedTouches[0].clientX;
+
+            touchPosDiff = touchStartPos - touchEndPos;
+
+            console.log(touchPosDiff);
+            console.log(touchStartPos);
+            console.log(touchEndPos);
+
+
+            if (touchPosDiff > 0 + ignoreTouch) {
+                testimLeftArrow.click();
+            } else if (touchPosDiff < 0 - ignoreTouch) {
+                testimRightArrow.click();
+            } else {
+                return;
+            }
+
+        })
+    }
+</script>
 {% endblock %}

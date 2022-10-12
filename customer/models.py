@@ -51,6 +51,44 @@ class Goals(models.Model):
     user = models.ForeignKey(MyUser,on_delete=models.CASCADE)
     
 
+
+class SubscriptionPlan(models.Model):
+    title = models.CharField(max_length=255)
+    price = models.FloatField()
+    highlight_status = models.BooleanField(default=False, null=True)
+
+    def __str__(self):
+        return self.title
+
+
+class SubscriptionFeatures(models.Model):
+    sub_plan = models.ManyToManyField(SubscriptionPlan)
+    title = models.CharField(max_length=255)
+
+    class Meta: 
+        verbose_name = 'Subscription Plan Feature'
+        verbose_name_plural = 'Subscription Plan Features'
+
+    def __str__(self):
+        return self.title
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 class FullInfo(models.Model):
     GENDER = [
         ('Male','male'),

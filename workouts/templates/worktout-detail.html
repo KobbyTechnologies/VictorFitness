@@ -1,9 +1,95 @@
-{% extends 'base.html' %}
+{% extends 'base_alt.html' %}
 {% load bootstrap5 %}
 {% load static %}
+{% block title %} {{object.name}}: {% endblock title %}
 {% block content %}
-{% include 'navbar.html'%}
+{% include 'navbar_alt.html'%}
 
+<div class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>{{object.name}}</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ***** Our Classes Start ***** -->
+<section class="section" id="our-classes">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 offset-lg-3">
+        <div class="section-heading">
+          <h2>{{object.name}} :<em>{{object.level}}</em></h2>
+          <img src="{%static 'img/new/line-dec.png'%}" alt="">
+          <p>{{object.description | safe}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="row" id="tabs">
+
+      <div class="col-lg-4">
+        <ul>
+          {% for exercise in exercises %}
+          <li><a href='#tabs-{{exercise.id}}'><img src="{%static 'img/new/tabs-first-icon.png'%}"
+                alt="">{{exercise.name}}</a></li>
+          {% endfor %}
+          <!-- <div class="main-rounded-button"><a href="#">View All Schedules</a></div> -->
+        </ul>
+      </div>
+      <div class="col-lg-8">
+        <section class='tabs-content'>
+          {% for exercise in exercises %}
+          <article id='tabs-{{exercise.id}}'>
+            <img src="{{ exercise.videofile.url }}" alt="First Class">
+            <h4>{{exercise.name}}</h4>
+            <p>{{exercise.description | safe }}</p>
+            <!-- <div class="main-button">
+                  <a href="#">View Schedule</a>
+              </div> -->
+          </article>
+          {% endfor %}
+        </section>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ***** Our Classes End ***** -->
+
+
+<div class="workout-detail">
+  <div class="workout-detail__info">
+    <h5 class="mt-5">Related Articles: </h5>
+    <div class="container">
+      <div class="row mx-auto">
+        {% for article in related_articles %}
+        <div class="col-lg-3 col-md-6 col-sm-12">
+          <div class="course_card">
+            <div class="course_card_img"><img src="{{ article.image.url }}" alt="course" /></div>
+            <div class="course_card_content">
+              <h3 class="title text-capitalize">{{ article.headline | safe }}</h3>
+
+            </div>
+            <div class="course_card_footer">
+              <a class="nav-item" href="{% url 'article_detail' article.slug %}">Learn More <i
+                  class="las la-chevron-right"></i></a>
+            </div>
+          </div>
+        </div>
+
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% include 'footer.html'%}
+
+{% endblock %}
 
 <section class="details">
   <div class="container-fluid">
@@ -20,47 +106,3 @@
     </div>
   </div>
 </section>
-
-<div class="workout-detail">
-  <div class="workout-detail__info">
-    <h3>{{object.name}}</h3>
-    <p>{{ object.description | safe }}</p>
-  </div>
-  <div class="row">
-    {% for exercise in exercises %}
-    <div class="exercise row">
-      <h5 class="exercise__title">{{exercise.name}}</h5>
-
-      <div class="col-7">
-        <video src="{{exercise.videofile.url }}" controls></video>
-      </div>
-      <div class="col-5">
-        <h5>Steps:</h5>
-        <p class="card-text">{{exercise.description}}</p>
-        <p><i class="las la-clock"></i> Duration: {{exercise.duration}} Mins</p>
-      </div>
-    </div>
-    {% endfor %}
-  </div>
-</div>
-
-
-
-
-
-
-{% include 'footer.html'%}
-<script>
-  const modal = document.querySelector('#modal');
-  const openModal = document.querySelector('.open-button');
-  const closeModal = document.querySelector('.close-button');
-
-  openModal.addEventListener('click', () => {
-    modal.showModal();
-  })
-
-  closeModal.addEventListener('click', () => {
-    modal.close();
-  })
-</script>
-{% endblock %}

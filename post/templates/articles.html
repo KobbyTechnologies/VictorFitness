@@ -1,25 +1,23 @@
-{% extends 'base.html' %}
+{% extends 'base_alt.html' %}
 {% load bootstrap5 %}
 {% load static %}
-{% block title %}Articles{% endblock title %}
+{% block title %}Articles -{% endblock title %}
 {% block content %}
-{% include 'navbar.html'%}
+{% include 'navbar_alt.html'%}
 
-<section class="details">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="header ">
-                    <div class="a-hero mx-auto text-center">
-                        <h3>
-                            <span>Articles</span>
-                        </h3>
-                    </div>
+<div class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Articles</h1>
                 </div>
             </div>
         </div>
     </div>
-</section>
+</div>
+
+
 <div class="container">
     <div class="row mx-auto">
         {% for list in articles %}
@@ -75,3 +73,20 @@
 
 {% include 'footer.html'%}
 {% endblock %}
+
+
+<section class="details">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="header ">
+                    <div class="a-hero mx-auto text-center">
+                        <h3>
+                            <span>Articles</span>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

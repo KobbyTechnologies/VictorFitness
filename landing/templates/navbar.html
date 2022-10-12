@@ -5,7 +5,7 @@
                 class="d-inline-block align-text-top">
         </a>
         {% if request.user.is_authenticated %}
-        <li class=""><a class="nav-link text-light" href="#"> Welcome, <span class="br"
+        <li class=""><a class="nav-link text-light" href="{% url 'customerProfile' %}"> Welcome, <span class="br"
                     style="text-transform: capitalize;">{{request.user}} </span></a>
         </li>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav">
@@ -14,15 +14,16 @@
 
         <div class="collapse navbar-collapse" id="main_nav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="{% url 'gallery' %}"> My Gallery</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'customerLibrary' %}"> Program Library</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'workout-list' %}"> Workouts</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'customerLibrary' %}"> Program Library</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'articles' %}">Articles</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'gallery' %}"> My Gallery</a></li>
                 <li class="nav-item"><a class="nav-link" href="#"> Contact</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'customerProfile' %}"> Profile</a></li>
                 <form class="d-flex">
-                    <a href="{% url 'logout' %}" class="btn btn-danger mx-4" type="button">Logout <i
-                            class="las la-sign-in-alt"></i></a>
+                    <a href="{% url 'logout' %}" class="btn btn-light mx-4" type="button">
+                        Logout <i class="las la-sign-in-alt"></i>
+                    </a>
                 </form>
             </ul>
         </div>
@@ -35,22 +36,22 @@
                 <li class="nav-item"><a class="nav-link active" href="{% url 'landing' %}"> Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'about' %}"> About</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'programs' %}"> Program Library</a></li>
-                <li class="nav-item dropdown">
+                <!-- <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"> Advice </a>
                     <ul class="dropdown-menu fade-up">
                         <li><a class="dropdown-item" href="#"> ABS BURN WORKOUT</a></li>
                         <li><a class="dropdown-item" href="#"> ABS BURN WORKOUT </a></li>
                         <li><a class="dropdown-item" href="#"> ABS BURN WORKOUT </a></li>
                     </ul>
-                </li>
-                <li class="nav-item dropdown">
+                </li> -->
+                <!-- <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"> Courses</a>
                     <ul class="dropdown-menu fade-up">
                         <li><a class="dropdown-item" href="#"> ABS BURN WORKOUT</a></li>
                         <li><a class="dropdown-item" href="#"> ABS BURN WORKOUT </a></li>
                         <li><a class="dropdown-item" href="#"> ABS BURN WORKOUT </a></li>
                     </ul>
-                </li>
+                </li> -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"> Guides</a>
                     <ul class="dropdown-menu fade-up">
@@ -63,7 +64,7 @@
                 <li class="nav-item"><a class="nav-link" href="#"> FAQs</a></li>
                 <li class="nav-item"><a class="nav-link" href="#"> Contact</a></li>
                 <form class="d-flex">
-                    <a href="{% url 'login' %}" class="btn btn-success mx-4" type="button">Login <i
+                    <a href="{% url 'login' %}" class="btn btn-light mx-4" type="button">Login <i
                             class="las la-sign-in-alt"></i></a>
                 </form>
             </ul>

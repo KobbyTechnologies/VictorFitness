@@ -1,0 +1,30 @@
+{% load static %}
+{% for workout in workout %}
+<div id="advert">
+  <div id="advert__item" style="background-image: url('{{ workout.image.url }}');">
+    <div class="layer">
+      <div class="content">
+        <a href="{% url 'workout_detail' workout.slug workout.id %}"><h1>Highlight</h1></a>
+        <a href="{% url 'workout_detail' workout.slug workout.id %}"><p>{{workout.name}}</p></a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+  <div id="advert__item" style="background-image: url('{% static 'img/about/3.jpg' %}');">
+    <div class="layer">
+      <div class="content">
+        <h1>Highlight</h1>
+        <p>Hodor hodor hodor hodor hodor. Hodor hodor.</p>
+      </div>
+    </div>
+  </div>
+  <div id="advert__item" style="background: url('{% static 'img/about/9.png' %}');">
+    <div class="layer">
+      <div class="content">
+        <h1>Highlight</h1>
+        <p>Hodor hodor hodor hodor hodor. Hodor hodor.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</body>

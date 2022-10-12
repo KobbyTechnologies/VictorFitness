@@ -2,6 +2,7 @@ from multiprocessing import context
 from unicodedata import name
 from django.shortcuts import render
 from .models import ProgramWorkout, Exercise
+from post.models import Post
 from django.views.generic import ListView, DetailView
 
 # Create your views here.
@@ -26,5 +27,6 @@ class WorkoutDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         programworkout_pk = self.kwargs.get('pk', None)
         context['exercises'] = Exercise.objects.filter(workout=programworkout_pk).all()
+        context['related_articles'] = Post.objects.filter(workout=programworkout_pk).all()[:4]
         return context
 

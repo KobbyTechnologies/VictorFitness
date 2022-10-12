@@ -1,12 +1,24 @@
-{% extends 'base.html' %}
+{% extends 'base_alt.html' %}
 {% load bootstrap5 %}
 {% load static %}
+{% block title %} Gallery : {% endblock title %}
 {% block content %}
-{% include 'navbar.html'%}
+{% include 'navbar_alt.html'%}
 
 <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet">
 <link rel="stylesheet" href="https://rawgit.com/LeshikJanz/libraries/master/Bootstrap/baguetteBox.min.css">
-<section class="details">
+<div class="hero">
+  <div class="container">
+      <div class="hero-content">
+          <div class="row">
+              <div class="col-md-12">
+                  <h1>Welcome To Your Gallery</h1>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- <section class="details">
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
@@ -17,25 +29,31 @@
             </h3>
           </div>
         </div>
-        <div class="addPic">
-          <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addPhotos"> <i
-              class="las la-plus"></i> Add Photos</button>
-        </div>
+        
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
 <section class="my-4">
   <div class="tz-gallery px-3">
     <div class="row">
       {% for res in album %}
-      <div class="col-md-2">
+      <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 pb-3">
         <a class="lightbox" href="https://res.cloudinary.com/enock/{{res.pic}}">
-          <img src="https://res.cloudinary.com/enock/{{res.pic}}" alt="Bridge">
+          <div class="thumbnail">
+            <img class="w-100" src="https://res.cloudinary.com/enock/{{res.pic}}" alt="Bridge">
+          </div>
         </a>
       </div>
       {% endfor %}
+      <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 pb-3">
+
+        <div class="addPic rounded" title='add Picture'>
+          <span data-bs-toggle="modal" data-bs-target="#addPhotos"> 
+            <i class="las la-plus"></i> </span>
+        </div>
+      </div>
     </div>
 
 </section>

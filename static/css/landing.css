@@ -168,7 +168,7 @@
 .plan-card {
     background: transparent;
     border: 1px solid white;
-    transform: skew(7deg);
+    /* transform: skew(7deg); */
 }
 
 .plan-card:hover {
@@ -217,7 +217,7 @@
 .plan-card p {
     color: var(--white2);
     font-family: var(--font1);
-    padding-top: .4rem;
+    /* padding-top: .4rem; */
 }
 
 .plan-card a {
@@ -226,10 +226,16 @@
     text-transform: uppercase;
     margin: 1rem;
     padding: 1rem;
-    position: fixed;
+    /* position: relative; */
     bottom: 0px;
     width: 90%;
     border: 1px solid var(--light-dark);
+}
+
+.plan-card .card-header,
+.plan-card .card-footer {
+    background-color: unset !important;
+    border: unset !important;
 }
 
 .join-card {
@@ -403,7 +409,7 @@
 
 .c-details span {
     font-weight: 300;
-    font-size: 13px
+    font-size: 13px;
 }
 
 .icon {
@@ -447,42 +453,55 @@
     color: #a5aec0
 }
 
-.links a{
-    color:   #ff3333;
+.links a {
+    color: #ff3333;
     position: absolute;
     right: 1px;
 
 }
-.mytext{
+
+.mytext {
     padding-right: .4rem;
 }
-.links a:hover{
+
+.links a:hover {
     color: var(--blue1);
 }
-.proImage img{
-width: 100%;
-height: 150px;
+
+.proImage img {
+    width: 100%;
+    height: 150px;
 }
 
-#exTab3 .nav-pills > li > a {
-    border-radius: 4px 4px 0 0 ;
-  }
-  
-  #exTab3 .tab-content {
-    color : white;
+#exTab3 .nav-pills>li>a {
+    border-radius: 4px 4px 0 0;
+}
+
+#exTab3 .tab-content {
+    color: white;
     background-color: #428bca;
-    padding : 5px 15px;
-  }
+    padding: 5px 15px;
+}
+
 /* Rounded tabs */
 
 @media (min-width: 576px) {
     .rounded-nav {
-      border-radius: 50rem !important;
+        border-radius: 50rem !important;
     }
-  }
-  
-  @media (min-width: 576px) {
+
+}
+
+@media (min-width: 576px) {
     .rounded-nav .nav-link {
-      border-radius: 50rem !important;
+        border-radius: 50rem !important;
     }
-  }  
+}
+
+@media (max-width: 576px) {
+    .plan-p {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+
