@@ -315,7 +315,7 @@ header
   font-weight: 900;
 }
 .header-area .main-nav .logo img {
-  height: 80px;
+  height: 70px;
 }
 .header-area .main-nav .nav {
   float: right;
@@ -496,6 +496,7 @@ header
 
 .header-area.header-sticky {
   min-height: 80px;
+  z-index: 999;
 }
 .header-area.header-sticky .nav {
   margin-top: 20px !important;
@@ -3102,6 +3103,221 @@ button,
 }
 .addPic span {
   cursor: pointer;
+}
+
+.form-control {
+  box-shadow: none;
+  border-color: #ddd;
+}
+.form-control:focus {
+  border-color: #b0ca0c;
+}
+
+.login-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ddd;
+}
+
+.login-background {
+  position: absolute;
+  padding-left: -100px;
+  z-index: 0;
+  display: flex;
+  height: 100%;
+}
+
+.login-form {
+  position: absolute;
+  width: 350px;
+  margin: 0 auto;
+  padding: 30px 0;
+  border-radius: 4px;
+}
+.login-form form {
+  color: #434343;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  background: #fff;
+  border: 1px solid #f3f3f3;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+  padding: 30px;
+}
+.login-form h4 {
+  text-align: center;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+.login-form .avatar {
+  color: #fff;
+  margin: 0 auto 30px;
+  text-align: center;
+  width: 150px;
+  border-radius: 50%;
+  z-index: 9;
+  padding: 15px;
+}
+.login-form .avatar i {
+  font-size: 62px;
+}
+.login-form .avatar img {
+  width: 100%;
+}
+.login-form .form-group {
+  margin-bottom: 20px;
+}
+.login-form .form-control,
+.login-form .btn {
+  min-height: 40px;
+  border-radius: 2px;
+  transition: all 0.5s;
+}
+.login-form .close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+.login-form .btn {
+  border: none;
+  line-height: normal;
+  padding: 0 20px;
+  border-radius: 4px;
+}
+.login-form .btn-primary {
+  background: #b0ca0c;
+}
+.login-form .btn-danger {
+  background-color: #f9735b;
+  border: none;
+  line-height: normal;
+  padding-top: 10px;
+  border-radius: 4px;
+  color: #fff;
+}
+.login-form .btn:hover, .login-form .btn:focus {
+  background: #232d39;
+  color: #fff;
+}
+.login-form .checkbox-inline {
+  float: left;
+}
+.login-form input[type=checkbox] {
+  margin-top: 2px;
+}
+.login-form input[type=text]:focus, .login-form input[type=text]:focus-visible,
+.login-form input[type=email]:focus,
+.login-form input[type=email]:focus-visible,
+.login-form input[type=password]:focus,
+.login-form input[type=password]:focus-visible {
+  outline: none;
+  outline-width: 0;
+  box-shadow: none;
+}
+.login-form .forgot-link {
+  float: right;
+}
+.login-form .small {
+  font-size: 13px;
+}
+.login-form a {
+  color: #b0ca0c;
+}
+
+.flip-container {
+  -webkit-perspective: 1000;
+  -moz-perspective: 1000;
+  margin-right: 20px;
+}
+.flip-container:hover .flipper {
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+}
+
+.flipper {
+  -webkit-transition: 0.6s;
+  -webkit-transform-style: preserve-3d;
+  -moz-transition: 0.6s;
+  -moz-transform-style: preserve-3d;
+  position: relative;
+}
+
+.front,
+.back {
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 1px solid #ccc;
+}
+
+.front {
+  z-index: 1;
+  background: #fff;
+}
+
+.flip-container,
+.front {
+  width: 300px;
+  height: 400px;
+}
+
+.back {
+  width: 300px;
+  height: 400px;
+  -webkit-transform: rotateY(-180deg);
+  -moz-transform: rotateY(-180deg);
+  background: #f6f6f6;
+}
+
+.flip-padding {
+  padding: 20px;
+}
+
+.profile-picture {
+  width: 298px;
+  height: 300px;
+}
+
+.profile-name,
+.profile-title {
+  text-align: center;
+}
+
+.profile-name {
+  font-size: 24px;
+  margin-top: 20px;
+  font-weight: 400;
+  margin-bottom: 0px;
+}
+
+.profile-title {
+  font-size: 16px;
+  margin-top: 5px;
+  font-weight: 300;
+  color: #2196F3;
+}
+
+.profile-devider {
+  width: 100%;
+  height: 4px !important;
+  background: #b0ca0c;
+  position: relative;
+  margin: 0 auto;
+  margin-top: -4px;
+}
+.profile-devider:after {
+  content: "";
+  position: absolute;
+  border-style: solid;
+  border-width: 15px 15px 0;
+  border-color: #b0ca0c transparent;
+  display: block;
+  width: 0;
+  z-index: 1;
+  left: 135px;
 }
 
 /* footer */

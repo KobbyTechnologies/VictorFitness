@@ -16,6 +16,15 @@ import django_heroku
 import dj_database_url
 from decouple import config,Csv
 import  cloudinary
+# import environ
+
+
+
+
+# env = environ.Env(DEBUG=(bool, False))
+# # reading .env file
+# environ.Env.read_env()
+
 
 
 MODE=config("MODE", default="dev")
@@ -180,3 +189,6 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 django_heroku.settings(locals())
+
+
+ 

@@ -1,7 +1,9 @@
+from tabnanny import verbose
 from django.db import models
 from cloudinary.models import CloudinaryField
 from authentication.models import MyUser
 from django_countries.fields import CountryField
+from django.utils.safestring import mark_safe
 
 
 class UserInfo(models.Model):
@@ -28,6 +30,15 @@ class Gallery(models.Model):
     pic=  CloudinaryField("image" ,blank=True) 
     user = models.ForeignKey(MyUser,on_delete=models.CASCADE) 
     date_added = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name='Picture'
+
+    def photo(self):
+        return mark_safe('<img src="{}" width="150px" />'.format(self.pic.url))
+
+    photo.short_description = 'Image'
+    photo.allow_tags = True
     
     def __str__(self):
         return self.user.username

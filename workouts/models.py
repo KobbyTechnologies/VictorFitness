@@ -1,3 +1,4 @@
+from enum import unique
 from xml.parsers.expat import model
 from django.db import models
 from cloudinary.models import CloudinaryField
@@ -58,3 +59,12 @@ class Exercise(models.Model):
 
     def __str__(self):
         return str(self.name)
+
+class WorkoutPlan(models.Model):
+    name = models.CharField(max_length = 200, unique=True)
+    slug = models.SlugField(max_length=255, unique=True)
+    image = CloudinaryField('image', blank=True)
+    workouts = models.ManyToManyField(ProgramWorkout)
+
+    def __str__(self):
+        return self.name

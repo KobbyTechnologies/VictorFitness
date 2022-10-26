@@ -1,6 +1,6 @@
 from django.contrib import admin
 #from django.conf import settings
-from .models import UserInfo, SubscriptionPlan, SubscriptionFeatures
+from .models import UserInfo, SubscriptionPlan, SubscriptionFeatures, Gallery
 
 
 # Register your models here.
@@ -32,3 +32,13 @@ class SubscriptionFeaturesAdmin(admin.ModelAdmin):
 
 
 admin.site.register(SubscriptionFeatures, SubscriptionFeaturesAdmin)
+
+class GalleryAdmin(admin.ModelAdmin):
+    
+    list_display = [
+        'photo',
+        'user',
+        'date_added'
+    ]
+
+admin.site.register(Gallery, GalleryAdmin)

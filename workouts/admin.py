@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Equipment, Exercise, ProgramWorkout
+from .models import Equipment, Exercise, ProgramWorkout, WorkoutPlan
 
 
 class ProgramWorkoutAdmin(admin.ModelAdmin):
@@ -11,8 +11,18 @@ class ProgramWorkoutAdmin(admin.ModelAdmin):
         'slug': ['name', 'level']
     }
 
+admin.site.register(ProgramWorkout, ProgramWorkoutAdmin)
 
 # Register your models here.
 admin.site.register(Equipment)
 admin.site.register(Exercise)
-admin.site.register(ProgramWorkout, ProgramWorkoutAdmin)
+
+class WorkoutPlanAdmin(admin.ModelAdmin):
+    prepopulated_fields = {
+        'slug' : ['name']
+    }
+
+admin.site.register(WorkoutPlan, WorkoutPlanAdmin)
+
+
+

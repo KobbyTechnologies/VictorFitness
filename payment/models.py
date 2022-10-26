@@ -1,24 +1,26 @@
+import uuid
 from django.db import models
 from django.conf import settings
 from landing.models import Program_Detail
+from phonenumber_field.modelfields import PhoneNumberField
 
 # Create your models here.
 
 
-class Initiate(models.Model):
-    CheckoutRequestID = models.CharField(max_length=50, null=True, unique=True)
-    MerchantRequestID = models.CharField(max_length=30, null=True, unique=True)
-    ResultCode = models.IntegerField(null=True)
-    mode = models.CharField(max_length=40, null=True, blank=True)
-    ResultDescription = models.TextField(max_length=200, null=True)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL,
-                             on_delete=models.PROTECT, related_name="initiated")
-    service = models.ForeignKey(Program_Detail, on_delete=models.PROTECT)
-    date_added = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+STATUS = ((1, "Pending"), (0, "Complete"))
 
-    def __str__(self):
-        return self.CheckoutRequestID
+class Transaction(models.Model):
+    """This model records all the mpesa payment transactions"""
+    transaction_no = models.CharField(default=uuid.uuid4, max_length=50, unique=True)
+    phone_number = PhoneNumberField(null=False, blank=False)
+    checkout_request_id = models.CharField(max_length=200)
+    reference = models.CharField(max_length=40, blank=True)
+    description = models.TextField(null=True, blank=True)
+    amount = models.CharField(max_length=10)
+    status = models.CharField(max_length=15, choices=STATUS, default=1)
+    receipt_no = models.CharField(max_length=200, blank=True, null=True)
+    created = models.DateTimeField(auto_now_add=True)
+    ip = models.CharField(max_length=200, blank=True, null=True)
 
-    class Meta:
-        verbose_name_plural = "Initiated Transactions"
-        verbose_name = "Initiated Transaction"
+    def __unicode__(self):
+        return f"{self.transaction_no}"

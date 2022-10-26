@@ -8,21 +8,23 @@
                 <nav class="main-nav">
                     <!-- ***** Logo Start ***** -->
                     <!-- <a href="{% url 'landing_alt' %}" class="logo">Victor<em> Fitness</em></a> -->
-                    <a href="{% url 'landing_alt' %}" class="logo"><img src="{% static 'img/Logo/logo-slim.png' %}" alt="logo"></a>
+                    <a href="{% url 'landing' %}" class="logo"><img src="{% static 'img/Logo/logo-slim.png' %}" alt="logo"></a>
                     <!-- ***** Logo End ***** -->
+
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
                         {% if request.user.is_authenticated %}
                         <li class="scroll-to-section"><a href="{% url 'workout-list' %}" >Workouts</a></li>
-                        <li class="scroll-to-section"><a href="{% url 'customerLibrary' %}">Program Library</a></li>
+                        <li class="scroll-to-section"><a href="{% url 'workoutPlans' %}" >Plans</a></li>
+                        <!-- <li class="scroll-to-section"><a href="{% url 'customerLibrary' %}">Program Library</a></li> -->
                         <li class="scroll-to-section"><a href="{% url 'articles' %}">Articles</a></li>
                         <li class="scroll-to-section"><a href="{% url 'gallery' %}" >Gallery</a></li>
                         <li class="scroll-to-section"><a href="{% url 'customerProfile' %}">Profile</a></li> 
                         <li class="main-button"><a href="{% url 'logout' %}">Logout</a></li>
                         {% else%}
-                        <li class="scroll-to-section"><a href="{% url 'landing_alt' %}" >Home</a></li>
+                        <li class="scroll-to-section"><a href="{% url 'landing' %}" >Home</a></li>
                         <li class="scroll-to-section"><a href="{% url 'about' %}">About</a></li>
-                        <li class="scroll-to-section"><a href="{% url 'programs' %}">Program Library</a></li>
+                        <!-- <li class="scroll-to-section"><a href="{% url 'programs' %}">Program Library</a></li> -->
                         <li class="scroll-to-section"><a href="{% url 'articles' %}">Articles</a></li>
                         <li class="scroll-to-section"><a href="">FAQs</a></li>
                         <li class="scroll-to-section"><a href="">Contacts</a></li>

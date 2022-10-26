@@ -75,18 +75,18 @@
               </div>
               <div class="col-md-6">
                 <label class="form-label">Contacts</label>
-                <input type="text" class="form-control" name="contact">
+                <input type="text" class="form-control" name="contact" value="{{info.contacts}}">
               </div>
             </div>
             <div class="row mt-3">
               <div class="col-md-12">
                 <label class="form-label">Date of Birth</label>
-                <input type="date" name="date_of_birth" class="form-control" value="{{info.dta_of_birth}">
+                <input type="date" name="date_of_birth" class="form-control" value="{{info.dta_of_birth}}">
                 <div id=" date_of_birth" class="form-text">Enter Your Date of Birth </div>
               </div>
               <div class="col-md-12 mt-3">
                 <label class="form-label">Upload Profile Image</label>
-                <input type="file" class="form-control" name="profilePic" />
+                <input type="file" class="form-control" name="profilePic" value="{{info.profilePic.url}}" />
                 <div id="photos" class="form-text">Select Your Profile Image</div>
               </div>
             </div>
