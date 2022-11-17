@@ -66,6 +66,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_daraja',
 
     # third party apps
     'formtools',
@@ -148,6 +149,14 @@ EMAIL_HOST = config('EMAIL_HOST')
 EMAIL_PORT = config('EMAIL_PORT')
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+
+
+# The Mpesa environment to use
+MPESA_ENVIRONMENT = config('MPESA_ENVIRONMENT')
+MPESA_CONSUMER_KEY = config('MPESA_CONSUMER_KEY')
+MPESA_CONSUMER_SECRET = config('MPESA_CONSUMER_SECRET')
+MPESA_EXPRESS_SHORTCODE = config('MPESA_EXPRESS_SHORTCODE')
+MPESA_PASSKEY = config('MPESA_PASSKEY')
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
