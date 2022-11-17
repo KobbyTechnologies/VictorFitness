@@ -31,6 +31,9 @@ class MyUserManager(BaseUserManager):
 class MyUser(AbstractBaseUser):
     email = models.EmailField( max_length=60, unique=True)
     username = models.CharField( max_length=200)
+    first_name = models.CharField(max_length=60, blank=True)
+    middle_name = models.CharField(max_length=60, blank=True)
+    last_name = models.CharField(max_length=60, blank=True)
     date_joined = models.DateTimeField(auto_now_add=True)
     is_admin = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
@@ -46,6 +49,13 @@ class MyUser(AbstractBaseUser):
     REQUIRED_FIELDS = ['username']
      
     objects =  MyUserManager()
+
+    def full_name(self):
+        return '%s %s %s' % (self.first_name, self.middle_name, self.last_name)
+    
+
+    full_name.short_description = 'Name'
+    full_name.allow_tags = True
     
     def __str__(self):
         return str(self.username)

@@ -1,6 +1,6 @@
 from django.contrib import admin
 #from django.conf import settings
-from .models import UserInfo, SubscriptionPlan, SubscriptionFeatures, Gallery
+from .models import UserInfo, SubscriptionPlan, SubscriptionFeatures, Gallery, PersonalPlan,PersonalPlanFeature
 
 
 # Register your models here.
@@ -26,12 +26,31 @@ admin.site.register(SubscriptionPlan, SubscriptionPlanAdmin)
 
 class SubscriptionFeaturesAdmin(admin.ModelAdmin):
     list_display = ['title', 'subscription_plans']
+    list_filter = ['sub_plan']
 
     def subscription_plans(self, obj):
         return ", " .join([sub.title for sub in obj.sub_plan.all()])
 
-
 admin.site.register(SubscriptionFeatures, SubscriptionFeaturesAdmin)
+
+
+class PersonalPlanAdmin(admin.ModelAdmin):
+    list_display = ['title', 'price', 'highlight_status', ]
+    list_editable = ['highlight_status']
+    sortable_by = ['price', ]
+
+admin.site.register(PersonalPlan, PersonalPlanAdmin)
+
+class PersonalPlanFeatureAdmin(admin.ModelAdmin):
+
+    list_display = ['title', 'personal_plans']
+    sortable_by = ['personal_plans']
+    list_filter = ['sub_plan']
+
+    def personal_plans(self, obj):
+        return ", " .join([sub.title for sub in obj.sub_plan.all()])
+
+admin.site.register(PersonalPlanFeature, PersonalPlanFeatureAdmin)
 
 class GalleryAdmin(admin.ModelAdmin):
     

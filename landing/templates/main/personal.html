@@ -1,0 +1,102 @@
+{% extends 'base_alt.html' %}
+{% load bootstrap5 %}
+{% load static %}
+{% block title %}Personal Training -{% endblock title %}
+{% block content %}
+{% include 'navbar_alt.html'%}
+
+<div class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Online Personal Training</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row mx-auto w-70 p-3 my-5 ">
+        <p>
+            Experience an effective online personal training system to achieve the body transformation results you want with Shape n Tone 360 online.
+        </p>
+        <p>
+            No matter where you are in the world, our tailored online program gives you the same proven methods, data-driven approach and culture of accountability that have helped many of our clients achieve remarkable results
+        </p>
+        <p>
+            All plans start with a consultation followed by an initial 6 weeks commitment package, with an option to continue on a month to month basis.This ensures accountability and a result driven partnership between us.
+        </p>
+        
+    </div>
+</div>
+
+<!-- ***** Featured workouts End *******  -->
+
+<div class="container-fluid">
+    <!-- Package Plan-->
+    <div id="generic_price_table">
+
+        <div class="container">
+
+            <!--BLOCK ROW START-->
+            <div class="row">
+                {% for item in plans %}
+                <div class="col-md-4 my-3">
+                    {% if item.highlight_status %}
+                    <div class="generic_content active clearfix h-100 rounded">
+                        {% else %}
+                        <div class="generic_content clearfix h-100 rounded">
+                            {% endif%}
+                            <div>
+                                <div class="generic_head_price clearfix">
+                                    <div class="generic_head_content clearfix">
+                                        <div class="head_bg"></div>
+                                        <div class="head">
+                                            <span>{{item.title}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="generic_price_tag clearfix">
+                                        <span class="price">
+                                            <span class="sign">KES</span>
+                                            <span class="currency">{{item.price | floatformat:0}}</span>
+                                            <span class="cent"></span>
+                                            <span class="month">/MONTH</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="generic_feature_list">
+                                    <ul>
+                                        {% for feature in item.personalplanfeature_set.all %}
+                                        <li>{{feature.title}}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="generic_price_btn clearfix">
+                                {% if user.is_authenticated %}
+                                <a class="" href="{% url 'payment' item.id %}">Enroll Now</a>
+                                {% else %}
+                                <a class="" href="{% url 'login' %}">Enroll Now</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- endPackage Plan-->
+</div>
+
+
+
+
+
+
+{% include 'footer.html'%}
+{% endblock %}
+
+

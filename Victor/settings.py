@@ -93,6 +93,19 @@ INSTALLED_APPS = [
 ]
 AUTH_USER_MODEL = "authentication.MyUser"
 
+MPESA_CONFIG = {
+    'CONSUMER_KEY': '',
+    'CONSUMER_SECRET': '',
+    'CERTIFICATE_FILE': None,
+    'HOST_NAME': '',
+    'PASS_KEY': '',
+    'SAFARICOM_API': 'https://sandbox.safaricom.co.ke',
+    'AUTH_URL': '/oauth/v1/generate?grant_type=client_credentials',
+    'SHORT_CODE': '174379',
+    'TILL_NUMBER': None,
+    'TRANSACTION_TYPE': 'CustomerBuyGoodsOnline',
+}
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

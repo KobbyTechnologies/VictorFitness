@@ -271,3 +271,7 @@ def WorkoutGoals(request):
         messages.success(request, "successfully Added")
         return redirect('customerProfile')
     return redirect('customerProfile')
+
+
+def forms(request):
+    return render(request, 'forms.html')

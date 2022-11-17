@@ -349,12 +349,7 @@
 <!-- ***** Features Item Start ***** -->
 <section class="section" id="features">
     <div class="container">
-        <div class="col-lg-6 offset-lg-3">
-            <div class="section-heading">
-                <h2>Know your <em>Stats</em></h2>
-
-            </div>
-        </div>
+        
     </div>
     <div class="container d-flex flex-wrap gap-5 pt-3 justify-content-start">
         <div class="flip-container">
@@ -381,11 +376,6 @@
                 </div>
             </div>
         </div>
-
-
-
-
-
 
         <div class="flip-container">
             <div class="flipper">
@@ -418,8 +408,60 @@
     </div>
 </section>
 <!-- ***** Features Item End ***** -->
+<!-- ***** Personal training ***** -->
 
 
+
+
+
+<!-- ***** Call to Action Start ***** -->
+<section class="section" id="call-to-action">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <div class="cta-content">
+                    <h2>Ready today? <br> Have your own <em>Peronal Training</em>!</h2>
+                    <p>Experience an effective <strong> online personal training system</strong> to achieve the body transformation
+                        results you want with Shape n Tone 360 online</p>
+                    <div class="main-button scroll-to-section">
+                        <a href="{% url 'personal' %}">Check it out &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ***** Call to Action End ***** -->
+
+
+
+
+<div class="container">
+    <div class="col-lg-6 offset-lg-3">
+        <div class="section-heading">
+            <h2>Recent <em> Articles</em></h2>
+
+        </div>
+    </div>
+    <div class="row mx-auto">
+        {% for list in posts %}
+        <div class="col-lg-3 col-md-6 col-sm-12">
+            <div class="course_card">
+                <div class="course_card_img"><img src="{{ list.image.url }}" alt="course" /></div>
+                <div class="course_card_content">
+                    <h3 class="title text-capitalize">{{ list.headline | safe }}</h3>
+                    <p class="description">{{ list.content | safe | truncatewords_html:20 }}</p>
+                </div>
+                <div class="course_card_footer">
+                    <a class="nav-item" href="{% url 'article_detail' list.slug %}">Learn More <i
+                            class="las la-chevron-right"></i></a>
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+    </div>
+</div>
 
 <!-- ***** Call to Action Start ***** -->
 <section class="section" id="call-to-action">
@@ -438,10 +480,6 @@
         </div>
     </div>
 </section>
-<!-- ***** Call to Action End ***** -->
-
-
-
 
 <!-- ***** Contact Us Area Starts ***** -->
 <section class="section" id="contact-us">
