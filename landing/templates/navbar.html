@@ -16,6 +16,8 @@
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link" href="{% url 'gallery' %}"> My Gallery</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'customerLibrary' %}"> Program Library</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'workout-list' %}"> Workouts</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'articles' %}">Articles</a></li>
                 <li class="nav-item"><a class="nav-link" href="#"> Contact</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'customerProfile' %}"> Profile</a></li>
                 <form class="d-flex">
@@ -57,6 +59,7 @@
                         {% endfor %}
                     </ul>
                 </li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'articles' %}">Articles</a></li>
                 <li class="nav-item"><a class="nav-link" href="#"> FAQs</a></li>
                 <li class="nav-item"><a class="nav-link" href="#"> Contact</a></li>
                 <form class="d-flex">

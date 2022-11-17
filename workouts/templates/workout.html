@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% load static %}
+{% block content %}
+{% include 'navbar.html'%}
+<section class="details">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="header ">
+                    <div class="a-hero mx-auto text-center">
+                        <h3>
+                            <span>Workouts</span>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="d-flex justify-content-center">
+    <div class="col-lg-10 col-md-12">
+
+        <div class="row mx-auto">
+            {% for list in workout_list %}
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="course_card">
+                    <div class="course_card_img"><img src="{{list.image.url}}" alt="course" /></div>
+                    <div class="course_card_content">
+                        <h3 class="title">{{list.name}}</h3>
+                        <p class="description">{{list.description | safe | truncatewords_html:40 }}</p>
+                    </div>
+                    <div class="course_card_footer">
+                        <!-- <a class="nav-item" href="https://www.smartcodehub.com/blog">Add Review</a> -->
+                        <a class="nav-item" href="{% url 'workout_detail' list.slug list.id %}">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="course_card">
+                    <div class="course_card_img"><img
+                            src="https://cdn-images-1.medium.com/max/1600/1*xQW9Spiz8U0tNEuX_m2blw.jpeg" alt="course" />
+                    </div>
+                    <div class="course_card_content">
+                        <h3 class="title">Angular Tutorial</h3>
+                        <p class="description">When we are no longer able to change a situation - we are challenged to
+                            change ourselves. Spread love everywhere you go. Let no one ever come to you without leaving
+                            happier. Problems are not stop signs, they are guidelines.</p>
+                    </div>
+                    <div class="course_card_footer"><a class="nav-item" href="https://www.smartcodehub.com/blog">Add
+                            Review</a><a class="nav-item" href="https://www.smartcodehub.com/blog">Learn More</a></div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="course_card">
+                    <div class="course_card_img"><img
+                            src="https://cdn-images-1.medium.com/max/720/1*aWXAr1bHFtP81is4XwYgrw.png" alt="course" />
+                    </div>
+                    <div class="course_card_content">
+                        <h3 class="title">Typescript Tutorial</h3>
+                        <p class="description">When we are no longer able to change a situation - we are challenged to
+                            change ourselves. Spread love everywhere you go. Let no one ever come to you without leaving
+                            happier. Problems are not stop signs, they are guidelines.</p>
+                    </div>
+                    <div class="course_card_footer"><a class="nav-item" href="https://www.smartcodehub.com/blog">Add
+                            Review</a><a class="nav-item" href="https://www.smartcodehub.com/blog">Learn More</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<section>
+
+    {% if user.is_authenticated %}
+    <div class="container">
+        <div class="row my-5 gap-3">
+
+            {% for workout in workout%}
+
+            <div class="col-md-3 col-sm-6 mb-3 workout-container">
+                <img src="{{ workout.image.url }}" alt="">
+                <div class="container-body">
+                    <h2>{{ workout.name }}</h2>
+                    <p>{{ workout.description }}</p>
+                    <div class="row">
+                        <div class="col-6">
+                            <p>
+                                Type: <span>{{workout.workout_type}}</span>
+                            </p>
+                        </div>
+
+                        <div class="col-6">
+                            Fee: <span>KES {{ workout.price }}</span>
+                        </div>
+                        <div class="col-6">
+                            <a href="{% url 'payment' workout.id %}" type="button">Enroll Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %}
+        </div>
+    </div>
+
+    {% endif %}
+</section>
+
+{% include 'footer.html'%}
+{% endblock %}

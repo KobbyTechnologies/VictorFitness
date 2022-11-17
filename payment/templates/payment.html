@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+  <title>Payment</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/payment.css'%}">
+</head>
+<body>
+  <main class="page payment-page">
+    <section class="payment-form dark align-content-center">
+      <div class="container">
+        <div class="block-heading">
+          <h2>Payment</h2>
+        </div>
+        <form method="get">
+          <div class="products">
+            <div class="item">
+              <h2 class="item-name">{{workout.name}}</h2>
+            </div>
+            <div class="total">Total Payable<span class="price">KES {{workout.price}}</span></div>
+          </div>
+          <div class="card-details">
+            <h3 class="title">Lipa na Mpesa Details</h3>
+            <div class="row">
+              <div class="form-group col-sm-12">
+                <label for="card-number">phone Number</label>
+                <input id="card-number" type="text" class="form-control" placeholder="Mpesa Number" aria-label="Card Holder" aria-describedby="basic-addon1">
+              </div>
+              <div class="form-group col-sm-12 hidden">
+                <label for="cvc">Mpesa code</label>
+                <input id="cvc" type="text" class="form-control" placeholder="Mpesa Code" aria-label="Card Holder" aria-describedby="basic-addon1">
+              </div>
+              <div class="form-group col-sm-12">
+                <a href="{% url 'workout-detail' %}" class="btn btn-primary btn-block">proceed</a>
+                <!-- <button type="button" class="btn btn-primary btn-block">Proceed</button> -->
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+</body>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

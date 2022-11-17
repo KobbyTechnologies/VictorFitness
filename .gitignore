@@ -1,2 +1,6 @@
 virtual/
 .env
+Pipfile
+Pipfile.lock
+media/
+*.scss
