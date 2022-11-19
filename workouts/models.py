@@ -1,5 +1,8 @@
+from enum import unique
+from xml.parsers.expat import model
 from django.db import models
 from cloudinary.models import CloudinaryField
+from customer.models import SubscriptionPlan
 
 
 # Create your models here.
@@ -31,7 +34,7 @@ class ProgramWorkout(models.Model):
     name = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=255, unique=True)
     description = models.TextField()
-    level = models.CharField(choices=WORKOUT_LEVEL, max_length=200,default='Beginner')
+    level = models.ForeignKey(SubscriptionPlan, on_delete=models.CASCADE, default=1)
     image = CloudinaryField('image', blank=True)
     last_update = models.DateTimeField(auto_now_add=True)
 
@@ -48,7 +51,7 @@ class Exercise(models.Model):
     type = models.CharField(choices=EXERCISE_TYPE, max_length=200,  default='Balance')
     equipment = models.ForeignKey(
         Equipment, related_name='Equipments', blank=True, on_delete=models.PROTECT)
-    workout = models.ManyToManyField(ProgramWorkout, related_name='Exercises')
+    workout = models.ForeignKey(ProgramWorkout, on_delete=models.CASCADE,related_name='Exercises')
     videofile = models.FileField(
         upload_to='videos/', blank=True, verbose_name="")
     duration = models.IntegerField(default=10, help_text="Duration in Minutes")
@@ -56,3 +59,12 @@ class Exercise(models.Model):
 
     def __str__(self):
         return str(self.name)
+
+class WorkoutPlan(models.Model):
+    name = models.CharField(max_length = 200, unique=True)
+    slug = models.SlugField(max_length=255, unique=True)
+    image = CloudinaryField('image', blank=True)
+    workouts = models.ManyToManyField(ProgramWorkout)
+
+    def __str__(self):
+        return self.name

@@ -1,25 +1,22 @@
-{% extends 'base.html' %}
+{% extends 'base_alt.html' %}
 {% load bootstrap5 %}
 {% load static %}
 {% block content %}
-{% include 'navbar.html'%}
+{% include 'navbar_alt.html'%}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
-<section class="details">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="header ">
-                    <div class="a-hero mx-auto text-center">
-                        <h3>
-                            <span>About {{pro.title}}</span>
-                        </h3>
-                    </div>
+
+<div class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>About {{pro.title}}</h1>
                 </div>
             </div>
         </div>
-
     </div>
-</section>
+</div>
+
 <section>
     <div class="container">
         <div class="row">
@@ -63,7 +60,7 @@
                                         data-bs-parent="#accordionExample{{res.id}}">
                                         <div class="accordion-body panel-body">
                                             {{res.description}}
-                                            <video controls="true" id="vida{{res.id}}" name="videos" class="my-3 video">
+                                            <video controls="true" id="vida{{res.id}}" name="videos" class="my-3 video w-100" muted>
                                                 <source type="video/mp4" src="{{res.videofile.url}}">
                                                 </source>
                                             </video>
@@ -176,3 +173,21 @@
 </section>
 {% include 'footer.html'%}
 {% endblock %}
+
+
+<section class="details">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="header ">
+                    <div class="a-hero mx-auto text-center">
+                        <h3>
+                            <span>About {{pro.title}}</span>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

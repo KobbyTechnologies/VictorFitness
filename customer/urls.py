@@ -14,6 +14,7 @@ urlpatterns = [
     path('goals',views.WorkoutGoals,name='goals'),
     path('customerLibrary',views.CustomerLibrary,name='customerLibrary'),
     path('userinfo',views.userInfo,name='userinfo'),
+    path('forms', views.forms, name='forms')
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

@@ -95,6 +95,9 @@
         </div>
     </div>
 </section>
+
+{% include 'main/banner2.html' %}
+
 <section class="joins">
     <div class="container">
         <div class="row">
@@ -220,65 +223,69 @@
                 </div>
             </div>
         </div>
-        <div class="row mt-4">
-            <div class="col-md-4">
-                <div class="card plan-card mx-auto h-100 text-center">
-                    <h4>Bronze</h4>
-                    <h3>Ksh 1,200 Initial
-                        Package
-                    </h3>
-                    <p> - FREE Initial Consultation</p>
-                    <p> - Smartphone App Access</p>
-                    <p> - Exercise Video Library</p>
-                    <p> - Tailored Workouts & Exercise Programme</p>
-                    <p> - Weekly Check-ins</p>
-                    <p> - Micronutrient Guidance</p>
-                    <h3>Ksh 1000/month</h3>
-                    <a href="{% url 'login' %}" class="btn" type="button">Enroll Now</a>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card plan-card mx-auto h-100 text-center">
-                    <h4>Silver</h4>
-                    <h3>Ksh 15,000 Initial
-                        Package
-                    </h3>
-                    <p> - FREE Initial Consultation</p>
-                    <p> - Includes real-time home training with trainer via video (upto 3 x 60 min sessions per week)
-                    </p>
-                    <p> - Smartphone App Access</p>
-                    <p> - Exercise Video Library</p>
-                    <p> - Tailored Workouts & Exercise Programme</p>
-                    <p> - Twice Weekly Phone or Video Check-ins</p>
-                    <p> - Nutritional Guidance and Advice For Meal Preparation</p>
-                    <h3>Ksh 12,000/month</h3>
-                    <a href="{% url 'login' %}" class="btn" type="button">Enroll Now</a>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card plan-card mx-auto h-100 text-center">
-                    <h4>Gold</h4>
-                    <h3>Ksh 20,000 Initial
-                        Package
-                    </h3>
-                    <p> - FREE Initial Consultation</p>
-                    <p> - Includes real-time home training with
 
-                        trainer via video (upto 5 x 60 min sessions per week)
-                    </p>
-                    <p> - Smartphone App Access</p>
-                    <p> - Exercise Video Library</p>
-                    <p> - Tailored Workouts & Exercise Programme</p>
-                    <p> - Fitness Goal Setting and Advice</p>
-                    <p> - 24-7 Support via Phone and Video</p>
-                    <p> - Roadmap to Achieve Fitness Journey</p>
-                    <p> - Fully Supported Nutrition Guidance Including Regular Reviews</p>
-                    <p> - FREE Micronutrient Guide E-Booklet Including Meal Examples</p>
-                    <h3 style="margin-bottom: 5rem;">Ksh 15,000/month</h3>
-                    <a href="{% url 'login' %}" class="btn" type="button">Enroll Now</a>
+
+
+
+        <!-- Package Plan-->
+        <div id="generic_price_table">
+
+            <div class="container">
+
+                <!--BLOCK ROW START-->
+                <div class="row">
+                    {% for item in pkg %}
+                    <div class="col-md-3 my-3">
+                        {% if item.highlight_status %}
+                        <div class="generic_content active clearfix h-100 rounded">
+                            {% else %}
+                            <div class="generic_content clearfix h-100 rounded">
+                                {% endif%}
+                                <div>
+                                    <div class="generic_head_price clearfix">
+                                        <div class="generic_head_content clearfix">
+                                            <div class="head_bg"></div>
+                                            <div class="head">
+                                                <span>{{item.title}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="generic_price_tag clearfix">
+                                            <span class="price">
+                                                <span class="sign">KES</span>
+                                                <span class="currency">{{item.price | floatformat:0}}</span>
+                                                <span class="cent"></span>
+                                                <span class="month">/MONTH</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="generic_feature_list">
+                                        <ul>
+                                            {% for feature in item.subscriptionfeatures_set.all %}
+                                            <li>{{feature.title}}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="generic_price_btn clearfix">
+                                    {% if user.is_authenticated %}
+                                    <a class="" href="{% url 'payment' item.id %}">Enroll Now</a>
+                                    {% else %}
+                                    <a class="" href="{% url 'login' %}">Enroll Now</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+
                 </div>
             </div>
+
+
+
         </div>
+        <!-- endPackage Plan-->
     </div>
 </section>
 <section class="workout">
@@ -490,10 +497,10 @@
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                     <p id="output3" style="color: green;" class="my-4">
-                        <p id="output4" style="color: #e47b18;" class="my-2">
+                    <p id="output4" style="color: #e47b18;" class="my-2">
 
 
-                        </p>
+                    </p>
                 </form>
 
 
@@ -525,8 +532,8 @@
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                     <p id="output" style="color: green;" class="my-4">
-                        <p id="output2" style="color: #e47b18;" class="my-2">
-                        </p>
+                    <p id="output2" style="color: #e47b18;" class="my-2">
+                    </p>
                 </form>
 
             </div>
@@ -537,3 +544,33 @@
 
 {% include 'footer.html'%}
 {% endblock %}
+
+
+<div class="row mt-4 py-5">
+    {% for item in pkg %}
+    <div class="col-md-4">
+        <div class="card plan-card mx-auto h-100 text-center">
+            <div class="card-header">
+                <h4>{{item.title}}</h4>
+            </div>
+            <div class="card-body">
+
+                {% for feature in item.subscriptionfeatures_set.all %}
+                <p> - {{feature.title}}</p>
+                {% endfor %}
+                <h3 style="margin: bottom 5rem;">Ksh {{item.price}}/month</h3>
+            </div>
+            <div class="card-footer">
+
+                {% if user.is_authenticated %}
+                <a href="{% url 'payment' item.id %}" class="btn" type="button">Enroll Now</a>
+
+                {% else %}
+                <a href="{% url 'login' %}" class="btn" type="button">Enroll Now</a>
+                {% endif %}
+                <!-- <h3>Ksh {{item.price}}/Mon</h3> -->
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>

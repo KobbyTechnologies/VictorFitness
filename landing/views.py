@@ -1,6 +1,9 @@
 from email import message
 from django.shortcuts import redirect, render
 from . models import Program, Program_Detail, Topic, ProgramAttachments
+from customer.models import  SubscriptionPlan, PersonalPlan
+from workouts.models import ProgramWorkout
+from post.models import Post
 from django.contrib import messages
 
 # Create your views here.
@@ -8,9 +11,30 @@ from django.contrib import messages
 
 def landing(request):
     Program_Name = Program.objects.all()
+    pkg = SubscriptionPlan.objects.all().order_by('price')
+    workout = ProgramWorkout.objects.all()
+    
 
-    ctx = {"ProgName": Program_Name}
+    ctx = {
+        "ProgName": Program_Name,
+        'pkg': pkg,
+        'workout': workout,
+        
+    }
     return render(request, 'main/landing.html', ctx)
+
+def landing_alt(request):
+    Program_Name = Program.objects.all()
+    pkg = SubscriptionPlan.objects.all().order_by('price')
+    workout = ProgramWorkout.objects.all()
+    posts = Post.objects.filter(status = 1).order_by('-date_created')[:3]
+    ctx = {
+        "ProgName": Program_Name,
+        'pkg': pkg,
+        'workout': workout,
+        'posts': posts,
+    }
+    return render(request, 'main/index.html', ctx)
 
 
 def about(request):
@@ -31,3 +55,11 @@ def programsDetails(request, pk):
 
     ctx = {"pro": programs, "topic": topic, "attach": attach}
     return render(request, 'main/Details.html', ctx)
+
+
+def personal(request):
+    plans = PersonalPlan.objects.all().order_by('price')
+    context = {
+        'plans': plans,
+    }
+    return render(request, 'main/personal.html', context)

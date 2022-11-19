@@ -1,35 +1,39 @@
-{% extends 'base.html' %}
+{% extends 'base_alt.html' %}
 {% load bootstrap5 %}
 {% load static %}
+{% block title %} Workout - {% endblock title %}
 {% block content %}
-{% include 'navbar.html'%}
-<section class="details">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="header ">
-                    <div class="a-hero mx-auto text-center">
-                        <h3>
-                            <span>Workouts</span>
-                        </h3>
-                    </div>
+{% include 'navbar_alt.html'%}
+<div class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Workouts</h1>
                 </div>
             </div>
         </div>
     </div>
-</section>
+</div>
+
 
 <div class="d-flex justify-content-center">
     <div class="col-lg-10 col-md-12">
 
         <div class="row mx-auto">
+            {% if user.is_authenticated %}
             {% for list in workout_list %}
             <div class="col-lg-4 col-md-6 col-sm-12">
                 <div class="course_card">
-                    <div class="course_card_img"><img src="{{list.image.url}}" alt="course" /></div>
+                    <div class="course_card_img">
+                        <a href="{% url 'workout_detail' list.slug list.id %}">
+                            <img src="{{list.image.url}}" alt="course" />
+                        </a>
+                    </div>
                     <div class="course_card_content">
+                        <span>Level: {{list.level}}</span>
                         <h3 class="title">{{list.name}}</h3>
-                        <p class="description">{{list.description | safe | truncatewords_html:40 }}</p>
+                        <p class="description">{{list.description | safe | truncatewords_html:20 }}</p>
                     </div>
                     <div class="course_card_footer">
                         <!-- <a class="nav-item" href="https://www.smartcodehub.com/blog">Add Review</a> -->
@@ -38,36 +42,7 @@
                 </div>
             </div>
             {% endfor %}
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <div class="course_card">
-                    <div class="course_card_img"><img
-                            src="https://cdn-images-1.medium.com/max/1600/1*xQW9Spiz8U0tNEuX_m2blw.jpeg" alt="course" />
-                    </div>
-                    <div class="course_card_content">
-                        <h3 class="title">Angular Tutorial</h3>
-                        <p class="description">When we are no longer able to change a situation - we are challenged to
-                            change ourselves. Spread love everywhere you go. Let no one ever come to you without leaving
-                            happier. Problems are not stop signs, they are guidelines.</p>
-                    </div>
-                    <div class="course_card_footer"><a class="nav-item" href="https://www.smartcodehub.com/blog">Add
-                            Review</a><a class="nav-item" href="https://www.smartcodehub.com/blog">Learn More</a></div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <div class="course_card">
-                    <div class="course_card_img"><img
-                            src="https://cdn-images-1.medium.com/max/720/1*aWXAr1bHFtP81is4XwYgrw.png" alt="course" />
-                    </div>
-                    <div class="course_card_content">
-                        <h3 class="title">Typescript Tutorial</h3>
-                        <p class="description">When we are no longer able to change a situation - we are challenged to
-                            change ourselves. Spread love everywhere you go. Let no one ever come to you without leaving
-                            happier. Problems are not stop signs, they are guidelines.</p>
-                    </div>
-                    <div class="course_card_footer"><a class="nav-item" href="https://www.smartcodehub.com/blog">Add
-                            Review</a><a class="nav-item" href="https://www.smartcodehub.com/blog">Learn More</a></div>
-                </div>
-            </div>
+            {% endif %}
         </div>
     </div>
 </div>
@@ -111,3 +86,19 @@
 
 {% include 'footer.html'%}
 {% endblock %}
+
+<section class="details">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="header ">
+                    <div class="a-hero mx-auto text-center">
+                        <h3>
+                            <span>Workouts</span>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

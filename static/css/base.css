@@ -29,6 +29,7 @@
 body {
     background: var(--white2);
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 /* navbar */
@@ -155,7 +156,7 @@ body {
     margin-left: 1rem;
     color: var(--white);
     font-family: var(--font2);
-    font-size: 5rem;
+    font-size: 3rem;
     font-weight: bold;
 }
 

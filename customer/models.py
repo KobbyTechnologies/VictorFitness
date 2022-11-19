@@ -1,7 +1,11 @@
+from enum import _auto_null
+from random import choices
+from tabnanny import verbose
 from django.db import models
 from cloudinary.models import CloudinaryField
 from authentication.models import MyUser
 from django_countries.fields import CountryField
+from django.utils.safestring import mark_safe
 
 
 class UserInfo(models.Model):
@@ -11,9 +15,9 @@ class UserInfo(models.Model):
         ("Other", "Other"),
          ]
     names=models.ForeignKey(MyUser,on_delete=models.CASCADE,null=True)
-    contacts=models.CharField(max_length=30, verbose_name="Contact", blank=True,null=True)
-    gender=models.CharField(choices=GENDER, max_length=30,blank=True, verbose_name="Gender",null=True)
-    date_of_birth=models.DateField(verbose_name="Date of Birth", blank=True,null=True)
+    contacts=models.CharField(max_length=30, verbose_name="Contact", blank=True)
+    gender=models.CharField(choices=GENDER, max_length=30,blank=True, verbose_name="Gender")
+    date_of_birth=models.DateField(verbose_name="Date of Birth", blank=True)
     start_date=models.DateTimeField(auto_now_add=True)
     profilePic = models.ImageField(upload_to='img/',default='1.png')
 
@@ -28,6 +32,15 @@ class Gallery(models.Model):
     pic=  CloudinaryField("image" ,blank=True) 
     user = models.ForeignKey(MyUser,on_delete=models.CASCADE) 
     date_added = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name='Picture'
+
+    def photo(self):
+        return mark_safe('<img src="{}" width="150px" />'.format(self.pic.url))
+
+    photo.short_description = 'Image'
+    photo.allow_tags = True
     
     def __str__(self):
         return self.user.username
@@ -50,6 +63,101 @@ class Goals(models.Model):
     date_added = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(MyUser,on_delete=models.CASCADE)
     
+
+
+class SubscriptionPlan(models.Model):
+    title = models.CharField(max_length=255)
+    price = models.FloatField()
+    highlight_status = models.BooleanField(default=False, null=True)
+
+    def __str__(self):
+        return self.title
+
+
+class SubscriptionFeatures(models.Model):
+    sub_plan = models.ManyToManyField(SubscriptionPlan)
+    title = models.CharField(max_length=255)
+
+    class Meta: 
+        verbose_name = 'Subscription Plan Feature'
+        verbose_name_plural = 'Subscription Plan Features'
+
+    def __str__(self):
+        return self.title
+
+    
+
+class PersonalPlan(models.Model):
+    title = models.CharField(max_length=255)
+    price = models.FloatField()
+    highlight_status = models.BooleanField(default=False, null=True)
+
+    def __str__(self):
+        return self.title
+
+
+class PersonalPlanFeature(models.Model):
+    sub_plan = models.ManyToManyField(PersonalPlan)
+    title = models.CharField(max_length=255)
+
+
+    def __str__(self):
+        return self.title
+
+
+
+class LifestyleInfo(models.Model):
+    TIME_SPENT_ON = [
+        ("Standing", "Standing"),
+        ("Sitting", "Sitting"),
+        ("Driving", "Driving"),
+        ("Active", "Active"),
+    ]
+    occupation = models.CharField(max_length = 512, help_text = 'What do you do for a living?')
+    work_hours = models.IntegerField(help_text="How many hours on average do you work each week?	")
+    time_spent_on = models.CharField(choices=TIME_SPENT_ON, max_length=60, help_text = 'How do you spend the majority of your time at work?')
+    shcedule = models.CharField(max_length = 512, help_text= 'Do you follow a regular working schedule, do you work days, afternoon or nights?')
+    wake_up_status = models.CharField(max_length = 512, help_text = "When you wake up are you ")
+    travel = models.CharField(max_length= 100, help_text = 'How often do you travel? ')
+    body_weight_status = models.CharField(max_length = 100, help_text = "How would you consider your current body weight")
+    activity_level = models.CharField(max_length = 100, help_text = "How would you describe your current activity level")
+    job_stress_rating = models.IntegerField(help_text = 'How would you rate the stress of your job?')
+    lifestyle_stress_rating = models.IntegerField(help_text = 'How would you rate the stress of your lifestyle?')
+    physical_activities = models.TextField(help_text= 'Please list the physical activities that you participate in outside of the gym and outside of work.')
+    reason_for_Lifestyle_change  = models.TextField(help_text = "Why have you decided to have a lifestyle review?")
+    areas_to_focus_on = models.TextField(help_text="What is the main area that you would like to focus on?")
+
+
+    class PhysicalActivityReadinessQuestionnaire(models.Model):
+        heart_condition = models.BooleanField(help_text = 'Has your doctor ever said you have a heart condition? ')
+        chest_pains = models.BooleanField(help_text= "Do you feel pain in your chest at rest, during your daily activities of living, or when you do physical activity?*")
+        lost_consciousness_before = models.BooleanField(help_text = "Do you lose balance because of dizziness or have you lost consciousness in the last 12 months?*")
+        other_medical_condition = models.BooleanField(help_text = "Have you ever been diagnosed with another chronic medical condition (other than heart disease or high blood pressure)?*")
+        if_yes_explain = models.TextField(help_text = "If yes to the above question, please list the condition(s) here. ", blank = True)
+        taking_prescribed_medicine = models.BooleanField(help_text= "Are you currently taking prescribed medications for a chronic medical condition?*")
+        if_yes_list_medicine = models.TextField(help_text = "If yes to the previous question, please list your medications and how long you have been taking them. ", blank = True)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 class FullInfo(models.Model):
     GENDER = [

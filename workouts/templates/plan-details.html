@@ -1,0 +1,89 @@
+{% extends 'base_alt.html' %}
+{% load bootstrap5 %}
+{% load static %}
+{% block title %} Workout - {% endblock title %}
+{% block content %}
+{% include 'navbar_alt.html'%}
+<div class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>{{object.name}}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="d-flex justify-content-center">
+    <div class="col-lg-10 col-md-12">
+
+        <div class="row mx-auto">
+            {% if user.is_authenticated %}
+            {% for list in workouts %}
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="course_card">
+                    <div class="course_card_img">
+                        <a href="{% url 'workout_detail' list.slug list.id %}">
+                            <img src="{{list.image.url}}" alt="course" />
+                        </a>
+                    </div>
+                    <div class="course_card_content">
+                        <span>Level: {{list.level}}</span>
+                        <h3 class="title">{{list.name}}</h3>
+                        <p class="description">{{list.description | safe | truncatewords_html:20 }}</p>
+                    </div>
+                    <div class="course_card_footer">
+                        <!-- <a class="nav-item" href="https://www.smartcodehub.com/blog">Add Review</a> -->
+                        <a class="nav-item" href="{% url 'workout_detail' list.slug list.id %}">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+<section>
+
+    {% if user.is_authenticated %}
+    <div class="container">
+        <div class="row my-5 gap-3">
+
+            {% for workout in workout%}
+
+            <div class="col-md-3 col-sm-6 mb-3 workout-container">
+                <img src="{{ workout.image.url }}" alt="">
+                <div class="container-body">
+                    <h2>{{ workout.name }}</h2>
+                    <p>{{ workout.description }}</p>
+                    <div class="row">
+                        <div class="col-6">
+                            <p>
+                                Type: <span>{{workout.workout_type}}</span>
+                            </p>
+                        </div>
+
+                        <div class="col-6">
+                            Fee: <span>KES {{ workout.price }}</span>
+                        </div>
+                        <div class="col-6">
+                            <a href="{% url 'payment' workout.id %}" type="button">Enroll Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %}
+        </div>
+    </div>
+
+    {% endif %}
+</section>
+
+{% include 'footer.html'%}
+{% endblock %}
+

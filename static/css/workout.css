@@ -4,11 +4,17 @@
 }
 .workout-detail__info {
   padding: 1em;
-  max-width: 80vw;
 }
 .workout-detail__info h3 {
   font-weight: 700;
   font-size: 20px;
+  text-transform: uppercase;
+}
+.workout-detail__info h3 span {
+  text-transform: none;
+  font-weight: 500;
+  font-size: 16px;
+  font-style: italic;
 }
 .workout-detail__info p::first-letter {
   text-transform: capitalize;

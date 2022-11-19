@@ -16,6 +16,15 @@ import django_heroku
 import dj_database_url
 from decouple import config,Csv
 import  cloudinary
+# import environ
+
+
+
+
+# env = environ.Env(DEBUG=(bool, False))
+# # reading .env file
+# environ.Env.read_env()
+
 
 
 MODE=config("MODE", default="dev")
@@ -67,6 +76,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_daraja',
+    "rest_framework",
 
     # third party apps
     'formtools',
@@ -82,6 +92,7 @@ INSTALLED_APPS = [
     'payment',
     'workouts',
     'post',
+    'myRequest',
 ]
 AUTH_USER_MODEL = "authentication.MyUser"
 
@@ -157,6 +168,7 @@ MPESA_CONSUMER_KEY = config('MPESA_CONSUMER_KEY')
 MPESA_CONSUMER_SECRET = config('MPESA_CONSUMER_SECRET')
 MPESA_EXPRESS_SHORTCODE = config('MPESA_EXPRESS_SHORTCODE')
 MPESA_PASSKEY = config('MPESA_PASSKEY')
+BUSINESS_SHORTCODE = config('BUSINESS_SHORTCODE')
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
@@ -183,9 +195,29 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticatedOrReadOnly"
+    ]
+}
+
+
+CORS_REPLACE_HTTPS_REFERER = True
+HOST_SCHEME = "https://"
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_SECONDS = 1000000
+SECURE_FRAME_DENY = True
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 django_heroku.settings(locals())
+
+
+ 

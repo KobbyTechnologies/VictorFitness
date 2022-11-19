@@ -1,9 +1,66 @@
-{% extends 'base.html' %}
+{% extends 'base_alt.html' %}
 {% load bootstrap5 %}
 {% load static %}
 {% block content %}
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+
+<div class="container-fluid login-container">
+    <div class="login-background ">
+        <!-- <img src="{% static 'img/1.webp' %}" class="login-background-image img-fluid"> -->
+        <img src="{% static 'img/7.png' %}" class="login-background-image img-fluid">
+    </div>
+
+    <div class="login-form">
+        {% if messages %}
+        {% for message in messages %}
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+        <div class="alert alert-success d-flex align-items-center alert-dismissible" role="alert">
+            <i class="las la-check-double" style="color: white;font-size: 2rem"></i>
+            <div class="a-icon mx-2">
+                {{message}}
+            </div>
+            <a type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></a>
+        </div>
+        {% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+        <div class="alert alert-danger d-flex align-items-center alert-dismissible" role="alert">
+            <i class="las la-exclamation-triangle" style="color: white;font-size: 2rem"></i>
+            <div class="a-icon mx-2">
+                {{message}}
+            </div>
+            <a type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></a>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        <form method="post" action={% url 'register' %}>
+            {% csrf_token %}
+            <div class="avatar">
+                <a href="/">
+                    <img src="{% static 'img/Logo/logo-slim.png' %}" alt="">
+                </a>
+            </div>
+            <h4 class="modal-title">Register Today</h4>
+            <div class="form-group">
+                <input type="text" name="username" class="form-control" placeholder="Username" required="required">
+            </div>
+            <div class="form-group">
+                <input type="text" name="email" class="form-control" placeholder="Email" required="required">
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" class="form-control" placeholder="Password" required="required">
+            </div>
+            <div class="form-group">
+                <input type="password" name="password2" class="form-control" placeholder="Re-enter Password" required="required">
+            </div>
+
+            <input type="submit" class="btn btn-primary btn-block btn-sm" value="Create Account">
+        </form>
+        <div class="text-center small">Have an account? <a href="{% url 'login' %}">Login</a></div>
+    </div>
+</div>
+
+{% endblock %}
 
 <div class="container-fluid">
     <div class="row d-flex">
@@ -93,4 +150,3 @@
         </div>
     </div>
 </div>
-{% endblock %}

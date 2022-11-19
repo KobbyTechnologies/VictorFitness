@@ -1,20 +1,32 @@
-{% extends 'base.html' %}
+{% extends 'base_alt.html' %}
 {% load bootstrap5 %}
 {% load static %}
+{% block title %} Profile : {% endblock title %}
 {% block content %}
-{% include 'navbar.html'%}
+{% include 'navbar_alt.html'%}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+<div class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>Profile</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <section class="details">
-  <div class="container-fluid" style="padding: 6rem 2rem 3rem 2rem;">
-    <div class="row">
-      <div class="col-md-3 border-right" style="background: linear-gradient(to right, #444a4a, #ff3333) !important;;">
+  <div class="container-fluid">
+    <div class="row ">
+      <div class="col-md-3 border-right" style="background-color: whitesmoke; color: black;">
         <div class="d-flex flex-column align-items-center text-center p-3 py-5">
           <img class="rounded-circle mt-5" width="150px" src="{{info.profilePic.url}}">
-          <span class="font-weight-bold text-light my-2">{{info.names}}</span>
-          <span class="text-light"><span class="text-dark my-2">Gender:</span>
+          <span class="font-weight-bold my-2">{{info.names}}</span>
+          <span class="text-dark"><span class="text-dark my-2">Gender:</span>
             {{info.gender}}</span>
-          <span class="text-light"><span class="text-dark my-2">Age: </span> {{age}}</span>
-          <span class="text-light"><span class="text-dark my-2">Contacts:</span> {{info.contacts}}</span>
+          <span class="text-dark"><span class="text-dark my-2">Age: </span> {{age}}</span>
+          <span class="text-dark"><span class="text-dark my-2">Contacts:</span> {{info.contacts}}</span>
           <span>
           </span>
         </div>
@@ -55,7 +67,7 @@
               <div class="col-md-6">
                 <label class="form-label">Gender</label>
                 <select class="form-select" name="gender">
-                  <option selected disabled value="{{info.gender}}">Select Gender</option>
+                  <option selected disabled>Select Gender</option>
                   <option value="0">Male</option>
                   <option value="1">Female</option>
                   <option value="2">Other</option>
@@ -63,23 +75,23 @@
               </div>
               <div class="col-md-6">
                 <label class="form-label">Contacts</label>
-                <input type="text" class="form-control" name="contact">
+                <input type="text" class="form-control" name="contact" value="{{info.contacts}}">
               </div>
             </div>
             <div class="row mt-3">
               <div class="col-md-12">
                 <label class="form-label">Date of Birth</label>
-                <input type="date" name="date_of_birth" class="form-control" value="{{info.dta_of_birth}">
+                <input type="date" name="date_of_birth" class="form-control" value="{{info.date_of_birth}}">
                 <div id=" date_of_birth" class="form-text">Enter Your Date of Birth </div>
               </div>
               <div class="col-md-12 mt-3">
                 <label class="form-label">Upload Profile Image</label>
-                <input type="file" class="form-control" name="profilePic" />
+                <input type="file" class="form-control" name="profilePic" value="{{info.profilePic.url}}" />
                 <div id="photos" class="form-text">Select Your Profile Image</div>
               </div>
             </div>
             <div class="mt-2">
-              <button class="btn btn-primary button-41" type="submit"> Update User Info</button>
+              <button class="btn btn-primary button-41" type="submit" value="Post"> Update User Info</button>
             </div>
           </form>
         </div>
@@ -217,11 +229,11 @@
       </div>
     </div>
 </section>
-<section class="details my-5" style="background:red">
+<!-- <section class="details my-5" style="background:red">
 
   </div>
   </div>
-</section>
+</section> -->
 
 
 {% include 'footer.html'%}

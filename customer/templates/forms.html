@@ -1,0 +1,1049 @@
+{% extends 'base_alt.html' %}
+{% load bootstrap5 %}
+{% load static %}
+{% block title %} Form {% endblock title %}
+{% block content %}
+
+<div class="container mt-5">
+    <div class="stepwizard">
+        <div class="stepwizard-row setup-panel">
+            <div class="stepwizard-step">
+                <a href="#step-1" type="button" class="btn btn-primary btn-circle">1</a>
+                <p>Step 1</p>
+            </div>
+            <div class="stepwizard-step">
+                <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
+                <p>Step 2</p>
+            </div>
+            <div class="stepwizard-step">
+                <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
+                <p>Step 3</p>
+            </div>
+            <div class="stepwizard-step">
+                <a href="#step-4" type="button" class="btn btn-default btn-circle" disabled="disabled">4</a>
+                <p>Step 4</p>
+            </div>
+            <div class="stepwizard-step">
+                <a href="#step-5" type="button" class="btn btn-default btn-circle" disabled="disabled">5</a>
+                <p>Step 5</p>
+            </div>
+            <div class="stepwizard-step">
+                <a href="#step-6" type="button" class="btn btn-default btn-circle" disabled="disabled">6</a>
+                <p>Step 6</p>
+            </div>
+            <div class="stepwizard-step">
+                <a href="#step-7" type="button" class="btn btn-default btn-circle" disabled="disabled">7</a>
+                <p>Step 7</p>
+            </div>
+            <div class="stepwizard-step">
+                <a href="#step-8" type="button" class="btn btn-default btn-circle" disabled="disabled">8</a>
+                <p>Step 8</p>
+            </div>
+        </div>
+    </div>
+    <form role="form" class=" row g-3 mt-5">
+        <div class="row setup-content" id="step-1">
+            <div class="col-xs-12">
+                <div class="col-md-12">
+
+                    <fieldset class=" row g-3">
+                        <h2 class="fs-title">step 1: Personal Information</h2>
+                        <div class="col-md-6">
+                            <label for="inputFName" class="form-label">First Name</label>
+                            <input type="text" class="form-control" id="inputFName">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputLName" class="form-label">Last Name</label>
+                            <input type="text" class="form-control" id="inputLName">
+                        </div>
+
+                        <div class="col-6 g-3">
+                            <span>Gender:</span><br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="gender" id="male" value="option1">
+                                <label class="form-check-label" for="male">Male</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="gender" id="female" value="option2">
+                                <label class="form-check-label" for="female">Female</label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <label for="dob" class="form-label">Date of Birth</label>
+                            <input type="date" class="form-control" id="dob">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="age" class="form-label">Age</label>
+                            <input type="text" class="form-control" id="inputCity">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="height" class="form-label">Height</label>
+                            <input type="text" class="form-control" id="height">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="weight" class="form-label">Weight</label>
+                            <input type="text" class="form-control" id="weight">
+                        </div>
+                        <div class="col-md-8">
+                            <label for="weight" class="form-label">Phone Number</label>
+                            <div class="input-group mb-3">
+                                <select class="form-select" aria-label="Default select example">
+                                    <option selected>Code</option>
+                                    <option value="1">+254 Kenya</option>
+                                    <option value="2">+255 Tanzania</option>
+                                    <option value="3">+256 Uganda</option>
+                                </select>
+                                <input type="text" class="form-control" placeholder="712345678"
+                                    aria-label="Phone Number" aria-describedby="Phone Number">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email">
+                        </div>
+                        <div class="col-6 g-3">
+                            <span>How do you prefer to be contacted?</span><br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="contact" id="emil" value="option1">
+                                <label class="form-check-label" for="email">Email</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="contact" id="phone" value="option2">
+                                <label class="form-check-label" for="phone">Phonce call</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="contact" id="sms" value="option2">
+                                <label class="form-check-label" for="sms">SMS</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="contact" id="other" value="option2">
+                                <label class="form-check-label" for="other">Other</label>
+                            </div>
+                        </div>
+
+
+                    </fieldset>
+                    <button class="btn btn-primary nextBtn btn-md pull-right mt-4" type="button">Next</button>
+                </div>
+            </div>
+        </div>
+        <div class="row setup-content" id="step-2">
+            <div class="col-xs-12">
+                <div class="col-md-12">
+                    <fieldset class="row g-3 mb-3">
+                        <h2 class="fs-title">step 2: Lifestyle Information</h2>
+
+                        <div class="col-md-6">
+                            <label for="occupation" class="form-label">What do you do for a living?</label>
+                            <input type="text" class="form-control" id="occupation">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label" for="workHours">How many hours on average do you work each
+                                week?</label>
+                            <input type="text" name="text1" class="form-control" id="workHors" />
+                        </div>
+
+                        <div class="col-6 g-3">
+                            <span>How do you spend the majority of your time at work?</span><br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="contact" id="stanging"
+                                    value="option1">
+                                <label class="form-check-label" for="standing">standing</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="contact" id="sitting"
+                                    value="option2">
+                                <label class="form-check-label" for="sitting">Sitting</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="contact" id="driving"
+                                    value="option2">
+                                <label class="form-check-label" for="driving">Driving</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="contact" id="active" value="option2">
+                                <label class="form-check-label" for="active">Active</label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <label class="control-label" for=""> Do you work days, afternoon or nights?</label>
+                            <input type="text" name="text1" class="form-control" />
+                        </div>
+                        <div class="col-6 g-3">
+                            <span>Do you follow a regular working schedule?</span><br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="work-schedule" id="yes"
+                                    value="option1">
+                                <label class="form-check-label" for="yes">Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="work-schedule" id="no"
+                                    value="option2">
+                                <label class="form-check-label" for="no">No</label>
+                            </div>
+                        </div>
+
+
+                        <div class="col-6 g-3">
+                            <span>When you wake up are you</span><br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="wake-up" id="yes" value="option1">
+                                <label class="form-check-label" for="yes">Tired and find it difficult to pull yourself
+                                    out of bed?</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="wake-up" id="no" value="option2">
+                                <label class="form-check-label" for="no">Active, refreshed and ready to face the
+                                    day?</label>
+                            </div>
+                        </div>
+                        <div class="col-6 g-3">
+                            <span>How often do you travel?</span><br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="travel" id="rarely" value="option1">
+                                <label class="form-check-label" for="rarely">Rarely</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="travel" id="year" value="option2">
+                                <label class="form-check-label" for="year">A few times a year</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="travel" id="month" value="option2">
+                                <label class="form-check-label" for="month">A few times a Month</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="travel" id="week" value="option2">
+                                <label class="form-check-label" for="week">Weekly</label>
+                            </div>
+                        </div>
+                        <div class="col-6 g-3">
+                            <span>How would you consider your current body weight</span><br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="body-weight" id="underweight"
+                                    value="option1">
+                                <label class="form-check-label" for="underweight">Underweight</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="body-weight" id="ideal"
+                                    value="option2">
+                                <label class="form-check-label" for="ideal">Ideal</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="body-weight" id="overweight1"
+                                    value="option2">
+                                <label class="form-check-label" for="overweight1">A bit overweight</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="body-weight" id="overweight2"
+                                    value="option2">
+                                <label class="form-check-label" for="overweight2">very Overweight</label>
+                            </div>
+                        </div>
+                        <div class="col-6 g-3">
+                            <span>How would you describe your current activity level</span><br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="activity-level" id="active1"
+                                    value="option1">
+                                <label class="form-check-label" for="active1">sedentary</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="activity-level" id="active2"
+                                    value="option2">
+                                <label class="form-check-label" for="active2">Moderately Active</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="activity-level" id="active3"
+                                    value="option2">
+                                <label class="form-check-label" for="active3">Active</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="activity-level" id="active4"
+                                    value="option2">
+                                <label class="form-check-label" for="active4">Highly Active</label>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+
+                            <label class="form-label" for="">How would you rate the stress of your job? </label>
+                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3">
+                        </div>
+                        <div class="col-12">
+
+                            <label class="form-label" for="">How would you rate the stress of your lifestyle?
+                            </label>
+                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3">
+                        </div>
+                        <div class="col-12">
+
+                            <label class="form-label" for="">Please list the physical activities that you participate
+                                in outside of the gym and
+                                outside of work.</label>
+                            <textarea name="" id="" class="form-control" rows="10"></textarea>
+                        </div>
+                        <div class="form-group">
+
+                            <label class="control-label" for="">Why have you decided to have a lifestyle review?</label>
+                            <input type="text" name="text1" class="form-control" />
+                        </div>
+
+                    </fieldset>
+
+                    <button class="btn btn-default prevBtn btn-md pull-left" type="button">Prev</button>
+                    <button class="btn btn-primary nextBtn btn-md pull-right" type="button">Next</button>
+                </div>
+            </div>
+        </div>
+        <div class="row setup-content" id="step-3">
+            <div class="col-xs-12">
+                <div class="col-md-12">
+                    <fieldset class="row g-3 mb-3">
+                        <h2 class="fs-title"> Step-3: Physical Activity Readiness Questionnaire (PAR-Q)</h2>
+                        <div class="col-6 g-3">
+                            <span>Has your doctor ever said you have a heart condition?</span><br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="heart-condition" id="yes"
+                                    value="option1">
+                                <label class="form-check-label" for="yes">Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="heart-condition" id="no"
+                                    value="option2">
+                                <label class="form-check-label" for="no">No</label>
+                            </div>
+                        </div>
+                        <div class="col-6 g-3">
+                            <span>Do you feel pain in your chest at rest, during your daily activities of living, or
+                                when you do physical activity?*</span><br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="chest-pains" id="yes"
+                                    value="option1">
+                                <label class="form-check-label" for="yes">Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="chest-pains" id="no" value="option2">
+                                <label class="form-check-label" for="no">No</label>
+                            </div>
+                        </div>
+                        <div class="col-6 g-3">
+                            <span>Do you lose balance because of dizziness or have you lost consciousness in the last 12
+                                months?*</span><br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="diziness" id="yes" value="option1">
+                                <label class="form-check-label" for="yes">Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="diziness" id="no" value="option2">
+                                <label class="form-check-label" for="no">No</label>
+                            </div>
+                        </div>
+                        <div class="col-6 g-3">
+                            <span>Have you ever been diagnosed with another chronic medical condition (other than heart
+                                disease or high blood pressure)?* </span><br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="chronic-condition" id="yes"
+                                    value="option1">
+                                <label class="form-check-label" for="yes">Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="chronic-condition" id="no"
+                                    value="option2">
+                                <label class="form-check-label" for="no">No</label>
+                            </div>
+                        </div>
+
+
+
+
+
+                        <div class="col-12">
+                            <label class="form-label" for="medical-conditions">If yes to the above question, please list
+                                the condition(s) here.</label>
+                            <textarea class="form-control " name="" id="medical-conditions" rows="10"></textarea>
+                        </div>
+                        <div class="col-md-12 g-3">
+                            <span>Are you currently taking prescribed medications for a chronic medical condition?*
+                            </span><br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="medication" id="yes" value="option1">
+                                <label class="form-check-label" for="yes">Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="medication" id="no" value="option2">
+                                <label class="form-check-label" for="no">No</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <label class="form-label" for="medication">If yes to the previous question, please list
+                                your medications and how long you have been taking them. </label>
+                            <textarea class="form-control " name="" id="mediction" rows="10"></textarea>
+                        </div>
+
+                        <div class="col-md-12 g-3">
+                            <span>Do you currently have (or have had within the past 12 months) a bone, joint, or soft
+                                tissue (muscle, ligament, or tendon) problem that could be made worse by becoming more
+                                physically active?*
+                            </span><br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="injury" id="yes" value="option1">
+                                <label class="form-check-label" for="yes">Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="injury" id="no" value="option2">
+                                <label class="form-check-label" for="no">No</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <label class="form-label" for="injury">If yes to the above question, please explain the
+                                condition.
+                            </label>
+                            <textarea class="form-control " name="" id="injury" rows="10"></textarea>
+                        </div>
+
+                        <div class="col-md-12 g-3">
+                            <span>Has your doctor ever said you should only do medically supervised physical activity*
+                            </span><br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="medical-supervision" id="yes"
+                                    value="option1">
+                                <label class="form-check-label" for="yes">Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="medical-supervision" id="no"
+                                    value="option2">
+                                <label class="form-check-label" for="no">No</label>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <button class="btn btn-default prevBtn btn-md pull-left" type="button">Prev</button>
+                    <button class="btn btn-primary nextBtn btn-md pull-right" type="button">Next</button>
+                </div>
+            </div>
+        </div>
+        <div class="row setup-content" id="step-4">
+            <div class="col-xs-12">
+                <div class="col-md-12">
+                    <fieldset class="row g-3 mb-3">
+                        <h2 class="fs-title"> Step 4: Medical and Health Information</h2>
+                        <h3 class="fs-subtitle">Your presence on the social network</h3>
+                        <div class="col-md-12">
+                            <label class="form-label" for="injury">If you have any diagnosed health problems list the
+                                condition(s).
+                            </label>
+                            <textarea class="form-control " name="" id="injury" rows="5"></textarea>
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label" for="injury">If you are on any medications, please list them.
+                            </label>
+                            <textarea class="form-control " name="" id="injury" rows="5"></textarea>
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label" for="injury">What additional therapies are being undertaken for
+                                the given health problem(s)?
+                            </label>
+                            <textarea class="form-control " name="" id="injury" rows="5"></textarea>
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label" for="injury">If you have any injuries or previously undergone
+                                surgery, please list them.
+                            </label>
+                            <textarea class="form-control " name="" id="injury" rows="5"></textarea>
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label" for="injury">What additional therapies are being undertaken for
+                                given injury?
+                            </label>
+                            <textarea class="form-control " name="" id="injury" rows="5"></textarea>
+                        </div>
+                        <div class="col-md-6 g-3">
+                            <span>Are you experiencing any stresses or motivational
+                                problems?
+                            </span><br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="stress" id="yes" value="option1">
+                                <label class="form-check-label" for="yes">Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="stress" id="no" value="option2">
+                                <label class="form-check-label" for="no">No</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6 g-3">
+                            <span>Has anyone of your immediate family developed heart disease before the age of 60?
+                            </span><br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="heart-problem" id="yes"
+                                    value="option1">
+                                <label class="form-check-label" for="yes">Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="heart-problem" id="no"
+                                    value="option2">
+                                <label class="form-check-label" for="no">No</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6 g-3">
+                            <span>Do any diseases run in your family?
+                            </span><br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="hereditary-illness" id="yes"
+                                    value="option1">
+                                <label class="form-check-label" for="yes">Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="hereditary-illness" id="no"
+                                    value="option2">
+                                <label class="form-check-label" for="no">No</label>
+                            </div>
+                        </div>
+                        <div class="col-md-12 g-3">
+                            <span>Do you suffer from diabetes, asthma, high or low blood pressure, arthritis?
+                            </span><br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="illness" id="yes" value="option1">
+                                <label class="form-check-label" for="yes">Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="illness" id="no" value="option2">
+                                <label class="form-check-label" for="no">No</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <label class="form-label" for="injury">(if yes please list):
+                            </label>
+                            <textarea class="form-control " name="" id="injury" rows="5"></textarea>
+                        </div>
+
+                        <div class="col-md-12 g-3">
+                            <span> Do you have any pain or issues in your* </span>
+                            <br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="illness" id="head">
+                                <label class="form-check-label" for="head">Head/Neck</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="illness" id="back1">
+                                <label class="form-check-label" for="back1">Upper Back</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="illness" id="sholders">
+                                <label class="form-check-label" for="sholders">Sholders</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="illness" id="arm">
+                                <label class="form-check-label" for="arm">Arm/Elbow
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" name="illness" id="back2">
+                                        <label class="form-check-label" for="back2">Lower Back</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" name="illness" id="hip">
+                                        <label class="form-check-label" for="hip">Hip/pelvis</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" name="illness" id="thigh">
+                                        <label class="form-check-label" for="thigh">Thigh/Knees</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="other">Other
+                                </label>
+                            </div>
+                        </div>
+
+                    </fieldset>
+
+                    <button class="btn btn-default prevBtn btn-md pull-left" type="button">Prev</button>
+                    <button class="btn btn-primary nextBtn btn-md pull-right" type="button">Next</button>
+                </div>
+            </div>
+        </div>
+        <div class="row setup-content" id="step-5">
+            <div class="col-xs-12">
+                <div class="col-md-12">
+                    <fieldset class="row g-3">
+                        <h2 class="fs-title">Step 5: Nutrition</h2>
+
+                        <div class="col-md-6 g-3">
+                            <span>Are you a current cigarette smoker?
+                            </span><br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="smoking" id="yes" value="option1">
+                                <label class="form-check-label" for="yes">Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="smoking" id="no" value="option2">
+                                <label class="form-check-label" for="no">No</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 g-3">
+                            <span>Do you drink alcohol?
+                            </span><br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="alcohol" id="yes" value="option1">
+                                <label class="form-check-label" for="yes">Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="alcohol" id="no" value="option2">
+                                <label class="form-check-label" for="no">No</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+
+                            <label class="form-label" for="water">How much water do you drink each
+                                day?(glasses/litres)</label>
+                            <input type="text" name="text1" class="form-control" />
+                        </div>
+
+                        <div class="col-md-6 g-3">
+                            <span>Are you on any specific food/diet plan at this time?
+                            </span><br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="diet" id="yes" value="option1">
+                                <label class="form-check-label" for="yes">Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="diet" id="no" value="option2">
+                                <label class="form-check-label" for="no">No</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 g-3">
+                            <span>How many meals do you eat each day?
+                            </span><br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="meals" id="meal1" value="option1">
+                                <label class="form-check-label" for="meal1">1 - 2</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="meals" id="meal2" value="option2">
+                                <label class="form-check-label" for="meal2">2 -3</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="meals" id="meal3" value="option2">
+                                <label class="form-check-label" for="meal3">3 - 4</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="meals" id="meal4" value="option2">
+                                <label class="form-check-label" for="meal4o">5+</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 g-3">
+                            <span>Do you add raw salt in your meals?
+                            </span><br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="salt" id="yes" value="option1">
+                                <label class="form-check-label" for="yes">Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="salt" id="no" value="option2">
+                                <label class="form-check-label" for="no">No</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 g-3">
+                            <span>Do you skip meals?
+                            </span><br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="skip-meals" id="yes" value="option1">
+                                <label class="form-check-label" for="yes">Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="skip-meals" id="no" value="option2">
+                                <label class="form-check-label" for="no">No</label>
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-md-6">
+
+                            <label class="form-label" for="skipMeals">If yes which ones and how regularly. </label>
+                            <textarea class="form-control" name="skipMeals" id="" rows="10"></textarea>
+                        </div>
+                        <div class="col-md-6">
+
+                            <span for="">What time of the day do you usually eat your meals?. </span>
+
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Brekfast</span>
+                                <input type="text" class="form-control" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Snack</span>
+                                <input type="text" class="form-control" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Lunch</span>
+                                <input type="text" class="form-control" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Snack</span>
+                                <input type="text" class="form-control" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Evening</span>
+                                <input type="text" class="form-control" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default">
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Dinnder</span>
+                                <input type="text" class="form-control" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default">
+                            </div>
+
+                        </div>
+                        <div class="col-md-6 g-3">
+                            <span>Which best describes your meal portions
+                            </span><br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="mealPortion" id="sm" value="option1">
+                                <label class="form-check-label" for="sm">small</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="mealPortion" id="md" value="option2">
+                                <label class="form-check-label" for="md">Medium</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="mealPortion" id="lg" value="option2">
+                                <label class="form-check-label" for="lg">Large</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="mealPortion" id="xl" value="option2">
+                                <label class="form-check-label" for="xl">Extra Large</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6 g-3">
+                            <span>Do you ever get hungry between meals?
+                            </span><br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="hungryBetweenMeals" id="no" value="option2">
+                                <label class="form-check-label" for="no">No</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="hungryBetweenMeals" id="smt" value="option2">
+                                <label class="form-check-label" for="smt">Sometimes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="hungryBetweenMeals" id="yes" value="option1">
+                                <label class="form-check-label" for="yes">Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="hungryBetweenMeals" id="xt" value="option1">
+                                <label class="form-check-label" for="xt">Extreme</label>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="col-12">
+
+                            <label class="form-label" for="">If you snack or have any weaknesses, what do you generally tend to
+                                eat/drink?</label>
+                                <textarea class="form-control" name="" id="" cols="30" rows="10"></textarea>
+                            <input type="text" name="text1"  />
+                        </div>
+                        <div class="form-group">
+
+                            <label for="">Have you had any recent weight gain or loss? </label>
+                            <input type="text" name="text1" class="form-control" />
+                        </div>
+                        <div class="form-group">
+
+                            <label for="">Are you taking any dietary supplement? </label>
+                            <input type="text" name="text1" class="form-control" />
+                        </div>
+                        <div class="form-group">
+
+                            <label for="">Do you have any allergies? </label>
+                            <input type="text" name="text1" class="form-control" />
+                        </div>
+                        <div class="form-group">
+
+                            <label for="">Please rate how you feel your current nutritional habits are </label>
+                            <input type="text" name="text1" class="form-control" />
+                        </div>
+                        <div class="form-group">
+
+                            <label for="">Is there any reason not mentioned why you should not follow a regular exercise
+                                program? (Please remember it is your responsibility to consult with a physician before
+                                starting
+                                an exercise routine)*</label>
+                            <input type="text" name="text1" class="form-control" />
+                        </div>
+                        <div class="form-group">
+
+                            <label for="">If any, explain</label>
+                            <input type="text" name="text1" class="form-control" />
+                        </div>
+
+                    </fieldset>
+
+                    <button class="btn btn-default prevBtn btn-md pull-left" type="button">Prev</button>
+                    <button class="btn btn-primary nextBtn btn-md pull-right" type="button">Next</button>
+                </div>
+            </div>
+        </div>
+        <div class="row setup-content" id="step-6">
+            <div class="col-xs-12">
+                <div class="col-md-12">
+                    <fieldset>
+                        <h2 class="fs-title">step 6: Goals.btn-circle .btn-primary{
+                            background-color: $primary_color !important;
+                            }
+                        </h2>
+                        <h3 class="fs-subtitle">Your presence on the social network</h3>
+                        <div class="form-group">
+                            <label for="">Please rate your readiness for change</label>
+                            <input type="text" name="text1" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label for="">Which of the following goals best fit in with your training goals (select all
+                                that
+                                apply)?*</label>
+                            <input type="text" name="text1" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label for="">What are the top three goals you want to accomplish, in order of
+                                importance?*</label>
+                            <input type="text" name="text1" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label for="">Explain why these three goals are most important to you.*</label>
+                            <input type="text" name="text1" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label for="">What possible personal barriers do you feel are keeping you from reaching your
+                                nutritional and fitness goals?*</label>
+                            <input type="text" name="text1" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label for="">Timeline for achieving your goal. </label>
+                            <input type="text" name="text1" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label for="">How often are you willing to train a week to reach your goal? </label>
+                            <input type="text" name="text1" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label for="">Do you have a specific event / date you want to achieve these by? (e.g.
+                                wedding, beach holiday, etc)</label>
+                            <input type="text" name="text1" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label for="">Please rate your motivational level to do what it takes to reach your
+                                goal</label>
+                            <input type="text" name="text1" class="form-control" />
+                        </div>
+
+
+
+
+                        <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                        <input type="button" name="next" class="next action-button" value="Next" />
+                    </fieldset>
+
+                    <button class="btn btn-default prevBtn btn-md pull-left" type="button">Prev</button>
+                    <button class="btn btn-primary nextBtn btn-md pull-right" type="button">Next</button>
+                </div>
+            </div>
+        </div>
+        <div class="row setup-content" id="step-7">
+            <div class="col-xs-12">
+                <div class="col-md-12">
+                    <fieldset>
+                        <h2 class="fs-title"> step 7: Fitness and Movement</h2>
+                        <h3 class="fs-subtitle">Your presence on the social network</h3>
+                        <div class="form-control">
+
+                            <label for="">Are you currently exercising? </label>
+                            <input type="text" name="text1" class="form-control" />
+                        </div>
+                        <div class="form-control">
+                            <label for="">If not: any previous regular exercise? </label>
+                            <input type="text" name="text1" class="form-control" />
+                        </div>
+                        <div class="form-control">
+                            <label for="">If you currently exercise, would you say your routine is:</label>
+                            <input type="text" name="text1" class="form-control" />
+                        </div>
+                        <div class="form-control">
+                            <label for="">Briefly describe your exercise routine </label>
+                            <input type="text" name="text1" class="form-control" />
+                        </div>
+                        <div class="form-control">
+                            <label for="">How often do you train? </label>
+                            <input type="text" name="text1" class="form-control" />
+                        </div>
+                        <div class="form-control">
+                            <label for="">How would you rate your present level of fitness? </label>
+                            <input type="text" name="text1" class="form-control" />
+                        </div>
+                        <div class="form-control">
+                            <label for="">Where do you exercise? </label>
+                            <input type="text" name="text1" class="form-control" />
+                        </div>
+                        <div class="form-control">
+                            <label for="">Do you participate in any particular sport? </label>
+                            <input type="text" name="text1" class="form-control" />
+                        </div>
+                        <div class="form-control">
+                            <label for="">Describe any issues you have that restricts your movement during exercise
+                            </label>
+                            <input type="text" name="text1" class="form-control" />
+                        </div>
+                        <div class="form-control">
+                            <label for="">What did/do you like the least about exercise? </label>
+                            <input type="text" name="text1" class="form-control" />
+                        </div>
+                        <div class="form-control">
+                            <label for="">What did/do you like about exercise? </label>
+                            <input type="text" name="text1" class="form-control" />
+                        </div>
+                        <div class="form-control">
+                            <label for="">Do you consciously look to take the active option such as taking stairs rather
+                                than
+                                lifts? </label>
+                            <input type="text" name="text1" class="form-control" />
+                        </div>
+                        <div class="form-control">
+                            <label for="">Do you find alternative ways of staying active when your regular routine is
+                                compromised due to external factors such as poor weather or being on holiday?</label>
+                            <input type="text" name="text1" class="form-control" />
+                        </div>
+                        <div class="form-control">
+                            <label for="">Have you trained with a personal trainer before? </label>
+                            <input type="text" name="text1" class="form-control" />
+                        </div>
+                        <div class="form-control">
+                            <label for="">If yes, what kind of training did you do? </label>
+                            <input type="text" name="text1" class="form-control" />
+                        </div>
+                        <div class="form-control">
+                            <label for="">What was your experience with your previous trainer? n</label>
+                            <input type="text" name="text1" class="form-control" />
+                        </div>
+                        <div class="form-control">
+                            <label for="">What equipment do you have access to at home? </label>
+                            <input type="text" name="text1" class="form-control" />
+                        </div>
+                        <div class="form-control">
+                            <label for="">At what times during the day would you prefer to train?</label>
+                            <input type="text" name="text1" class="form-control" />
+                        </div>
+                        <div class="form-control">
+                            <label for="">How often do you want to do Personal Training a week?</label>
+                            <input type="text" name="text1" class="form-control" />
+                        </div>
+                        <div class="form-control">
+                            <label for="">What are your expectations on me as your Personal Trainer? </label>
+                            <input type="text" name="text1" class="form-control" />
+                        </div>
+                        <div class="form-control">
+                            <label for="inlineRadioOptions">Can you accept responsibility for the way your body is today
+                                and
+                                understand that, while your old habits don't make you a bad person, they still need to
+                                be
+                                changed? </label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                                    value="option1">
+                                <label class="form-check-label" for="inlineRadio1">Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                                    value="option2">
+                                <label class="form-check-label" for="inlineRadio2">No</label>
+                            </div>
+                        </div>
+
+                    </fieldset>
+
+                    <button class="btn btn-default prevBtn btn-md pull-left" type="button">Prev</button>
+                    <button class="btn btn-primary nextBtn btn-md pull-right" type="button">Next</button>
+                </div>
+            </div>
+        </div>
+        <div class="row setup-content" id="step-8">
+            <div class="col-xs-12">
+                <div class="col-md-12">
+                    <h3> Step 8</h3>
+                    <button class="btn btn-default prevBtn btn-lg pull-left" type="button">Prev</button>
+                    <button class="btn btn-success btn-lg pull-right" type="submit">Finish!</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<!-- scripts -->
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+
+        var navListItems = $('div.setup-panel div a'),
+            allWells = $('.setup-content'),
+            allNextBtn = $('.nextBtn'),
+            allPrevBtn = $('.prevBtn');
+
+        allWells.hide();
+
+        navListItems.click(function (e) {
+            e.preventDefault();
+            var $target = $($(this).attr('href')),
+                $item = $(this);
+
+            if (!$item.hasClass('disabled')) {
+                navListItems.removeClass('btn-primary').addClass('btn-default');
+                $item.addClass('btn-primary');
+                allWells.hide();
+                $target.show();
+                $target.find('input:eq(0)').focus();
+            }
+        });
+
+        allNextBtn.click(function () {
+            var curStep = $(this).closest(".setup-content"),
+                curStepBtn = curStep.attr("id"),
+                nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
+                curInputs = curStep.find("input[type='text'],input[type='url']"),
+                isValid = true;
+
+            $(".form-group").removeClass("has-error");
+            for (var i = 0; i < curInputs.length; i++) {
+                if (!curInputs[i].validity.valid) {
+                    isValid = false;
+                    $(curInputs[i]).closest(".form-group").addClass("has-error");
+                }
+            }
+
+            if (isValid)
+                nextStepWizard.removeAttr('disabled').trigger('click');
+        });
+
+        allPrevBtn.click(function () {
+            var curStep = $(this).closest(".setup-content"),
+                curStepBtn = curStep.attr("id"),
+                prevStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().prev().children("a");
+
+            $(".form-group").removeClass("has-error");
+            prevStepWizard.removeAttr('disabled').trigger('click');
+        });
+
+        $('div.setup-panel div a.btn-primary').trigger('click');
+    });
+</script>
+{% endblock %}

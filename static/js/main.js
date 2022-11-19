@@ -29,6 +29,13 @@ function topFunction() {
     document.documentElement.scrollTop = 0;
 }
 
+$('img').bind('contextmenu', function(e) {
+    return false;
+});
+
+$('video').bind('contextmenu', function(e) {
+    return false;
+});
 
 // var video = document.getElementById("video");
 

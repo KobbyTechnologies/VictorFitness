@@ -1,7 +1,3 @@
-.row {
-  margin: 0 0 !important;
-}
-
 .course_card {
   margin: 25px 10px;
   position: relative;
@@ -12,6 +8,9 @@
   background-color: #fff;
   background-clip: border-box;
   transition: 0.25s ease-in-out;
+}
+.course_card .row {
+  margin: 0 0 !important;
 }
 .course_card:hover {
   transform: scale(1.025);
@@ -51,13 +50,12 @@
 }
 
 .course_card_footer {
-  padding: 10px 0px;
-  margin: 16px;
+  margin-block-end: 16px;
 }
 .course_card_footer a {
   text-decoration: none;
   font-family: nunito sans;
-  margin: 0 10px 0 0;
+  margin: 0 auto 0 0;
   text-transform: uppercase;
   color: #f96332;
   padding: 10px;
@@ -65,4 +63,8 @@
 }
 .course_card_footer a:hover {
   font-weight: 900;
+}
+
+.article-img img {
+  object-fit: cover;
 }
