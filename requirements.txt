@@ -35,7 +35,7 @@ phonenumberslite==8.12.51
 Pillow==9.1.0
 platformdirs==2.5.2
 pluggy==1.0.0
-psycopg2==2.9.3
+psycopg2-binary==2.9.5
 py==1.11.0
 pycparser==2.21
 pyHanko==0.13.0
