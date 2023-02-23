@@ -2,7 +2,6 @@ import uuid
 from django.db import models
 from django.conf import settings
 from landing.models import Program_Detail
-from phonenumber_field.modelfields import PhoneNumberField
 
 # Create your models here.
 class LipaNaMpesaOnline(models.Model):

@@ -17,10 +17,12 @@ Django==4.0.4
 django-bootstrap-v5==1.0.11
 django-countries==7.4.2
 django-crispy-forms==1.14.0
+django-daraja==1.2.0
 django-formtools==2.4
 django-heroku==0.3.1
 django-phonenumber-field==6.3.0
 django-xhtml2pdf==0.0.4
+djangorestframework==3.14.0
 environ==1.0
 filelock==3.8.0
 future==0.18.2
