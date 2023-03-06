@@ -11,7 +11,7 @@
     <div style="max-width: 700px; top: -80px;" class="mx-auto text-secondary">
       <div class="pt-5">
           <small>
-            <a href="{% url 'workout-list' %}" class="text-primary">Workout</a>, <a href="{% url 'workout_detail' object.slug object.id %}" class="text-primary">{{object.workout}}</a>
+            <a href="{% url 'workout-list' %}" class="text-primary">Topic</a>, <a href="{% url 'workout_detail' object.slug object.id %}" class="text-primary">{{object.workout}}</a>
         </small>
       </div>
       <h1 class="font-weight-bold text-dark text-capitalize">{% block title %}{{object.headline}} - {% endblock title %}

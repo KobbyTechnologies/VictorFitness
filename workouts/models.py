@@ -51,7 +51,7 @@ class Exercise(models.Model):
     type = models.CharField(choices=EXERCISE_TYPE, max_length=200,  default='Balance')
     equipment = models.ForeignKey(
         Equipment, related_name='Equipments', blank=True, on_delete=models.PROTECT)
-    workout = models.ForeignKey(ProgramWorkout, on_delete=models.CASCADE,related_name='Exercises')
+    workout = models.ManyToManyField(ProgramWorkout, related_name='Exercises')
     videofile = models.FileField(
         upload_to='videos/', blank=True, verbose_name="")
     duration = models.IntegerField(default=10, help_text="Duration in Minutes")
